@@ -4,22 +4,16 @@ using PBEMFootball.Server.Engine;
 using PBEMFootball.Common.Services;
 
 Console.WriteLine("=== PBEM Football Server ===");
-Console.WriteLine("Server avviato.");
+Console.WriteLine("Avvio menu interattivo...");
 Console.WriteLine();
 
-// Menu interattivo principale
-Console.Write("Avviare il menu interattivo? (s/n, default s): ");
-string? choice = Console.ReadLine();
-
-if (string.IsNullOrWhiteSpace(choice) || choice.ToLower() == "s")
-{
-    var menu = new InteractiveMenu();
-    menu.Run();
-    return;
-}
+// Avvia direttamente il menu interattivo
+var menu = new InteractiveMenu();
+menu.Run();
+return;
 
 // ============================================================================
-// DEMO E TEST (eseguiti solo se si risponde 'n' al menu interattivo)
+// DEMO E TEST (codice legacy mantenuto per riferimento)
 // ============================================================================
 
 var teamFactory = new TeamFactory();

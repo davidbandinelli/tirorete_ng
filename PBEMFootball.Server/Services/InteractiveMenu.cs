@@ -1,6 +1,8 @@
 namespace PBEMFootball.Server.Services;
 
 using PBEMFootball.Common.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class InteractiveMenu
 {
@@ -13,6 +15,26 @@ public class InteractiveMenu
     {
         _seasonManager = new SeasonManager();
         _teamFactory = new TeamFactory();
+    }
+
+    private const int TABLE_WIDTH = 72; // Caratteri tra ║ e ║
+
+    /// <summary>
+    /// Crea una riga di tabella con padding automatico per mantenere larghezza fissa
+    /// </summary>
+    private string CreateTableRow(string content)
+    {
+        int contentLength = content.Length;
+        int padding = TABLE_WIDTH - contentLength;
+
+        if (padding < 0)
+        {
+            // Se il contenuto è troppo lungo, tronca
+            content = content.Substring(0, TABLE_WIDTH);
+            padding = 0;
+        }
+
+        return $"║{content}{new string(' ', padding)}║";
     }
 
     public void Run()
@@ -33,6 +55,9 @@ public class InteractiveMenu
             Console.WriteLine("║ 6. Simula una giornata                                                 ║");
             Console.WriteLine("║ 7. Gestisci Punti Speciali (PS)                                        ║");
             Console.WriteLine("║ 8. Genera 12 squadre casuali                                           ║");
+            Console.WriteLine("║ 9. Salva squadre in JSON                                               ║");
+            Console.WriteLine("║ 10. Carica squadre da JSON                                             ║");
+            Console.WriteLine("║ 11. Visualizza dettagli squadra                                        ║");
             Console.WriteLine("║ 0. Esci                                                                ║");
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             Console.Write("\nScegli un'opzione: ");
@@ -65,6 +90,15 @@ public class InteractiveMenu
                 case "8":
                     GenerateRandomTeams();
                     break;
+                case "9":
+                    SaveTeamsToJson();
+                    break;
+                case "10":
+                    LoadTeamsFromJson();
+                    break;
+                case "11":
+                    DisplayTeamDetails();
+                    break;
                 case "0":
                     exit = true;
                     break;
@@ -73,7 +107,7 @@ public class InteractiveMenu
                     break;
             }
 
-            if (!exit && choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5" && choice != "6" && choice != "7" && choice != "8")
+            if (!exit && choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5" && choice != "6" && choice != "7" && choice != "8" && choice != "9" && choice != "10" && choice != "11")
             {
                 Console.WriteLine("\nPremi un tasto per continuare...");
                 Console.ReadKey();
@@ -139,25 +173,24 @@ public class InteractiveMenu
     {
         Console.Clear();
         Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                       SQUADRE PARTECIPANTI                             ║");
+        Console.WriteLine(CreateTableRow(" SQUADRE PARTECIPANTI "));
         Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
 
         if (_allTeams.Count == 0)
         {
-            Console.WriteLine("║ Nessuna squadra inserita. Usa l'opzione 1 per inserire i dati.        ║");
+            Console.WriteLine(CreateTableRow(" Nessuna squadra inserita. Usa l'opzione 1 per inserire i dati. "));
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
         }
         else
         {
-            Console.WriteLine("║ N.  Squadra              Manager              PA  PGP   M   PS         ║");
+            Console.WriteLine(CreateTableRow(" N.  Squadra              Manager              PA  PGP    M   PS "));
             Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
 
             for (int i = 0; i < _allTeams.Count; i++)
             {
                 var team = _allTeams[i];
-                string line = $"║ {(i + 1),2}. {team.Name,-20} {team.ManagerName,-20} " +
-                             $"{team.TrainingPoints,2}  {team.GreatPerformancePoints,3}  {team.Money,3}  {team.SpecialPoints,3}       ║";
-                Console.WriteLine(line);
+                string content = $" {(i + 1),2}. {team.Name,-20} {team.ManagerName,-20} {team.TrainingPoints,3} {team.GreatPerformancePoints,4} {team.Money,4} {team.SpecialPoints,4} ";
+                Console.WriteLine(CreateTableRow(content));
             }
 
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
@@ -225,19 +258,19 @@ public class InteractiveMenu
         }
 
         Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                      CLASSIFICA CAMPIONATO                             ║");
+        Console.WriteLine(CreateTableRow(" CLASSIFICA CAMPIONATO "));
         Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║ Pos  Squadra                G   V  P  S   GF  GS  DR  Punti           ║");
+        Console.WriteLine(CreateTableRow(" Pos  Squadra                G   V  P  S   GF  GS  DR  Punti "));
         Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
 
         int position = 1;
         foreach (var standing in championship.Standings)
         {
-            string line = $"║ {position,2}.  {standing.Team.Name,-20} " +
-                         $"{standing.Played,2}  {standing.Won,2} {standing.Drawn,2} {standing.Lost,2}  " +
-                         $"{standing.GoalsFor,3} {standing.GoalsAgainst,3} {standing.GoalDifference,4} " +
-                         $"{standing.Points,3}            ║";
-            Console.WriteLine(line);
+            string content = $" {position,2}.  {standing.Team.Name,-20} " +
+                          $"{standing.Played,2}  {standing.Won,2} {standing.Drawn,2} {standing.Lost,2}  " +
+                          $"{standing.GoalsFor,3} {standing.GoalsAgainst,3} {standing.GoalDifference,4} " +
+                          $"{standing.Points,3} ";
+            Console.WriteLine(CreateTableRow(content));
             position++;
         }
 
@@ -293,14 +326,14 @@ public class InteractiveMenu
         var topScorers = scorers.OrderByDescending(s => s.Value).Take(20).ToList();
 
         Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                      CLASSIFICA MARCATORI                              ║");
+        Console.WriteLine(CreateTableRow(" CLASSIFICA MARCATORI "));
         Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
-        Console.WriteLine("║ Pos  Giocatore           Squadra              Goal                     ║");
+        Console.WriteLine(CreateTableRow(" Pos  Giocatore           Squadra              Goal "));
         Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
 
         if (topScorers.Count == 0)
         {
-            Console.WriteLine("║ Nessun goal segnato ancora.                                            ║");
+            Console.WriteLine(CreateTableRow(" Nessun goal segnato ancora. "));
         }
         else
         {
@@ -310,8 +343,8 @@ public class InteractiveMenu
                 var team = _allTeams.FirstOrDefault(t => t.Players.Contains(scorer.Key));
                 string teamName = team?.Name ?? "N/A";
 
-                string line = $"║ {position,2}.  {scorer.Key.Name,-20} {teamName,-20} {scorer.Value,4}                   ║";
-                Console.WriteLine(line);
+                string content = $" {position,2}.  {scorer.Key.Name,-20} {teamName,-20} {scorer.Value,4} ";
+                Console.WriteLine(CreateTableRow(content));
                 position++;
             }
         }
@@ -401,12 +434,12 @@ public class InteractiveMenu
     {
         Console.Clear();
         Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                    GESTIONE PUNTI SPECIALI (PS)                        ║");
+        Console.WriteLine(CreateTableRow(" GESTIONE PUNTI SPECIALI (PS) "));
         Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
 
         if (_allTeams.Count == 0)
         {
-            Console.WriteLine("║ Nessuna squadra inserita. Usa l'opzione 1 per inserire i dati.        ║");
+            Console.WriteLine(CreateTableRow(" Nessuna squadra inserita. Usa l'opzione 1 per inserire i dati. "));
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             Console.WriteLine("\nPremi un tasto per continuare...");
             Console.ReadKey();
@@ -414,14 +447,14 @@ public class InteractiveMenu
         }
 
         // Mostra squadre con PS disponibili
-        Console.WriteLine("║ N.  Squadra                          PA  PGP   M   PS                  ║");
+        Console.WriteLine(CreateTableRow(" N.  Squadra                          PA  PGP   M   PS "));
         Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
 
         for (int i = 0; i < _allTeams.Count; i++)
         {
             var team = _allTeams[i];
-            string line = $"║ {(i + 1),2}. {team.Name,-30} {team.TrainingPoints,2}  {team.GreatPerformancePoints,3}  {team.Money,3}  {team.SpecialPoints,3}                ║";
-            Console.WriteLine(line);
+            string content = $" {(i + 1),2}. {team.Name,-30} {team.TrainingPoints,2}  {team.GreatPerformancePoints,3}  {team.Money,3}  {team.SpecialPoints,3} ";
+            Console.WriteLine(CreateTableRow(content));
         }
 
         Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
@@ -521,11 +554,7 @@ public class InteractiveMenu
     private void GenerateRandomTeams()
     {
         Console.Clear();
-        Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                    GENERA SQUADRE CASUALI                              ║");
-        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
-
-        Console.Write("\nNumero di squadre da generare (default 12): ");
+        Console.Write("Numero di squadre da generare (default 12): ");
         string? input = Console.ReadLine();
         int teamCount = string.IsNullOrWhiteSpace(input) ? 12 : int.Parse(input);
 
@@ -560,6 +589,268 @@ public class InteractiveMenu
         Console.WriteLine($"  - Eta' I: 34 punti, Eta' II/III/IV: 12 punti ciascuna");
         Console.WriteLine($"  - 3 Juniores Ab 5 Fo +2, 3 Juniores Ab 3 Fo +2, 6 Primavera Ab 2 Fo +2");
         Console.WriteLine($"  - Staff e risorse (PA, PGP, M, PS) assegnati casualmente");
+
+        Console.WriteLine("\nPremi un tasto per continuare...");
+        Console.ReadKey();
+    }
+
+    private void SaveTeamsToJson()
+    {
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════��═══════════════╗");
+        Console.WriteLine(CreateTableRow(" SALVA SQUADRE IN JSON "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        if (_allTeams.Count == 0)
+        {
+            Console.WriteLine(CreateTableRow(" Nessuna squadra da salvare. Usa l'opzione 1 o 8 per creare squadre. "));
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        Console.Write("\nNome file (default: teams.json): ");
+        string? filename = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(filename))
+        {
+            filename = "teams.json";
+        }
+
+        if (!filename.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+        {
+            filename += ".json";
+        }
+
+        try
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.Never,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
+
+            string jsonString = JsonSerializer.Serialize(_allTeams, options);
+            File.WriteAllText(filename, jsonString);
+
+            Console.WriteLine($"\n[OK] Salvataggio completato!");
+            Console.WriteLine($"     File: {Path.GetFullPath(filename)}");
+            Console.WriteLine($"     Squadre salvate: {_allTeams.Count}");
+            Console.WriteLine($"     Dimensione: {new FileInfo(filename).Length / 1024} KB");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n[ERRORE] Impossibile salvare il file: {ex.Message}");
+        }
+
+        Console.WriteLine("\nPremi un tasto per continuare...");
+        Console.ReadKey();
+    }
+
+    private void LoadTeamsFromJson()
+    {
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine(CreateTableRow(" CARICA SQUADRE DA JSON "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        Console.Write("\nNome file (default: teams.json): ");
+        string? filename = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(filename))
+        {
+            filename = "teams.json";
+        }
+
+        if (!filename.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+        {
+            filename += ".json";
+        }
+
+        if (!File.Exists(filename))
+        {
+            Console.WriteLine($"\n[ERRORE] File non trovato: {filename}");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        Console.WriteLine("\n[!] ATTENZIONE: Questa operazione sostituira' tutte le squadre esistenti.");
+        Console.Write("Continuare? (S/N, default S): ");
+        string? confirm = Console.ReadLine();
+
+        if (!string.IsNullOrWhiteSpace(confirm) && confirm.ToUpper() != "S")
+        {
+            Console.WriteLine("\nOperazione annullata.");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        try
+        {
+            string jsonString = File.ReadAllText(filename);
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
+
+            var loadedTeams = JsonSerializer.Deserialize<List<Team>>(jsonString, options);
+
+            if (loadedTeams == null || loadedTeams.Count == 0)
+            {
+                Console.WriteLine("\n[ERRORE] Il file non contiene squadre valide.");
+                Console.WriteLine("\nPremi un tasto per continuare...");
+                Console.ReadKey();
+                return;
+            }
+
+            _allTeams = loadedTeams;
+            _currentSeason = null; // Reset stagione corrente
+
+            Console.WriteLine($"\n[OK] Caricamento completato!");
+            Console.WriteLine($"     File: {Path.GetFullPath(filename)}");
+            Console.WriteLine($"     Squadre caricate: {_allTeams.Count}");
+            Console.WriteLine("\nRiepilogo squadre caricate:");
+
+            for (int i = 0; i < _allTeams.Count && i < 10; i++)
+            {
+                var team = _allTeams[i];
+                Console.WriteLine($"  {i + 1,2}. {team.Name,-25} (Manager: {team.ManagerName})");
+            }
+
+            if (_allTeams.Count > 10)
+            {
+                Console.WriteLine($"  ... e altre {_allTeams.Count - 10} squadre");
+            }
+        }
+        catch (JsonException ex)
+        {
+            Console.WriteLine($"\n[ERRORE] File JSON non valido: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n[ERRORE] Impossibile caricare il file: {ex.Message}");
+        }
+
+        Console.WriteLine("\nPremi un tasto per continuare...");
+        Console.ReadKey();
+    }
+
+    private void DisplayTeamDetails()
+    {
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine(CreateTableRow(" DETTAGLI SQUADRA "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        if (_allTeams.Count == 0)
+        {
+            Console.WriteLine(CreateTableRow(" Nessuna squadra disponibile. Usa l'opzione 1 o 8 per creare squadre. "));
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        // Mostra lista squadre
+        Console.WriteLine(CreateTableRow(" N.  Squadra              Manager "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        for (int i = 0; i < _allTeams.Count; i++)
+        {
+            var team = _allTeams[i];
+            string content = $" {(i + 1),2}. {team.Name,-20} {team.ManagerName,-35} ";
+            Console.WriteLine(CreateTableRow(content));
+        }
+
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+        Console.Write("\nSeleziona squadra (numero, 0 per annullare): ");
+        string? input = Console.ReadLine();
+        if (!int.TryParse(input, out int teamIndex) || teamIndex == 0 || teamIndex > _allTeams.Count)
+        {
+            return;
+        }
+
+        var selectedTeam = _allTeams[teamIndex - 1];
+
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine(CreateTableRow($" {selectedTeam.Name} "));
+        Console.WriteLine(CreateTableRow($" Manager: {selectedTeam.ManagerName} "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine(CreateTableRow($" Risorse: PA={selectedTeam.TrainingPoints,3}  PGP={selectedTeam.GreatPerformancePoints,3}  M={selectedTeam.Money,4}  PS={selectedTeam.SpecialPoints,3} "));
+        Console.WriteLine(CreateTableRow(" GIOCATORI "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine(CreateTableRow(" Nome                 Ruolo Eta'    Ab Lato Fo  PD  Status "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        // Ordina per ruolo e poi per abilità
+        var sortedPlayers = selectedTeam.Players
+            .OrderBy(p => p.Position)
+            .ThenByDescending(p => p.Ability)
+            .ToList();
+
+        foreach (var player in sortedPlayers)
+        {
+            string pos = player.Position.ToString();
+            string age = player.Age.ToString();
+            string side = player.Side.ToString();
+            string form = player.Form >= 0 ? $"+{player.Form}" : player.Form.ToString();
+            string disciplinePoints = player.DisciplinePoints.ToString();
+
+            string status = "";
+            if (player.Form <= -3)
+                status = "[INF]";
+            else if (player.DisciplinePoints >= 8)
+                status = "[!PD]";
+
+            string content = $" {player.Name,-20} {pos,-5} {age,-9} {player.Ability,2} {side,-4} {form,3} {disciplinePoints,3}  {status,-18} ";
+            Console.WriteLine(CreateTableRow(content));
+        }
+
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine(CreateTableRow(" STAFF "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine(CreateTableRow(" Ruolo                Nome "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        if (selectedTeam.Staff.Count == 0)
+        {
+            Console.WriteLine(CreateTableRow(" Nessuno staff presente "));
+        }
+        else
+        {
+            // Ordina per tipo di staff
+            var sortedStaff = selectedTeam.Staff.OrderBy(s => s.Type).ToList();
+
+            foreach (var staff in sortedStaff)
+            {
+                string role = staff.Type switch
+                {
+                    BenchStaffType.Coach => "Allenatore",
+                    BenchStaffType.Masseur => "Massaggiatore",
+                    BenchStaffType.Scout => "Scout",
+                    BenchStaffType.Tactician => "Tattico",
+                    _ => "Sconosciuto"
+                };
+
+                string content = $" {role,-20} {staff.Name,-49} ";
+                Console.WriteLine(CreateTableRow(content));
+            }
+        }
+
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+        Console.WriteLine("\nLegenda:");
+        Console.WriteLine("  Ruolo: Po=Portiere, Di=Difensore, Ce=Centrocampista, At=Attaccante");
+        Console.WriteLine("  Eta': I-IV=Adulti, Juniores, Primavera");
+        Console.WriteLine("  Ab=Abilita', Lato: D=Destro, S=Sinistro, SD=Ambidestro");
+        Console.WriteLine("  Fo=Forma, PD=Punti Disciplina");
+        Console.WriteLine("  Status: [INF]=Infortunato (Fo <= -3), [!PD]=Rischio ammonizione (PD >= 8)");
+        Console.WriteLine($"\nTotale giocatori: {selectedTeam.Players.Count}");
+        Console.WriteLine($"Totale staff: {selectedTeam.Staff.Count}");
 
         Console.WriteLine("\nPremi un tasto per continuare...");
         Console.ReadKey();

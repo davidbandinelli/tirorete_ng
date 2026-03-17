@@ -54,4 +54,37 @@ public class Team
         Money += amount * 20;
         return true;
     }
+
+    /// <summary>
+    /// Verifica se è possibile aggiungere un membro dello staff secondo le regole.
+    /// Regola: max 1 Allenatore, 1 Massaggiatore, 1 Tattico. Più Scout permessi.
+    /// </summary>
+    public bool CanAddStaff(BenchStaffType staffType)
+    {
+        if (staffType == BenchStaffType.Scout)
+            return true; // Scout multipli permessi
+
+        // Coach, Masseur, Tactician: solo 1 per tipo
+        return !Staff.Any(s => s.Type == staffType);
+    }
+
+    /// <summary>
+    /// Aggiunge uno staff member se le regole lo permettono
+    /// </summary>
+    public bool TryAddStaff(BenchStaff staffMember)
+    {
+        if (!CanAddStaff(staffMember.Type))
+            return false;
+
+        Staff.Add(staffMember);
+        return true;
+    }
+
+    /// <summary>
+    /// Conta il numero di staff per tipo
+    /// </summary>
+    public int GetStaffCount(BenchStaffType staffType)
+    {
+        return Staff.Count(s => s.Type == staffType);
+    }
 }

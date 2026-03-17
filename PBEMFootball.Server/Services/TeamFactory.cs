@@ -60,7 +60,7 @@ public class TeamFactory
             });
         }
 
-        // 1 panchinaro (allenatore o massaggiatore)
+        // Staff: 1 allenatore (regolamento: max 1 per Coach/Masseur/Tactician)
         team.Staff.Add(new BenchStaff("Allenatore", BenchStaffType.Coach));
         team.Money = 0;
         team.TrainingPoints = 5;
@@ -180,21 +180,19 @@ public class TeamFactory
             });
         }
 
-        // Staff casuale
-        int coachCount = random.Next(1, 3); // 1-2 allenatori
-        for (int i = 0; i < coachCount; i++)
-        {
-            team.Staff.Add(new BenchStaff($"Allenatore {i + 1}", BenchStaffType.Coach));
-        }
+        // Staff casuale - Regole: max 1 Coach/Masseur/Tactician, più Scout possibili
+        team.Staff.Add(new BenchStaff("Allenatore", BenchStaffType.Coach)); // Sempre 1 allenatore
 
         if (random.Next(100) < 50) // 50% possibilità di avere un massaggiatore
         {
             team.Staff.Add(new BenchStaff("Massaggiatore", BenchStaffType.Masseur));
         }
 
-        if (random.Next(100) < 30) // 30% possibilità di avere uno scout
+        // Scout: possibilità di averne 0-3
+        int scoutCount = random.Next(0, 4); // 0, 1, 2, o 3 scout
+        for (int i = 0; i < scoutCount; i++)
         {
-            team.Staff.Add(new BenchStaff("Scout", BenchStaffType.Scout));
+            team.Staff.Add(new BenchStaff($"Scout {i + 1}", BenchStaffType.Scout));
         }
 
         if (random.Next(100) < 40) // 40% possibilità di avere un tattico
@@ -206,7 +204,7 @@ public class TeamFactory
         team.Money = random.Next(0, 100);
         team.TrainingPoints = random.Next(0, 20);
         team.GreatPerformancePoints = 30; // Fisso per regolamento: 30 PGP per stagione (non trasferibili)
-        team.SpecialPoints = random.Next(0, 10);
+        team.SpecialPoints = 0; // I PS partono sempre da 0, assegnati manualmente dal server
 
         return team;
     }
