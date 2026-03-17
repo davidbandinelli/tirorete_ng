@@ -7,6 +7,21 @@ Console.WriteLine("=== PBEM Football Server ===");
 Console.WriteLine("Server avviato.");
 Console.WriteLine();
 
+// Menu interattivo principale
+Console.Write("Avviare il menu interattivo? (s/n, default s): ");
+string? choice = Console.ReadLine();
+
+if (string.IsNullOrWhiteSpace(choice) || choice.ToLower() == "s")
+{
+    var menu = new InteractiveMenu();
+    menu.Run();
+    return;
+}
+
+// ============================================================================
+// DEMO E TEST (eseguiti solo se si risponde 'n' al menu interattivo)
+// ============================================================================
+
 var teamFactory = new TeamFactory();
 var matchEngine = new MatchEngine();
 var tacticsValidator = new TacticsValidator();
@@ -876,5 +891,107 @@ static void PrintLineup(string teamName, Formation formation, string tactic)
     Console.WriteLine($"└────────────────────────────────────────────────────────────────────┘");
     Console.WriteLine();
 }
+
+// ============================================================================
+// DEMO: Sistema di gestione stagionale
+// ============================================================================
+Console.WriteLine("\n\n=== DEMO: SISTEMA DI GESTIONE STAGIONALE ===\n");
+
+// Crea il manager della stagione
+var seasonManager = new SeasonManager();
+
+// Crea squadre per le diverse divisioni (esempio semplificato)
+var serieATeams = new List<Team>();
+var serieBTeams = new List<Team>();
+var serieCTeams = new List<Team>();
+
+// Crea 12 squadre per Serie A
+for (int i = 1; i <= 12; i++)
+{
+    serieATeams.Add(teamFactory.CreateInitialTeam($"Serie A Team {i}", $"Manager {i}"));
+}
+
+// Crea 12 squadre per Serie B (esempio ridotto a 4 per brevità)
+for (int i = 1; i <= 4; i++)
+{
+    serieBTeams.Add(teamFactory.CreateInitialTeam($"Serie B Team {i}", $"Manager B{i}"));
+}
+
+// Crea 4 squadre per Serie C
+for (int i = 1; i <= 4; i++)
+{
+    serieCTeams.Add(teamFactory.CreateInitialTeam($"Serie C Team {i}", $"Manager C{i}"));
+}
+
+// Crea la stagione 2024
+Console.WriteLine("Creazione stagione 2024...");
+var season = seasonManager.CreateSeason(2024, serieATeams, serieBTeams, serieCTeams);
+Console.WriteLine($"Stagione {season.Year} creata con successo!");
+Console.WriteLine($"- Competizioni: {season.Competitions.Count}");
+Console.WriteLine($"- Sessioni di gioco: {season.Sessions.Count}");
+Console.WriteLine($"- Partite totali: {season.Sessions.Sum(s => s.Matches.Count)}");
+Console.WriteLine();
+
+// Mostra le competizioni create
+foreach (var competition in season.Competitions)
+{
+    Console.WriteLine($"[{competition.Type}] {competition.Name}");
+    Console.WriteLine($"  - Squadre: {competition.Teams.Count}");
+    Console.WriteLine($"  - Partite: {competition.Matches.Count}");
+    if (competition.Standings.Count > 0)
+    {
+        Console.WriteLine($"  - Classifica inizializzata: {competition.Standings.Count} squadre");
+    }
+    Console.WriteLine();
+}
+
+// Mostra un esempio di calendario per Serie A
+var serieACompetition = season.GetChampionship(Division.SerieA);
+if (serieACompetition != null)
+{
+    Console.WriteLine($"\n=== CALENDARIO SERIE A (prime 5 giornate) ===");
+    var firstRounds = serieACompetition.Matches
+        .Where(m => m.Round <= 5)
+        .GroupBy(m => m.Round)
+        .OrderBy(g => g.Key);
+
+    foreach (var round in firstRounds)
+    {
+        Console.WriteLine($"\nGiornata {round.Key}:");
+        foreach (var match in round)
+        {
+            Console.WriteLine($"  {match.HomeTeam.Name,-20} vs {match.AwayTeam.Name,-20}");
+        }
+    }
+}
+
+// Mostra la distribuzione delle partite nelle sessioni
+Console.WriteLine($"\n\n=== DISTRIBUZIONE PARTITE IN {season.Sessions.Count} SESSIONI ===");
+foreach (var session in season.Sessions.Take(3)) // Mostra solo le prime 3
+{
+    Console.WriteLine($"\nSessione {session.SessionNumber}: {session.Matches.Count} partite");
+    var competitions = session.Matches
+        .Where(m => m.CompetitionType.HasValue)
+        .GroupBy(m => m.CompetitionType.Value)
+        .Select(g => $"{g.Key} ({g.Count()})");
+    Console.WriteLine($"  Competizioni: {string.Join(", ", competitions)}");
+}
+Console.WriteLine("  ...");
+Console.WriteLine();
+
+Console.WriteLine("=== SISTEMA STAGIONALE IMPLEMENTATO ===");
+Console.WriteLine("✅ Creazione automatica di 3 divisioni (Serie A, B, C)");
+Console.WriteLine("✅ Calendario all'italiana (andata e ritorno) per ogni divisione");
+Console.WriteLine("✅ Coppa Beppiland (eliminazione diretta) per tutte le squadre");
+Console.WriteLine("✅ Distribuzione automatica delle partite in 11 sessioni");
+Console.WriteLine("✅ Sistema di classifica con aggiornamento automatico");
+Console.WriteLine("✅ Gestione promozioni e retrocessioni");
+Console.WriteLine();
+Console.WriteLine("TODO per completare:");
+Console.WriteLine("- Coppa di Lega (gironi + eliminazione)");
+Console.WriteLine("- Coppa Juniores (solo formazioni giovani)");
+Console.WriteLine("- Calendario intelligente delle coppe durante la stagione");
+Console.WriteLine("- Sistema di persistenza divisioni tra stagioni");
+Console.WriteLine();
 
 

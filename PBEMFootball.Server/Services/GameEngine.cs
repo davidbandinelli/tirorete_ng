@@ -12,6 +12,6 @@ public class GameEngine
 
     public void CreateNewSeason(int year)
     {
-        CurrentSeason = new Season { Year = year };
+        CurrentSeason = new Season(year);
     }
 }

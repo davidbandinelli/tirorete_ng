@@ -9,6 +9,7 @@ public class Team
     public int Money { get; set; }
     public int TrainingPoints { get; set; }
     public int GreatPerformancePoints { get; set; }
+    public int SpecialPoints { get; set; }
     public Stadium Stadium { get; set; } = new();
 
     public Team(string name, string managerName)
@@ -18,5 +19,39 @@ public class Team
         Money = 0;
         TrainingPoints = 0;
         GreatPerformancePoints = 30;
+        SpecialPoints = 0;
+    }
+
+    /// <summary>
+    /// Converte 1 PS in 1 PA (Punto Allenamento)
+    /// </summary>
+    public bool ConvertSpecialPointsToTraining(int amount)
+    {
+        if (SpecialPoints < amount) return false;
+        SpecialPoints -= amount;
+        TrainingPoints += amount;
+        return true;
+    }
+
+    /// <summary>
+    /// Converte 1 PS in 1 PGP (Punto Grande Prestazione)
+    /// </summary>
+    public bool ConvertSpecialPointsToGreatPerformance(int amount)
+    {
+        if (SpecialPoints < amount) return false;
+        SpecialPoints -= amount;
+        GreatPerformancePoints += amount;
+        return true;
+    }
+
+    /// <summary>
+    /// Converte 1 PS in 20 M (Milioni)
+    /// </summary>
+    public bool ConvertSpecialPointsToMoney(int amount)
+    {
+        if (SpecialPoints < amount) return false;
+        SpecialPoints -= amount;
+        Money += amount * 20;
+        return true;
     }
 }

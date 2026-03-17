@@ -26,6 +26,10 @@ public class Match
     public List<MatchEvent> Events { get; set; } = new();
     public bool IsHomeMatch => true;
 
+    public CompetitionType? CompetitionType { get; set; }
+    public int Round { get; set; }
+    public string? Description { get; set; }
+
     public Match(Team home, Team away)
     {
         HomeTeam = home;
