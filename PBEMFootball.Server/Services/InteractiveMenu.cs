@@ -427,7 +427,11 @@ public class InteractiveMenu
 
             matchEngine.SimulateMatch(match);
 
+            SynchronizeTeamPlayerSeasonStats(match.HomeTeam, match.HomeFormation);
+            SynchronizeTeamPlayerSeasonStats(match.AwayTeam, match.AwayFormation);
+
             Console.WriteLine($"{match.HomeTeam.Name,-20} {match.HomeGoals}-{match.AwayGoals} {match.AwayTeam.Name,-20}");
+            DisplayMatchEvents(match);
 
             // Aggiorna classifica
             _seasonManager.UpdateStandings(championship, match);
@@ -438,6 +442,95 @@ public class InteractiveMenu
         Console.WriteLine($"\n✓ Giornata {nextRound} completata!");
         Console.WriteLine("\nPremi un tasto per continuare...");
         Console.ReadKey();
+    }
+
+    private void DisplayMatchEvents(Match match)
+    {
+        Console.WriteLine($"  Tiri: {match.HomeTeam.Name} {match.HomeShots} - {match.AwayShots} {match.AwayTeam.Name}");
+
+        var orderedEvents = match.Events
+            .OrderBy(e => e.Minute)
+            .ToList();
+
+        if (orderedEvents.Count == 0)
+        {
+            Console.WriteLine("  Nessun evento registrato.");
+            Console.WriteLine();
+            return;
+        }
+
+        var disciplinaryEvents = orderedEvents
+            .Where(e => e.Type == MatchEventType.YellowCard || e.Type == MatchEventType.RedCard)
+            .ToList();
+
+        var injuryEvents = orderedEvents
+            .Where(e => e.Type == MatchEventType.Injury)
+            .ToList();
+
+        var matchEvents = orderedEvents
+            .Where(e => e.Type != MatchEventType.YellowCard &&
+                        e.Type != MatchEventType.RedCard &&
+                        e.Type != MatchEventType.Injury)
+            .ToList();
+
+        Console.WriteLine("  Eventi partita:");
+        PrintEventList(matchEvents);
+
+        Console.WriteLine("  Eventi disciplinari:");
+        PrintEventList(disciplinaryEvents);
+
+        Console.WriteLine("  Infortuni:");
+        PrintEventList(injuryEvents);
+        Console.WriteLine();
+    }
+
+    private void PrintEventList(List<MatchEvent> events)
+    {
+        if (events.Count == 0)
+        {
+            Console.WriteLine("    - Nessuno");
+            return;
+        }
+
+        foreach (var matchEvent in events)
+        {
+            string team = matchEvent.IsHomeTeam ? "Casa" : "Trasferta";
+            string playerName = matchEvent.Player?.Name ?? "N/A";
+            Console.WriteLine($"    - {matchEvent.Minute,2}' [{team}] {matchEvent.Type} - {playerName}: {matchEvent.Description}");
+        }
+    }
+
+    private void SynchronizeTeamPlayerSeasonStats(Team team, Formation? formation)
+    {
+        if (formation == null)
+            return;
+
+        var targetTeam = _allTeams.FirstOrDefault(t => ReferenceEquals(t, team))
+            ?? _allTeams.FirstOrDefault(t => t.Name == team.Name && t.ManagerName == team.ManagerName)
+            ?? team;
+
+        var playersInMatch = new List<Player>();
+        if (formation.Goalkeeper != null)
+            playersInMatch.Add(formation.Goalkeeper);
+        if (formation.Libero != null)
+            playersInMatch.Add(formation.Libero);
+        playersInMatch.AddRange(formation.Defenders);
+        playersInMatch.AddRange(formation.Midfielders);
+        playersInMatch.AddRange(formation.Attackers);
+
+        foreach (var matchPlayer in playersInMatch)
+        {
+            var teamPlayer = targetTeam.Players.FirstOrDefault(p => ReferenceEquals(p, matchPlayer))
+                ?? targetTeam.Players.FirstOrDefault(p => p.Name == matchPlayer.Name && p.Position == matchPlayer.Position);
+
+            if (teamPlayer == null)
+                continue;
+
+            teamPlayer.Ability = matchPlayer.Ability;
+            teamPlayer.Form = matchPlayer.Form;
+            teamPlayer.DisciplinePoints = matchPlayer.DisciplinePoints;
+            teamPlayer.MatchesPlayedThisSession++;
+        }
     }
 
     private Formation CreateDefaultFormation(Team team)
