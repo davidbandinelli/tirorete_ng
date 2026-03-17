@@ -6,6 +6,12 @@ public class MatchEngine
 {
     private readonly Random _random = new();
 
+    private enum ShotOriginArea
+    {
+        At,
+        Ce
+    }
+
     public void SimulateMatch(Match match)
     {
         if (match.HomeFormation == null || match.AwayFormation == null)
@@ -42,18 +48,23 @@ public class MatchEngine
 
         ApplyWeatherEffects(match.Weather, ref homeDi, ref homeCe, ref homeAt, ref awayDi, ref awayCe, ref awayAt);
 
-        var homeShots = CalculateShots(homeAt, homeCe, homeDi, awayDi, awayCe, awayAt, 
+        var homeShotData = CalculateShots(homeAt, homeCe, homeDi, awayDi, awayCe, awayAt,
             match.HomeFormation.Libero != null, homeTactics.UseCatenaccio, awayTactics.UseOffsideTrap,
             match.AwayFormation.Libero == null);
-        var awayShots = CalculateShots(awayAt, awayCe, awayDi, homeDi, homeCe, homeAt, 
+        var awayShotData = CalculateShots(awayAt, awayCe, awayDi, homeDi, homeCe, homeAt,
             match.AwayFormation.Libero != null, awayTactics.UseCatenaccio, homeTactics.UseOffsideTrap,
             match.HomeFormation.Libero == null);
+
+        var homeShots = homeShotData.total;
+        var awayShots = awayShotData.total;
 
         match.HomeShots = homeShots;
         match.AwayShots = awayShots;
 
-        match.HomeGoals += CalculateGoals(match, homeShots, awayPo, awayLi, match.HomeFormation, match.AwayFormation, true);
-        match.AwayGoals += CalculateGoals(match, awayShots, homePo, homeLi, match.AwayFormation, match.HomeFormation, false);
+        match.HomeGoals += CalculateGoals(match, homeShots, homeShotData.fromAt, homeShotData.fromCe,
+            awayPo, awayLi, match.HomeFormation, match.AwayFormation, true);
+        match.AwayGoals += CalculateGoals(match, awayShots, awayShotData.fromAt, awayShotData.fromCe,
+            homePo, homeLi, match.AwayFormation, match.HomeFormation, false);
 
         CalculateOwnGoals(match, match.HomeFormation, match.AwayFormation, awayShots, true);
         CalculateOwnGoals(match, match.AwayFormation, match.HomeFormation, homeShots, false);
@@ -198,7 +209,7 @@ public class MatchEngine
             at = maxAllowed;
     }
 
-    private int CalculateShots(int at, int ce, int di, int defDi, int defCe, int defAt,
+    private (int total, int fromAt, int fromCe) CalculateShots(int at, int ce, int di, int defDi, int defCe, int defAt,
         bool hasLibero, bool useCatenaccio, bool opponentUsesOffsideTrap, bool opponentHasNoLibero)
     {
         int shotsFromAt = Math.Max(0, at - defDi);
@@ -218,23 +229,34 @@ public class MatchEngine
             shotsFromCe = shotsFromCe * 2;
         }
 
-        int shots = shotsFromAt + shotsFromCe;
+        int sourceTotal = shotsFromAt + shotsFromCe;
+        int shots = sourceTotal;
 
         if (useCatenaccio)
             shots = shots / 2;
 
-        return (int)Math.Ceiling((double)shots);
+        if (shots <= 0 || sourceTotal <= 0)
+            return (0, 0, 0);
+
+        int fromAt = (shots * shotsFromAt) / sourceTotal;
+        int fromCe = shots - fromAt;
+
+        return (shots, fromAt, fromCe);
     }
 
-    private int CalculateGoals(Match match, int shots, int po, int li, Formation attackingFormation, 
+    private int CalculateGoals(Match match, int shots, int shotsFromAt, int shotsFromCe,
+        int po, int li, Formation attackingFormation,
         Formation defendingFormation, bool isHomeAttacking)
     {
         int goals = 0;
         int shotNumber = 0;
+        int remainingFromAt = shotsFromAt;
+        int remainingFromCe = shotsFromCe;
 
         for (int i = 0; i < shots; i++)
         {
             shotNumber++;
+            var shotOrigin = GetShotOrigin(ref remainingFromAt, ref remainingFromCe);
             int missChance = 30;
             if (goals >= 5)
                 missChance = 70;
@@ -289,17 +311,96 @@ public class MatchEngine
             }
 
             goals++;
+            var scorer = SelectGoalScorer(attackingFormation, shotOrigin);
             match.Events.Add(new MatchEvent
             {
                 Type = MatchEventType.Goal,
-                Player = null,
+                Player = scorer,
                 IsHomeTeam = isHomeAttacking,
                 Minute = _random.Next(1, 91),
-                Description = $"Tiro #{shotNumber}: GOL! ⚽"
+                Description = scorer != null
+                    ? $"Tiro #{shotNumber}: GOL di {scorer.Name}!"
+                    : $"Tiro #{shotNumber}: GOL!"
             });
         }
 
         return goals;
+    }
+
+    private ShotOriginArea GetShotOrigin(ref int remainingFromAt, ref int remainingFromCe)
+    {
+        if (remainingFromAt <= 0 && remainingFromCe <= 0)
+            return ShotOriginArea.At;
+
+        if (remainingFromAt <= 0)
+        {
+            remainingFromCe--;
+            return ShotOriginArea.Ce;
+        }
+
+        if (remainingFromCe <= 0)
+        {
+            remainingFromAt--;
+            return ShotOriginArea.At;
+        }
+
+        int total = remainingFromAt + remainingFromCe;
+        if (_random.Next(total) < remainingFromAt)
+        {
+            remainingFromAt--;
+            return ShotOriginArea.At;
+        }
+
+        remainingFromCe--;
+        return ShotOriginArea.Ce;
+    }
+
+    private Player? SelectGoalScorer(Formation attackingFormation, ShotOriginArea shotOrigin)
+    {
+        var allPlayers = new List<Player>();
+        if (attackingFormation.Goalkeeper != null)
+            allPlayers.Add(attackingFormation.Goalkeeper);
+        if (attackingFormation.Libero != null)
+            allPlayers.Add(attackingFormation.Libero);
+        allPlayers.AddRange(attackingFormation.Defenders);
+        allPlayers.AddRange(attackingFormation.Midfielders);
+        allPlayers.AddRange(attackingFormation.Attackers);
+
+        if (allPlayers.Count == 0)
+            return null;
+
+        Player? bestPlayer = null;
+        double bestRoll = double.MinValue;
+
+        foreach (var player in allPlayers)
+        {
+            double maxRoll;
+            if (player.Position == PlayerPosition.Po)
+            {
+                maxRoll = 3;
+            }
+            else
+            {
+                double baseMax = Math.Max(0, player.Ability + (3 * player.Form));
+                bool isInShotArea = shotOrigin switch
+                {
+                    ShotOriginArea.At => attackingFormation.Attackers.Contains(player),
+                    ShotOriginArea.Ce => attackingFormation.Midfielders.Contains(player),
+                    _ => false
+                };
+
+                maxRoll = isInShotArea ? baseMax : baseMax / 1.75;
+            }
+
+            double roll = maxRoll > 0 ? _random.NextDouble() * maxRoll : 0;
+            if (roll > bestRoll)
+            {
+                bestRoll = roll;
+                bestPlayer = player;
+            }
+        }
+
+        return bestPlayer;
     }
 
     private void CalculateOwnGoals(Match match, Formation defending, Formation attacking,
