@@ -16,14 +16,19 @@ public class SeasonManager
     {
         var season = new Season(year);
 
+        // Reset PGP a 30 per tutte le squadre (non trasferibili tra stagioni)
+        var allTeams = serieATeams.Concat(serieBTeams).Concat(serieCTeams).ToList();
+        foreach (var team in allTeams)
+        {
+            team.GreatPerformancePoints = 30;
+        }
+
         // Crea i campionati
         season.Competitions.Add(CreateChampionship("Serie A", Division.SerieA, serieATeams));
         season.Competitions.Add(CreateChampionship("Serie B", Division.SerieB, serieBTeams));
         season.Competitions.Add(CreateChampionship("Serie C", Division.SerieC, serieCTeams));
 
-        // Crea le coppe (tutte le squadre)
-        var allTeams = serieATeams.Concat(serieBTeams).Concat(serieCTeams).ToList();
-
+        // Crea le coppe (tutte le squadre già in allTeams)
         // Coppa Beppiland - eliminazione diretta
         season.Competitions.Add(CreateBeppilandCup(allTeams));
 

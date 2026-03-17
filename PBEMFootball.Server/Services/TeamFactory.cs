@@ -205,7 +205,7 @@ public class TeamFactory
         // Risorse casuali
         team.Money = random.Next(0, 100);
         team.TrainingPoints = random.Next(0, 20);
-        team.GreatPerformancePoints = random.Next(20, 50);
+        team.GreatPerformancePoints = 30; // Fisso per regolamento: 30 PGP per stagione (non trasferibili)
         team.SpecialPoints = random.Next(0, 10);
 
         return team;
