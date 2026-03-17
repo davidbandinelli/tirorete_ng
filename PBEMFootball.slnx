@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PBEMFootball.Client/PBEMFootball.Client.csproj" />
+  <Project Path="PBEMFootball.Common/PBEMFootball.Common.csproj" />
+  <Project Path="PBEMFootball.Server/PBEMFootball.Server.csproj" />
+</Solution>

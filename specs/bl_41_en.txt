@@ -1,0 +1,706 @@
+
+Beppiland's rules 4.1 (for season 5)
+(it replaces the precedent rules)
+
+MODIFY FROM LAST VERSION IN CAPITAL LETTERS
+
+
+First of all sorry for my bad English, I did the best I could!
+
+- Beppiland:
+Beppiland is a small country somewhere in Europe. I don't know exactly where it 
+is, I don't know what kind of republic or monarchy it has, I don't know how many 
+people live there, what language, what kind of economy, what kind of culture do 
+they have, in other words, I don't know absolutely nothing. Just one thing: in 
+Beppiland is played a very interesting football tournament.
+
+- About the rules:
+This Play-By-Mail football simulation is based on a variation of the rules imported 
+for the first time in Italy by Massimo Monciardini. These rules have been changed 
+and made better (I hope) by the work of Massimo and many other electronic-mail 
+users (among them Mario Pacchiarotti, Mauro Puleo, Marco Fachini, Marco Croci, 
+Andrea Tagliavento, Fabio Bigaglia, just to say some of them) during almost 2 
+years. This is a further variation of those rules.
+The rules Massimo brought were similar to those written by Martin Burroughs, a 
+real good work, far from, but still based on the initial United rules, written by Alan 
+Parr. In Italy this is the third tournament ever, and the first that uses also 
+traditional mail.
+
+-  Overview:
+This is a Play-By-Mail (PBM) football game. Each player takes the role of a 
+football team manager, and has total control over coaching, team selection, 
+buying/selling players and finances.
+>From here on, the term president will refer to you, the reader, and the term player 
+will refer to a member of your team.
+The season is divided in 11 sessions, each of them a group of (generally) 2, 3 or 4 
+matches; rarely 5. When a match is played, each of the two teams generate a 
+number of shots depending on the disposition and the strength of the players. 
+Some of the shots can become goals.
+
+The rules will be divided in two parts: in the first the rules are written in a very bare 
+style, enough to play. In the second rules all the details are explained.
+
+This part of the rules is now common to the short and the complete rules:
+
+- Rules:
+
+	  The league:
+The Beppiland league is divided in 4 different competitions:
+ - The CHAMPIONSHIP is an all-against-all (italian) tournament. It is divided in 3 
+divisions:A division (the best), B division e C division. At the end of the season the 
+A div. winner will be the Beppiland champion and the last 3 teams will move 
+backwards in B; first 3 teams of B div. will be promoted in A, while last 3 teams will 
+move backwards in C; first 3 teams of C div. will be promoted in B..
+- The BEPPILAND CUP is a tournament played by elimination among all the 
+teams.
+- The LEAGUE CUP is a division/knock-out tournament played by all the teams.
+- The JUNIORES CUP is a division/knock-out tournament played by only young 
+players.
+For more details look in the "structure of the league" paragraph.
+
+The game is divided in sessions, each of them representing about a month of life, 
+and including generally 2, 3 or 4 matches, 5 rarely.
+In each session each president must do these things:
+-  Train on skill and/or fitness his players.
+-  Make the team selections for the next matches.
+-  If necessary sell or buy players at the auction.
+-  If necessary work at club's economy, bet, and do all other small things.
+
+-  Players:
+A player is composed by:
+- A name.
+- A specialist position (or simply position). The position may be Po (goalkeeper), Li 
+(sweeper, always separated by defence), Di (defender), Ce (middlefield) or At 
+(Forward). A player may also play out of position, or have more than one position 
+in which he's able to play well.
+- A skill (Ab), represented by a number, not less than 2 (generally a good player 
+stands between 8 and 14). Players with a skill of less than 2 must retire instantly, 
+leaving the league never to return. Players may be trained to become more skilful, 
+but lose skill on ageing.
+- A fitness modifier (Fo), represented by another number to be added to Ab. It has 
+a maximum of +2 and when a player has Fo less or equal to -3 is considered 
+injured and cannot play. Fitness is affected by fatigue, by resting, by coaching and 
+by injuries.
+- An age (Et`). Adult players have an age rapresented by a roman number, starting 
+from "I" on, generally never more than "VI". Young players are aged: Apprentice 
+(Juniores), age "J", and School boys (Primavera), age "P". "J"s are one year 
+younger than "I"s, and "P"s are one year younger than "J"s. (So it is:  P, J, I, II, III, 
+IV, V...)
+- A preferred side (Lato) where to play. Players marked "S" play better on the left, 
+players marked "D" play better on the right. Some players may be marked "S+D".
+
+Here's an example of some possible players:
+Name             Age  Ab+Fo  Position.Side
+Brontolo           IV     11+1    Li/At.S
+Nonnapapera    II       6-2     Ce.S+D
+Filippo              J       5+2     At.D
+
+3  Clubs (societies):
+A club has:
+-  A number of players (some are soccer players and some are backroom boys).
+-  Money, expressed in theorical "M". The maximum debt is -1000 M.
+-  PA (Training Points) given by the master.
+-  PGP (Great Performance Points).
+-  A STADIUM dimension.
+
+3  Starting teams:
+If a team has to be created (i.e. if the game needs more clubs at the beginning of 
+a season, otherwise new presidents will take place and teams of tired presidents) it 
+has to be done with these rules:
+70 total skill (Ab) levels for 9 or more adult players divided in this way:
+34 for players aged I, 12 for players aged II, 12 for players aged III, 12 for players 
+aged IV.
+Each player with a maximum of 12 and a minimum of 2 skill levels.
+3 "J"uniores with skill 5 and fitness +2.
+3 "J"uniores with skill 3 and fitness +2.
+6 "P"rimavera with skill 2 and fitness +2.
+1 backroom boy (physio or coach).
+Players may be "S" or "D", and two of them (even Primavera players) may be 
+"S+D". Goalkeepers don't need "S"or "D" and sweepers use "S" or "D" only when 
+playing Out Of Position.
+
+3  Coaching:
+Players can be trained on skill and on fitness.
+-  Coaching on fitness isn't very worthy. The more  the player is old, the more it 
+costs. Precisely, training one young player costs 1 PA, while one adult player costs 
+his age (for example a player aged III can be trained on fitness paying 3 PAs). A 
+player cannot reach more than +2 of fitness.
+-  Only adult players can be trained on skill (youngs grow with experience). The 
+cost is equal to the skill you want to reach (for example 10 to train a player with 
+skill 9 to reach 10). A player aged I can be trained on skill 5 times in the season, 
+while other adult players can be trained only 3 times.
+It's possible to train one player one single time each session, but it's possible to 
+train him both on skill, both on fitness. Every training makes skill or fitness grow 
+one point. Training and resting points on fitness may be added.
+
+3  Team's extra points and tactics:
+When you have put the players in the right line-ups, you must (or may) add some 
+more points to your team, and decide the tactics (watch later on for the tactitian).
+-  FC (Fattore Campo = Home Advantage) lets the manager add a total of 7 more 
+points to the three areas (Di, Ce, At) of the team if the teams plays at home.
+-  D (Durezza = Hardness) gives you from 0 to 10 points to be added on the five 
+areas (Po, Li, Di, Ce, At). The more the team plays hard, the higher is the risk to 
+have booked or sent off players or for the opposing team to get a penalty.
+-  PGP (Punti Grande Prestazione = Great Performance Points): PGPs represent 
+the extra energy that the team may have in some important matches. A club has 
+30 PGP each season (they are not transferred from one season to the other). A 
+president may add a total of 0 to 10 points distributed to any of the five areas (Po, 
+Li, Di, Ce, At) for each match.
+-  CAT (Catenaccio = Play for a deuce): One of the tactic expedients that may be 
+played is Catenaccio. If a team plays it, it has 7 points that may be put on Li, Di 
+and Ce; playing CAT halves the global number of shots of the team that plays it.
+-  TFG (Trappola del Fuori Gioco = Off Side Trap): This very important tactic 
+expedient doesn't add any point to the team, it just halves the number of shots 
+made by the opposing At, and doubles the number of shots made by the opposing 
+Ce. It can be played only if a sweeper (Li) is not playing.
+
+On the Po and the Li may be used not more than 5 total extra points.
+
+NB: All the above affect AREA TOTALS, not indivdual player levels.
+NB: The Li is always considered separated by the Di!
+
+-  Short rules:
+
+-  How a match is played:
+When two teams meet in a match, each one gets a number of shots, that may 
+score or not, depending on randomness and skill of the opposing Li and Po.
+
+-  Youngs' growth by experience:
+Primavera and Juniores players may only play respectively 1 and 2 matches each 
+session, but they accumulate experience points and have their skill grow.
+
+-  Tired players, rest and F injured players:
+Adult players get tired after 3 matches and lose one fitness point. They can gain 
+one fitness point by resting one session and lose some fitness points unfortunately 
+getting injured during the matches.
+
+-  Team selection:
+A line-up is a set of 11 players. One Po must be always present, one Li may be 
+present. All other areas must have not less than 2 players, and areas scouldn't be 
+very unbalanced.
+
+-  D Discipline points (PD):
+Each player can get some discipline points during the matches and these may 
+bring him to be disqualified for some future matches.
+
+-  Playing out of position (OOP):
+An adult player may play in a different position that the normal one, but he will 
+play worse. Goalkeepers (Po) may not play O.O.P., and other players may not 
+play as a Po. After 6 matches played in a different position a player will become 
+acclimatized and will be able to play in both positions as well.
+
+-  EF The (S+D) rule:
+Each player has a preferred side of the pitch where to play (S = Left, D = Right). 
+The president doesn't have to specify for each player where to play, they will 
+autonomously distribute the best they can, but unbalanced line-ups are weaker 
+than balanced ones.
+
+-  Backroom boys:
+Each squad has a group of men that actually don't play, but work for the club. 
+These may be bought, or may be obtained by pensioning old players off; new 
+teams begin with one. All backroom boys leave the activity at the end of the 
+second season (even if they started to work at half season). Each time a backroom 
+boy is created or bought all other presidents are informed.
+-  Allenatore (Coach, trainer): he lets you train your players on skill (Ab) spending 
+less PAs. Having two of them is unuseful.
+-  Massaggiatore (Physio): he makes injuries less hard. Having two of them is 
+unuseful.
+-  Scout: he may be sent by the president to spy other matches. A president may 
+have how many scouts he wants.
+-  Tattico (Tactitian):  a tactitian may help the team to play better with a particular 
+tactic. A team may not have more than one tactitian. Please read later on for 
+details.
+
+-  Pensioning:
+Any old player may become Allenatore, Massaggiatore or Scout at any point of the 
+season. But to become a tactitian a player must be a... really strong old player!
+
+-  Money, salaries, auctions and so on:
+Each club may sell or buy players at the auction. If the president doesn't want to 
+sell a strong player to other clubs he may sell him to the extern league, at the non-
+league value, that buys anything. Every player has a salary, and every match 
+brings to the society some money, besides prizes for a good season. The club's 
+economy may reach -1000M; when a president has a loan (capital below zero) 
+must pay also a 10% interests to the Bank each session.
+
+-  Building a bigger stadium:
+A bigger stadium brings to the club more money and more home advantage. 
+Please read later on for details.
+
+-  Own-goals:
+Own-goals are caused by young teams. Expert players have less chance of 
+producing an own-goal.
+
+-  Weather:
+The weather conditions may influence how a team plays, or even make the referee 
+suspend the match.
+
+-  Referee bribing:
+Each team may buy the referee for the next match, but this will cost a lot of 
+money. With 1000M a president may ask a referee to do what is possible to have 
+the match won, with 500M to try to have a penalty. A club can be discovered and 
+this is not very healthy!
+
+These rules are enough to play, but a read of the complete rules is necessary to 
+play well!!!
+
+-  Complete rules:
+
+-  How a match is played:
+When two teams meet in a match, each one gets a number of shots, calculated in 
+this way: if the total value of the At area of the team A (we'll say At.A) is > than the 
+total value of the Di area of the team B (Di.B), then team A will get (At.A - Di.B) 
+shots; plus, if Ce.A is > than Ce.B than (Ce.A - Ce.B)/2; plus, if Di.A > At.B than 
+(Di.A - At.B)/5,  /3 if a Li is present in team A.
+In this way each team will have a number of shots. Each shot is considered and 
+calculated in this way:
+Each shot has a 30% chance of being out of target. The chance grows to 50% if 
+the team has already scored 3 or 4 goals, and grows to 70% if the team has 
+already scored 5 or more goals.
+Shots must pass the opposing sweeper (Li) if present. For each shot the chance to 
+be blocked by the sweeper is (25 + Li*2)% [where Li is the level of the Li area].
+If a shot is in target and has passed the sweeper, the chance that the goalkeeper 
+saves the goal is (35 + Po*2.25)% [where Po is the level of the Po area].
+Just for adding colour, for each out of target shot there's a 5% chance that hits a 
+pole (palo).
+
+-  Youngs' growth by experience:
+Young players (those that are aged J or P) cannot be trained on skill: they just 
+grow with experience.
+-  "P"rimavera gain one skill point each three (3) played matches, but they can 
+play just one (1) match each session. Played matches will be accumulated at the 
+end of the season for Juniores (i.e. if the player didn't reach the 3 matches to grow 
+one point at the end of the season, he'll become Juniores and keep the played 
+matches as experience points). 
+-  "J"uniores gain one skill point each four (4) played matches. They are fragile and 
+cannot play more than two (2) matches each session.
+
+-  Primavera discovering:
+6 Primavera players can be discovered in any one year, simply by telling the GM 
+their position, preferred side and name.
+(NO LIMITATION AT THE SCHOOLBOYS SIDE, YOU CAN DISCOVER .D OR .S AS YOU PREFER)
+If the president fails to discover his quota of 6 Primavera players in a season,
+he may still discover the remainder the next year, although they will have aged
+to become level 2 Juniores, of course.
+The goalkeeper doesn't have any preferred side, while the sweeper feels it only 
+when playing Out Of Position.
+
+-  Tired players, rest and X injured players:
+-  A player that plays too many matches feels tired. If he plays 3 matches in a 
+session (4 if he's a goalkeeper) loses a fitness point; so, even inside one single 
+session after the 3 matches (4 if he's a goalkeeper) the successive matches in the 
+session will be played with 1 fitness point less (if possible).
+-  A player that doesn't play any match in a session rests and gains one free fitness 
+point (unless he's already at the maximum +2).
+-  Injuries are just a loss of fitness and depend on the hardness that the opposing 
+team uses. If a player is injured, he will play normally the successive matches in 
+the session: the effects of the injury will be considered at the end of the session. If 
+a player gets more than one injury in one session, the loss of fitness considered 
+after the session will be calculated considering only the worst injury.
+
+-  Training points:
+This is the critierion by witch the PA points are assigned by the master at the 
+beginning of each session:
+-  1 PA for each adult player with Fo = 0 or more, with a maximum of 15.
+-  10 PAs for each victory (none for a victory in the juniores cup).
+-  5 PAs for each deuce (none for a deuce in the juniores cup).
+- 5 free PAs for all new clubs.
+Not more than 15 PAs may be transferred from a session or a season to the 
+successive. The PAs (as PGPs and all other points) cannot be sold.
+
+-  Team selection:
+A team (line-up) is a set of 11 players. The total value of the team is given by the 
+sum of skills and fitnesses of all the 11 players, plus some extra points.
+There are some limitations on the distributions of the players:
+-  There must be one single goalkeeper. There may be only one sweeper.
+-  There must not be less than  two players for each playing area (Di, Ce, At).
+-  Each area total may not be more than 3 times one of the other area totals (this, 
+the so called "3X rule" has to be calculated only to the three active areas (Di, Ce, 
+At) after every added point, injured or sent out player). If this rule fails, the strong 
+areas just lose the necessary points to become 3 times the weak one.
+NB: The Li is always considered separated by the Di!
+
+-  Sparring partners:
+Only if strictly necessary each squad has an indefinite number of Sparring 
+partners; a Sparring partner is a level 0 player that may eventually fill holes in the 
+teams. Some times it may happen that squads with many injuries don't have 
+enough players to fill the number of teams asked to play: to reach 11 players a 
+manager may use a S.P., but this is the only condition by which a S.P. is tolerated. 
+The S.P. doesn't have any salary, cannot be trained, is not considered counting 
+the PA total, and so on: he's a real ghost.
+
+-  Hardness:
+These are the effects of playing hard:
+- For each player of the team there is a chance to get a yellow card (Amm.), 
+receiving 4 PD (Discipline Points), of 1.5 * (3+D)%, and there is a chance to get a 
+red card (Esp.), receiving 10 PD, of 0.33 * (3+D)% [where D is the total hardness 
+of the team. It doesn't metter which area uses it]. The sent off player will have his 
+total value halved for that match.
+-  There is a 10% chance for each D point of giving a penalty to the opposing 
+team. Each 10% is considered separately. If the total D of the team is 0, there is 
+still a 5% chance of giving a penalty. The chance that a penalty scores is:
+40 + (3*Ab) - (Po) %
+[Where Ab is the total level of the player that shoots and Po is the total level of the 
+goalkeeper] till a maximum of 95%.
+In the case of matches decided by penalties the probability is (the same) - 20%.
+The player that has to score the penalty is choosen automatically as the best of 
+the team (after injuries and red cards).
+-  The goalkeeper is treated separately by the rest of the team. The chance that 
+he'll get a yellow or red card doesn't depend on  the total hardness, but just on that 
+used on the goalkeeper himself.
+-  An important consequence of hard play is that the opposing players can be 
+injured. For each player the probability of getting injured is (5 + D)% [where D is 
+the total opposing hardness], halved if he's a goalkeeper. The risk of the injury is 
+given by the table:
+%Probability   Fitness loss   Level in the match
+      1-15                   0                        3/4
+     16-30                  0                        1/2
+     31-45                  1                        1/2
+     46-60                  2                        1/2
+     61-70                  3                        1/2
+     71-80                  4                        1/2
+     81-90                  5                        1/2
+    91-100                 6                        1/2
+The presence of a physio (Mass) in the squad lets the injury be less hard of one 
+line in this table.
+
+- Discipline points (PD):
+At the end of each session all PDs of all players are calculated. Each time a player 
+reaches 10 or multiples of 10 PDs he is disqualified for the first (PD / 10) matches 
+for the successive session. PDs are the same for the cups and the championship. 
+(i.e. a player gets a red card and a yellow card in the first session (14 PDs). In the 
+second session must jump the first match, then gets one yellow card. In the third 
+session he has 18 PDs and may play, but gets another yellow card. For the 4th 
+session he has 22 PDs and must jump the first two matches).
+
+-  Playing out of position (OOP):
+A player may play in a different position that the normal one, but he will play 
+worse.
+-  Goalkeepers may not play OOP, and no other player may play as a goalkeeper.
+-  Other players may play OOP with 3 points less than the normal value. .
+-  If a player plays in a season 6 matches in a different position, he will become 
+acclimatized in the new position and in the future (and even in the next matches 
+inside a session) he'll be able to play there without any penalty. He will have 
+become a double position player (i.e. if a Ce player plays 6 matches as a 
+defender, he becomes a Di/Ce player that may play in both positions).
+-  Young players may play OOP, but the matches won't be considered for 
+experience growth nor for the double position count.
+
+- The (S+D) rule:
+All players have a preferred side of the pitch where to play. "S" players play 
+preferably on the left, "D" players play preferably on the right, "S+D" players may 
+play anywhere. An area toal (Di, Ce or At. Li and Po are not considered) made by 
+"n" players must have n/2 "S" players  and n/2 "D" players (i.e. if Di is composed 
+by 3 players, the perfect organization has 2 "D" players + 1 "S" player or 1 "D" 
+player + 2 "S" players, while if there are 4 players we should have exactly 2D+2S). 
+Each player that plays on a side of the pitch that doesn't like has a 3 points 
+penalty. Actually is not known which player plays out of side, and the penalty 
+points are given to the area (i.e. if we have 4 players in the Di area, but divided as 
+3D+1S, this means that one "D" player is actually playing on the left, and the Di 
+area total will have a 3 points penalty). There is no acclimatization for players that 
+play in a different side of the pitch. Besides, it's not even specified which players 
+play out of side.
+NB: The Li and the Po are not affected by this rule, but if the Li plays OOP his 
+preferred side is considered.
+
+-  Backroom boys:
+Each squad has a group of men that actually don't play, but work for the club. 
+These may be bought, or may be obtained by pensioning old players off, you begin 
+with one. Each time a backroom boy is created or bought all other presidents are 
+informed. Backroom boys last for the remainder of the season in which the 
+president converts or buys them, plus the whole of the next season.
+- Allenatore (Coach, trainer): he lets the presidents train their players on skill (Ab) 
+spending 1 PA less. (i.e. training a player from skill 10 to 11 will cost 10 PAs with 
+the coach, 11 without). Having two of them is unuseful.
+-  Massaggiatore (Physio): he makes injuries less hard of one line in the injury 
+table, making completely go away the injuries of the first line. Having two of them 
+is unuseful.
+-  Scout: he may be sent by the president to spy other matches. He will report him 
+the area totals (after injuries, players sent off and rain) of the teams playing. A 
+president may have how many scouts he wants.
+-  Tattico (Tactitian) (MODIFIED):  a tactitian may help the team play better with a particular 
+tactic. A tactic is now intended to be a union of: number of players per area, 
+presence of the sweeper, CAT or TFG (i.e. "3-2-5 Li", "4-4-2 Li CAT" or "3-4-3 
+TFG" are all tactics). If the president plays his tactitian's tactic in a match he may 
+use 5 points to be distributed on Li, Di, Ce and At. A club may not have more than 
+one tactitian. Remember that not more than 5 points total may be put on the Li.
+Tattician can change his module during season. it's permitted 1 only
+module change, and tattician cannot be used for 1 session during his
+improve. Every manager will know any changes.
+
+
+
+- Pensioning:
+Any player aged V or more may become Allenatore, Massaggiatore or Scout at 
+any point of the season. To become a tactitian a player must be aged V or more, 
+and: have skill 5 or more, or be a double position player, or be a special player. 
+When a player is pensioned off, he becomes a backroom boy aged I. Backroom 
+boys stop their work after being aged II.
+
+-  ,,  Money, salaries, auctions and so on:
+-  Any club may reach a maximum debt of -1000M .
+-  Provents of matches are: LOOK TO SEASON PRESENTATION. The stadium 
+dimension may influence these values.
+-  All players want a salary, to be calculated with this formula: (StartAb / 5) + 4 M. 
+Where StartAb is the skill of the player before any training on skill and the division 
+sign rounded downwords. This salary is automatically payed each session. 
+Primavera players don't ask any salary, Juniores all ask 1M, Allenatore, 
+Massaggiatore and Scout ask 2M. A Tactitian asks 5M. So, bad adult players take 
+generally 4M, great champions take 6M.
+-  Each session, but the last three, presidents may purchase players at the auction. 
+Each player has a minimum value calculated as: (6 - Age) * (Ab - 1) * 10 M + (10 
+M * PP), where PP are the number of played match after the qualification if the 
+player is young, that is the value payed by the extern league (non-league value). 
+The auctioneer for each player in the auction looks for the best bid and sells the 
+player to the president that made that bid for a cost of 10M more than the second 
+bid, even if this cost would be higher than his own bid. This simulates a real 
+auction, and the bid is actually the highest bid that the club is ready to make. If 
+there are more than one best bids, the first arrived will win. If no bids are present 
+for a player, he will be sold to the extern league for a cost given by the previous 
+formula. If a president doesn't have enough money to pay his bid, it will be 
+automatically reduced. The presidents may make conditioned bids only on 
+preceding players (i.e. "pay 1000 for the 3rd player only if I don't buy the 1st 
+player" is accepted, while "pay 1000 for the 1st player only if I don't buy the 3rd" 
+doesn't make sense because the players are sold in the same order as they are 
+presented in the auction).
+-  All the presidents may ask to put players in the auction. During the session in 
+which a player is in the auction the president may use him, but must specify to the 
+other presidents how many matches he will play. Otherwise, the player will rest 
+and, if possible, gain one point fitness.
+-  If a president doesn't want for some reason to put one of his players in the 
+auction, he may sell him to the extern league for the value specified before.
+-  When a club has a loan, must pay 10% interest each session (i.e. when a club 
+has -300M pays 30M interest).
+-  A  At the end of the season all tournaments (cups and championship) will give 
+prizes to the winners. This prizes represent sponsors, TV-rights, gadgets sale, and 
+so on:
+LOOK TO SEASON PRESENTATION
+
+- Negotiations:
+The presidents may exchange any combination of players, money and backroom 
+boys, but must say it to the master, that must receive the communication of the 
+negotiation from both the presidents. The master may decide to forbid manifestly 
+iniquitous exchanges. No exchanges are permitted in the last 3 sessions of the 
+season. All exchanges are made at the end of the session (unless the master is 
+explicitly informed by both the presidents).
+
+- Building a bigger stadium: (MODIFIED)
+A club may build a bigger and nicer stadium, and have more gains and more FC 
+(home advantage points). Each "stadium level" costs a particular amount of 
+money and, at the end of the season, the stadium loses one level for wear (unless it is at level 0).
+At the end of the season, you can make manutention to the stadium, conserving
+it at actual state, saving money.
+
+ Each session the president may build only one level.
+
+Level     Public     Gain(M)     FC     Cost(M) Manutention (M)
+    0      10000     -           7      -        -
+    1      25000     10/5        8      400     200
+    2      40000     20/10       9      800     400
+    3      55000     30/15      10      1200    600
+    4      70000     40/20      11      1600    800
+    5      85000     50/25      12      2000    1000
+
+(i.e.: if a club owns the minimum stadium (level 0) and wants to have a level-2 
+stadium, must pay 500 for the first session, 1000 for the second, for a total of 
+1500. When it has a level-2 stadium it has 9 points FC and gains 20M more for 
+each match. The visiting team gains 10M more than the normal gain.) To gain one 
+level the president has just to say it to the master. For the next session he will 
+have built the stadium and may use the FC points. Even a small club may have 
+85000 supporters with a big stadium.
+
+-  May I bet?
+The Totocalcio in Beppiland is a particular bet game. In each session each team 
+may bet on 4 matches chosen randomly by the GM; each bet (column) costs 5 M, 
+and consists in 4 symbols (1 = home win, X = deuce, 2 = away win). Each time a 
+club wins the total cash + 30M will be given to him, if nobody wins the money is 
+brought to the next session. The maximum number of columns (1 column = 4 
+symbols) for each session for each club is 12. Obviously a president could send 
+bad teams to try to win totocalcio cheating, but the GM may take disciplinary 
+measures against such presidents.
+
+-  Own-goals:
+Each opposing shot may be deviated by a Di player, the Li or a Ce player and 
+produce an own-goal.
+-  The chance that the shot may be touched is equal to the number of the 
+defenders, +1 if the sweeper is present, plus the number of the middlefield/2, all 
+divided by 10 (for example a 4-2-4 team will have a chance of 5/10 each shot, a 4-
+3-3 a chance of 5.5/10).
+-  If the shot is touched the chance that the shot is deviated and causes an own-
+goal (for which the goalkeeper cannot do anything) is given by:
+%Probability             Age of the player
+        0.9                      P, J, I
+        0.6                       II
+        0.3                       III
+       0.05                    IV or more
+So a more expert line-up will get less own-goals. This is another new rule.
+
+-  T Weather:  R
+The weather conditions may influence how a team plays, or even make the referee 
+suspend the match. Together with the calendar for the next session there is always 
+also the weather forecast, that has a chance to be right or wrong depending on the 
+distance of the match. The day may be sunny or rainy. In the first case the 
+matches are played as usual. The matches will have the writing "Tempo sereno e 
+campo in condizioni perfette". If the weather is rainy, on each match it can be 
+cloudy, rainy, pouring or even there's a chance that the match is suspended and 
+played in one of the next sessions. The first case is indicated in the match with 
+"Tempo minaccioso ma campo in condizioni perfette", the second one with 
+"Campo pesante per via di una leggera pioggia", the third one with "Pioggia 
+violenta, campo ai limiti della praticabilita", the last one with "Partita sospesa". 
+There's always a 60% chance that the day is sunny, a 40% that it is rainy; if the 
+weather is rainy, there is a 57.5% that the pitch is perfect, a 25% chance of 
+raining, a 12.5% chance of pouring and a 5.0% chance of the match being 
+suspended. If the match is suspended all sent off, booked or injuried players will 
+be considered as they played an entire match. If the match is played under the 
+rain the At of the two teams are reduced to 4/5 the original value (after all 
+modifications), otherwise if it's pouring At will be reduced to 2/3 and Ce and Di to 
+4/5.
+
+-  PS (Pacche sulle Spalle = Pats on the Back):
+PSs are jolly points that a president may receive by the master for a good session, 
+or for comments, suggestions, or any other reason. 1 PS can be converted in 1 
+PA, or 1 PGP, or 20 M. PSs can even be taken off by the master in some cases.
+
+-  REFEREES (NEWS IN THIS 4TH SEASON)
+In Beppiland, as in all other soccer tournaments, there are some referee for matches.
+And each referee has a name and feature particulary: the most are normal referee, but 
+someone can give more yellow card, or cannot see some penalty, ecc... (bad referee!)
+On about 40 referee, only 15-20 have particulary features, they change a bit the 
+cards percentages, or penalty percentage.
+The list was published on Beppiland Gazette n.21, ask it to master if you want.
+
+-  Referee bribing:
+Each club may buy the referee for one of the next matches (not more than one per 
+session), but this will cost a lot of money. With 1000M a president may ask a 
+referee to do what is possible to have the match won, with 500M a president may 
+ask a referee for a penalty, and there's a 50% chance that it will be given (a 
+president can't bribe a referee both asking him to win and a penalty, as he can't 
+bribe him asking more than one penalty). If both the teams involved spend money 
+to buy the referee (even if a team spends 1000 and the other one 500), he will just 
+do nothing and all the money will be lost. Every time a president buys a match 
+there is a 25% risk that he's discovered: in that case the match is lost and the club 
+will have all its PSs reduced to 0, and a 500M tax will be payed (if the club doesn't 
+have enough money some players will be sold for the non-league value by the 
+master to reach that sum); if the match is a championship match the club will have 
+a 5 points penalty, in a cup match the other team will pass the turn. No other 
+referees will accept to be bribed by that club for that season. Referees also don't 
+accept to be bribed in the last 3 sessions of a season.
+The mechanism by which the GM simulates the corrupt referee is: I play the match 
+5 times, stopping if the team that payed wins. If the team doesn't ever win, I play 
+the match 5 times more, stopping if the team wins or has a deuce. If the team has 
+not come yet to any soddisfing result, the 11th match will be definitive (even if a 
+loss).
+
+-  Structure of the league:
+LOOK TO SEASON PRESENTATION
+
+-  Communication of the teams (line-ups):
+The master accepts any reasonably understandable set of commands. The best 
+thing to do is, anyway, to use the scheme that each time will be sent to the 
+presidents. The scheme will include all players with their present skills and 
+fitnesses and all the matches to be played. An "X" at the crossing of a match with 
+a player will signify that the player is present in the team of that match in his own 
+position. Putting the initial of a position (L, D, C, A) instead of the X will mean that 
+the player is playing out of position (or that the player is double-position). It's not 
+necessary to write also the area totals, it's sufficient to put the adding points 
+specifying in which position they have to be put (unless you want to know exactly 
+the total values for yourself or to check the 3X rule). Any error will be corrected by 
+the master in a reasonable way.
+Example:
+                                                 			-1-  -2-  -3-
+Babybaby  	Po  		III   9+1         	 x     x     x
+Pinozzo      	Li.S+D		II    7+0    	 x     x        < S & D are used on 
+the Li only when OOP.
+Erbullo        	Li.S  		P   4+2         		  x
+Giuanin     	Di.D    		I   10+1  	x     C   C   < this means the 
+player plays OOP!
+Erfigo      	Di/Ce.S     	II     8-1   	D    D   C    < this is a double 
+position player.
+... and so on
+
+-  Scorers:
+Scorers will be decided, as the minutes of the goals, with a random formula 
+considering the best players, the position by witch the shot has made and the 
+fitness of the player. A number is assigned to all players and the player with the 
+highest number  is the scorer. The number is calculated in this way:
+If the player plays in the area that generated the shot:
+a random number bewtween 0 and Ab + 3*Fo.
+If the player plays in another area:
+a random number bewtween 0 and (Ab + 3*Fo)/1.75.
+If the player plays is a Po:
+a random number bewtween 0 and 3.
+
+-  Friendlies: (MODIFIED)
+Friendlies are permitted. Any president may organize friendlies (3 for
+season, 1 for session) , and the master 
+will play them just by receiving the teams. No money will be obtained by a friendly 
+match (unless a tournament is played by asking each club some money as an 
+inscription), there will be no FC points and maximum hardness will be 4. Youngs 
+will use the matches as experience and adults for their dual qualification.
+
+-  Ending the season:
+-  At the end of the season all players are aged one year older. 
+-  All adult players have their skill reduced by their new age (i.e. a V 10 player 
+becomes a VI 4 player). A player that has his skill reduced to a value less than 2 
+retires himself immediately. He can be pensioned to become a backroom boy, but 
+before ageing (so he will age immediately and last only one season).
+-  Primavera players just become Juniores players, keeping their experience 
+points.
+-  Juniores players become I-aged players, but they retire if their skill is less than 5 
+as a disappointment on their future bad career.
+-  I-aged backroom boys become age II, while II-aged retire themselves.
+-  The stadium loses one level (unless it's at level 0).
+-  For each player the PDs will be rounded to the closest ten, and than lowered by 
+20 (not less than 0, of course).
+-  Players that didn't reach enough matches OOP will lose their dual-qualification 
+points.
+-  PGP will be reset to 30 (no PGPs may be transferred).
+-  All adult players will have their fitness to 0, all "J"uniores players will have their 
+fitness to +2.
+-  The 6 "P"rimavera players (skill2, fitness +2, not more than 2 "S") may be 
+discovered.
+
+- NMR (No Move Received) and deadlines:
+The deadline will be approsimatively put monthly. In the case that a president 
+cannot send me in time the commands I will play for him all the matches with the 
+best 4-3-3 (with Li and no CAT) possible, no Hardness and no PGPs or Tactitians, 
+no bids in the auctions, FC points on Di, coaching only on fitness (and PAs 
+reduced as soon as only 15 may be brought from one session to the other).
+As you can see I'm not so bad against bad presidents, but try to be fast anyway, 
+please!
+No presidents will be sent away during the season unless asked by themselves.
+
+-  Money (real money!):
+This game costs 24000 Italian liras for the hole 11+1 sessions (free for Electronic-
+Mail managers). This is probably only the cost of the stamps, as soon as if the 
+letters will be heavy that will be 2000 liras each for Europe. I ask this money 
+anticipately, please, just to keep the count! If you can send me Liras.
+
+-  ...Some more:
+-  Revealed informations: each match will show (besides the score and the 
+scorers) for each team the formations (i.e. "4-2-4"), the number of shots and 
+saves, booked, sent off and injured players, the weather condition.
+-  The penalty taker will be chosen automatically as the best (after red cards and/or 
+injuries).
+-  Here's an example of a scout report:
+I Pini          (2) : 15( 5) -  0     - 43       - 55( 7) - 21
+Le Giuggiole    (1) : 10( 4) -  0     - 33( 1) - 45( 6) - 32( 1) CAT  TFG
+The fist numbers in the brackets is the score, then there are the total values of 
+each of the areas (Po, Li, Di, Ce, At), after all modifications (extra points, injuries, 
+red cards, rain), near the extra points used (in the brackets).
+-  Please, help me and write me your address on your letter or envelope each 
+session...!
+-  Obviously these rules may not be perfect, as I am not. Errors may happen and 
+please tell me any ideas for a change or error reports!
+-  All the calculations are rounded upwards.
+-  The GM may sell club's players to the extern league if the club's economy is 
+going below -1000 M.
+-  All data sent by the managers to the GM is archivied for security and it's kept by 
+the GM! Orders sheet are not sent back to the managers.
+
+-  The Game Master (GM): 
+The master's decision is always definitive; he's right even when he's wrong!
+
+To end, thanx to everybody that helped in making and writing these rules. 
+Obviously particular thanx to Alan Parr, Martin Burroughs and Massimo 
+Monciardini.

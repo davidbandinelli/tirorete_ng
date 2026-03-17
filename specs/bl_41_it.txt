@@ -1,0 +1,672 @@
+Regolamento 4.1 per giocare a Beppiland (per stagione 5)
+IN STAMPATELLO LE VARIAZIONI RISPETTO ALLE 4.0
+
+
+
+                             ** Beppiland **
+Beppiland e'  una piccola nazione  da qualche parte  in Europa. Non  so di preciso dove sia,  non 
+so che genere di repubblica  o monarchia abbia, non so quanta popolazione  abbia, che lingua 
+usino, che  economia abbiano, che cultura abbiano, insomma, non so assolutamente niente. 
+Solamente una cosa: a Beppiland c'e' un interessante torneo di calcio.
+
+                           ** Sulle regole **
+Questa simulazione di  calcio Play-By-Mail e' basata su  di una variazione delle  regole  importate   
+per  la  prima  volta  in   Italia  da  Massimo Monciardini. Queste sono state cambiate e (spero) 
+rese migliori dal lavoro di  Massimo e  molti  altri  utenti  E-Mail  (fra  di  loro  Mario Pacchiarotti, 
+Mauro Puleo, Marco Fachini, Marco Croci, Andrea Tagliavento, Fabio Bigaglia, Fabio Filatrella, 
+giusto per citarne qualcuno) nel giro di circa due anni. Questa e' un'ulteriore modifica di quelle 
+regole.
+Le  regole portate  da Massimo  erano simili  a quelle  scritte da  Martin Burroughs, un  bel lavoro, 
+distante, ma  sempre derivato dalle primordiali regole United, scritte  da Alan Parr. In Italia questo  
+e' il terzo torneo di sempre, ed il primo ad usare anche posta tradizionale.
+
+                             ** Overview **
+Questo e' un gioco postale di calcio.  Ogni partecipante ha il ruolo di un manager  (presidente)  di  
+una  squadra  di  calcio,  ed  ha  controllo su allenamenti, formazioni, acquisti/vendite di giocatori e 
+finanze.
+Da qui  in poi, il termine  "presidente" (o manager) sara'  riferito a chi legge, e  il termine 
+"giocatore" sara'  riferito ai singoli membri  di una squadra.
+La stagione e' divisa in 11 sessioni, ciascuna delle quali forma un gruppo di (generalmente) 2, 3 o 
+4 partite; raramente 5. Quando  viene giocata  una partita  ciascuna delle  due squadre  coinvolte 
+genera un numero di tiri che  dipende dalla forza e dalla disposizione dei giocatori. Alcuni di questi 
+possono diventare goal.
+
+Le regole sono divise in due parti: nella prima parte le regole vengono descritte  in maniera  molto 
+scarna,  giusto il  minimo necessario per poter giocare, nella seconda parte le regole saranno 
+complete.
+
+Questa piccola parte delle regole ora  sara' comune alle regole brevi ed a quelle complete:
+
+                              ** Regole **
+
+* Il campionato:
+Ci saranno 4 diverse competizioni:
++ Il  CAMPIONATO  e  un  torneo  all'italiana  (tutti contro tutti). E' composto da 3  divisioni: la 
+serie A (la piu' importante), la serie B e serie C (la piu' bassa). Alla fine della stagione la vincitrice 
+della serie A e' campione di Beppiland; le ultime 3 della serie A retrocedono in serie B; le prime 3 
+della B vengono promosse in A, mentre le ultime 3 retrocedono in C; le prime 3 della serie C 
+vengono promosse in B.
++ La COPPA BEPPILAND e' un torneo ad eliminazione giocato da tutte le squadre.
++ Il COPPA DI LEGA  e' un torneo a gironi e a eliminazione giocato da tutte le squadre.
++ La COPPA JUNIORES e' giocato solo da formazioni con giocatori giovani.
+Per maggiori dettagli guardare nel paragrafo "Struttura del campionato".
+
+Il gioco e'  diviso in sessioni, ciascuna di  esse rappresentante circa un mese di vita, e in genere 
+comprendente 2, 3 o 4 partite, raramente 5.
+In ciascuna sessione un presidente deve fare:
++ Allenare su forma e/o abilita' i suoi giocatori.
++ Mettere insieme le formazioni per giocare le partite.
++ Se necessario partecipare all'asta.
++ Se necessario compiere operazioni  economiche, scommettere, e fare altre piccole cose.
+
+* I Giocatori:
+Un giocatore e' composto da:
++ Un NOME.
++ Una  POSIZIONE.  La  posizione  puo'  essere  Po (portiere), Li (libero, sempre separato  dalla 
+difesa), Di (difensore),  Ce (centrocampista), o At (attaccante). Un  giocatore puo' anche  giocare 
+fuori posizione,  rendendo meno, o anche avere piu' di una posizione in cui gioca bene.
++ Un'ABILITA'  (Ab),   rappresentata  da  un  numero,   non  minore  di  2 (generalmente  un buon  
+giocatore sta  fra gli  8 e  i 14).  Giocatori con abilita' minore  di 2 si  devono ritirare 
+immediatamente. I giocatori  possono essere allenati per diventare piu' abili, ma perdono abilita' 
+invecchiando.
++ Un modificatore per  la FORMA (Fo), rappresentato da  un altro numero da addizionare 
+all'abilita'. Ha un massimo di  +2 e quando un giocatore ha Fo minore o  uguale a -3  e' considerato 
+INFORTUNATO  e non puo'  giocare. La forma e' influenzata  dalla fatica, dal riposo, dagli  
+allenamenti e dagli infortuni.
++ Un'ETA'.  I giocatori  adulti hanno  un'eta' rappresentata  da un numero romano, che inizia da "I" 
+e raramente  supera "VI". I giovani hanno eta' J (Juniores), e P  (Primavera). Gli J sono piu' 
+giovani  di un anno rispetto ai giocatori  di eta' I,  i P piu'  giovani di un  anno rispetto ai  J (in 
+pratica sarabbe: P, J, I, II, III, IV...).
++ Un  LATO preferito.  Giocatori marcati  "S" giocano  meglio a  sinistra, giocatori marcati  "D" 
+giocano meglio  a destra. Alcuni  giocatori possono essere marcati "S+D" ed essere ambidestri.
+
+Ecco qualche esempio di giocatore:
+Nome            Eta'    Ab+Fo   Posizione.Lato
+Brontolo        IV      11+1    Li/At.S
+Nonnapapera     II       6-2    Ce.S+D
+Filippo         J        5+2    At.D
+
+* Le Societa':
+Una societa' ha:
++ Un certo numero di giocatori (certi  sono giocatori veri e propri, altri sono panchinari).
++ Denaro, espresso in "M". Il debito massimo e' -1000 M.
++ PA (Punti Allenamento) dati dal master.
++ PGP (Punti Grande Prestazione).
++ Uno STADIO di cui si sa la dimensione.
+
+* Squadre iniziali:
+Se e' necessario creare una squadra (ad  esempio se il gioco ha bisogno di squadre  nuove  
+all'inizio  della  stagione,  altrimenti  nuovi presidenti devono prendere squadre vecchie  
+abbandonate da presidenti stanchi) deve essere fatta con queste regole:
+
+70  livelli  d'abilita'  totali  per  9  o  piu'  adulti, divisi cosi':
+34 per giocatori di eta' I, 12  per giocatori di eta' II, 12 per giocatori di eta' III, 12 per giocatori di eta' 
+IV. Ciascun giocatore con un massimo di 12 ed un minimo di 2 di abilita'.
+3 Juniores di abilita' 5 e forma +2.
+3 Juniores di abilita' 3 e forma +2.
+6 Primavera con abilita 2 e forma +2.
+1 panchinaro (allenatore o massaggiatore).
+I giocatori possono  destri (D) o mancini  (S), e solo due  di essi (anche primavera)  possono  
+essere  S+D.  I  portieri  non risentono della regola dell'S+D, mentre i liberi non la usano se non 
+giocando in un altro ruolo.
+
+* Allenamento:
+I giocatori possono essere allenati su forma e/o abilita'.
++ Allenare  sulla forma  non e'  molto dispendioso.  Piu' il  giocatore e' vecchio,  piu'  costa.  
+Precisamente,  allenare  sulla  forma un giocatore giovane (J o P)  costa 1 PA, mentre un adulto 
+costa  come la sua eta' (per esempio un giocatore di eta' III verrebbe allenato sulla forma 
+spendendo 3 PA). Un giocatore non puo' mai raggiungere piu' di +2 di forma.
++ Solo i giocatori adulti possono essere allenati sull'abilita' (i giovani crescono facendo esperienza). 
+Il costo e' uguale all'abilita' che si vuole raggiungere (per esempio  10 per allenare un giocatore  
+con abilita' 9 per arrivare  a 10).  Un giocatore  di  eta'  I puo'  essere allenato  5 volte sull'abilita' in 
+una stagione, mentre gli altri adulti solo 3 volte.
+
+E' possibile allenare un giocatore solo una volta per sessione, ma si puo' allenare  
+contemporaneamente  su  forma  e  abilita'.  Ogni allenamento fa crescere abilita' o  
+forma di un punto. L'allenamento  sulla forma si puo' sommare al miglioramento di forma 
+dovuto al riposo.
+
+* Punti extra e tattiche:
+Quando sono  state fatte le  formazioni, si devono  (o possono) aggiungere punti aggiuntivi alla 
+squadra, e deciderne  la tattica (vedere dopo per il ruolo del "tattico").
++ FC (Fattore Campo) permette al manager di aggiungere 7 punti alle 3 aree (Di, Ce, At) SE la 
+squadra gioca in casa.
++ D (Durezza) da' al presidente da 0  a 10 punti da aggiungere alle 5 aree (Po, Li, Di,  Ce, At). Piu' 
+la squadra  gioca duro, piu' e' il  rischio di avere giocatori ammoniti o espulsi o che l'altra squadra 
+abbia infortunati o rigori a favore.
++ PGP   (Punti  Grande   Prestazione):  i   PGP  rappresentano   l'energia supplementare che la 
+squadra puo' avere in qualche partita importante. Una societa'  ha 30  PGP per  stagione (non  
+possono essere  trasferiti da una stagione all'altra). Un presidente puo' aggiungere da un minimo di 
+0 ad un massimo di 10 PGP sulle 5 aree (Po, Li, Di, Ce, At) per ogni partita.
++ CAT  (Catenaccio): uno  degli  accorgimenti  tattici che  possono essere usati  e' il  Catenaccio. 
+Se  una squadra   lo usa,  ha 7  punti da  poter distribuire su  Li, Di e  Ce; una squadra  che gioca 
+col  Catenaccio pero' avra' il totale dei suoi tiri dimezzato.
++ TFG  (Trappola  del  Fuori  Gioco):  questo importantissimo accorgimento tattico non aggiunge  
+punti alla squadra, ma semplicemente  dimezza i tiri dell'At  avversario, e  raddoppia quelli  del Ce  
+avversario. Puo'  essere giocato solo se non e' presente un libero.
+
+Sul Po  e sul Li  non possono essere  usati piu' di  5 punti extra  totali ciascuno.
+
+NB: Tutto questo influenza i totali d'area, non i singoli giocatori.
+NB: Il libero e' sempre separato dalla difesa!
+
+
+                           ** Regole brevi **
+
+* Com'e' giocata una partita:
+Quando due squadre si incontrano in  una partita, ciascuna di esse ottiene un numero di tiri, che 
+possono  segnare o no, dipendendo da valori casuali e dall'abilita' di Po e Li avversari.
+
+* Crescita dei giovani per esperienza:
+I Primavera e gli Juniores possono giocare solamente rispettivamente 1 e 2 partite  a sessione,  
+ma accumulano  punti esperienza  e la  loro abilita' cresce.
+
+* Giocatori stanchi, riposo e giocatori infortunati:
+I giocatori adulti  si stancano dopo 3  partite giocate in una  sessione e perdono 1 punto di forma. 
+Guadagnano un punto di forma riposando un'intera sessione e perdono punti forma per eventuali 
+infortuni.
+
+* Stilo delle formazioni:
+Una formazione  e' un insieme di  11 giocatori. Deve per  forza esserci un Po, _puo'_ esserci un 
+libero. Tutte  le altre aree devono avere almeno due giocatori, e non possono essere 
+eccessivamente sbilanciate.
+
+* Punti Disciplina (PD):
+Ogni giocatore puo' ricevere punti disciplina in partita e questo potrebbe portarlo  ad  essere  
+squalificato  per  le  prime  partite della sessione successiva.
+
+* Giocare fuori ruolo (OOP):
+Un giocatore adulto puo' giocare in una posizione diversa dalla usuale, ma giochera'  meno bene.  i 
+Po  non  possono  giocare fuori  ruolo, e  nessun giocatore che non sia un Po puo'  assumere il 
+ruolo del Po. Dopo 6 partite giocate  in una  posizione diversa  in una  stagione il  giocatore diventa
+acclimatato e puo' giocare anche nella nuova posizione senza problemi.
+
+* La regola (S+D):
+Ogni  giocatore  ha  un  lato  preferito  del  campo  in  cui  giocare. Il presidente  non deve  indicare 
+specificatamente  per ciascun  giocatore se gioca a  destra o a  sinistra, i giocatori  si disporranno 
+automaticamente nella  miglior maniera  possibile. Naturalmente  squadre sbilanciate  sono meno 
+forti.
+
+* Panchinari:
+Ogni  club ha  un gruppo  di uomini  che non  giocano, ma  lavorano per la squadra.  Possono  
+essere  comperati,  o  ottenuti  pensionando  i  vecchi giocatori.  Le  squadre  neo-nate  partono  
+con  un  panchinaro.  Tutti  i panchinari lasciano la panchina alla fine della seconda stagione 
+(anche se avevano  iniziato a  lavorare a   meta' stagione).  Ciascuna volta  che un  panchinaro 
+viene creato o comperato  tutti gli altri presidenti ne vengono informati.
+
++ ALLENATORE: Permette  di allenare sull'Ab spendendo meno PA. Averne due e' completamente inutile.
++ MASSAGGIATORE:  Rende  meno...  dolorosi  gli  infortuni.  Averne due e' completamente inutile.
++ SCOUT: Puo' essere spedito da un presidente per spiare altre partite. Un presidente puo' avere tutti gli scout che vuole.
++ TATTICO: un tattico puo' aiutare la  squadra agiocare bene con una certa tattica. Un club non puo' avere piu' di 1 tattico.
+
+* Pensionamento:
+Qualsiasi  giocatore  anziano  puo'  diventare  Allenatore, Massaggiatore, Scout. 
+Per diventare Tattico, invece, bisogna avere un  passato di ottimo calciatore.
+
+* Denaro, stipendi, aste, e cosi' via:
+Ogni  societa'  puo'  comperare  o   vendere  giocatori  all'asta.  Se  un presidente  non  vuole  
+rafforzare  gli  avversari  vendendo  un giocatore all'asta puo' venderlo  alla lega esterna, al 
+prezzo  standard, che compra qualsiasi cosa.
+Ogni giocatore  ha uno stipendio, ed  ogni partita porta alla  societa' un certo incasso, al  di la' dei 
+premi di fine  stagione. L'economia del club non puo' andare sotto i -1000 M:  quando un 
+presidente ha un debito (cioe' il suo capitale e' sotto zero) deve  anche pagare il 10% di interesse 
+alla Banca ogni sessione.
+
+* Costruire uno stadio piu' grande:
+Uno  stadio piu'  grande porta  alla  societa'  piu' denaro  e piu'  punti Fattore Campo. Leggere 
+avanti per i dettagli.
+
+* Autogoal:
+Gli autogoal  sono causati da formazioni  giovani. Giocatori esperti hanno meno probabilita' di 
+causare autogoal.
+
+* Tempo atmosferico:
+Le condizioni  del tempo possono  influenzare il gioco  di una squadra,  o perfino costringere 
+l'arbitro a sospendere la partita.
+
+* Corrompere l'arbitro:
+Ogni  squadra  puo'  comperare  l'arbitro  per  una partita della prossima sessione, ma questo 
+costera' un bel po' di soldi. Con 1000 M un presidente puo' chiedere  all'arbitro di cercare  di far 
+vincere  la propria squadra, con 500M di avere un rigore. Ma  una societa' puo' essere "beccata" 
+con le mani in pasta e questo non e' molto salutare!
+
+
+Queste regole sono sufficienti per giocare, ma, per giocare bene, la lettura delle regole complete 
+e' necessaria!! 
+
+
+
+                          ** Regole complete **
+
+* Com'e' giocata una partita:
+Quando due  squadre si incontrano in  partita, ciascuna di esse  genera un numero di tiri, calcolato 
+cosi': se il valore totale dell'At della squadra A (diciamo At.A)  e' maggiore del valore  totale della 
+Di della  squadra B (Di.B), allora la  squadra A otterra' (At.A - Di.B)  tiri; piu', se Ce.A >Ce.B allora 
+(Ce.A - Ce.B)/2; piu', se  Di.A > At.B allora (Di.A - At.B)/5, /3 se la quadra A gioca con un Li.
+In questo modo  ciascuna delle due squadre avra' un  certo numero di tiri. Ciascun tiro viene 
+considerato e calcolato in questa maniera:
+Ogni  tiro  ha  il  30%  di  possibilita'  di  essere  fuori bersaglio. La probabilita' sale al 50% se la 
+squadra ha  gia' segnato 3 o 4 goal, e sale al 70% se ne ha segnati 5  o piu'.
+I tiri  devono superare  il Li  avversario se  presente. Per  ogni tiro la probabilita' di  essere bloccato 
+dal  Li e'  (25  + Li*2)%, dove  Li e' il livello totale dell'area del Libero.
+Se un tiro centrato  ha superato il Li, la probabilita' che  il Po lo pari e' (35 +  Po*2.25)%, dove Po 
+e' il livello  totale dell'area del Portiere. 
+Tanto  per aggiungere  colore, ciascun  tiro fuori  bersaglio ha  il 5% di probabilita' di colpire il palo.
+
+* Crescita dei giovani per esperienza:
+I giovani   (Juniores   e   Primavera)   non   possono   essere   allenati sull'abilita', ma crescono con 
+l'esperienza.
++ I "P"rimavera guadagnano un punto di abilita' ogni 3 partite giocate, ma ne  possono  giocare  1  
+sola  per  sessione.  Le partite giocate verranno accumulate alla fine  delle stagione al passaggio 
+da  Primavera a Juniores (i.e. se un giocatore P non raggiunge 3 partite per crescere di un livello di 
+abilita' alla fine della stagione,  diventa Juniores e mantiene i punti esperienza).
++ Gli "J"uniores guadagnano  un punto di abilita' ogni  4 partite giocate, ma ne possono giocare 2 
+per sessione.
+
+* Scoperta dei Primavera:
+Ogni   anno  possono   essere   scoperti   dalla  societa'   6  Primavera, semplicemente  
+sagnalando  al  master  la  loro  posizione,  il  loro  lato preferito e il  loro nome.
+(NESSUNA LIMITAZIONE AL LATO DEI PRIMAVERA, SI POSSONO SCOPRIRE SIA D CHE S).
+Se il presidente non scopre i suoi 6 Primavera in una  stagione li puo'  ovviamente
+ scoprire l'anno  successivo, anche se ovviamente saranno nel frattempo diventati 
+Juniores di livello 2.
+
+* Giocatori stanchi, riposo e giocatori infortunati:
++ Un  giocatore che  gioca troppe  partite  si  sente stanco.  Se gioca  3 partite in  una sessione (4  
+se e' un  portiere) perde un  punto di forma; cosi', perfino all'interno di una singola sessione dopo 3 
+partite (4 se e' un portiere) le  partite successive saranno giocate con  un punto forma di meno (se 
+possibile).
++ Un giocatore che  non giochi alcuna partita in una  sessione si riposa e guadagna un punto di 
+forma (a meno che non sia gia' a +2).
++ Infortuni  non sono  nient'altro che  una perdita  di forma  e dipendono dalla  durezza con  cui 
+gioca  la squadra  avversaria. Se  un giocatore si infortuna  gioca normalmente  le partite  
+successive della  sessione: gli effetti dell'infortunio  saranno considerati alla fine  della sessione. 
+Se un giocatore  riceve piu' di un  infortunio in una sessione  la perdita di forma considerata vera' 
+calcolata considerando solo l'infortunio peggiore.
+
+* Punti Allenamento:
+Questo e' il criterio con cui  vengono distribuiti i PA all'inizio di ogni sessione:
++ 1 PA per ogni giocatore adulto con Fo = 0 o piu', con un massimo di 20.
++ 10 PA per ogni vittoria (nessuno se in coppa Juniores).
++ 5 PA per ogni pareggio (nessuno se in coppa Juniores).
++ 5 PA gratis per tutte le squadre nuove.
+Non  piu'  di  15  PA  possono  essere  trasferiti  da  una  sessione alla successiva. il PA (come i 
+PGP e  tutti gli altri punti) non possono essere venduti.
+
+* Stilo delle formazioni:
+Una  formazione e'  un insieme  di 11  giocatori. Il  valore totale  della squadra e' dato dalla  
+somma di tutte le abilita' e forme  di tutti gli 11 giocatori, piu' alcuni punti extra.
+Ci sono alcune limitazioni sulla distribuzione dei giocatori:
++ Ci DEVE essere un singolo portiere, ci PUO' essere un singolo libero.
++ Non ci possono  essere meno di due giocatori per  ogni area di movimento (Di, Ce, At).
++ Ogni totale  d'area non puo' essere  mai piu' di 3  volte ciascuna degli altri totali d'area (la 
+cosiddetta regola del triplo viene calcolata sulle sole 3 aree  di movimento [Di, Ce, At] e  
+DOPO qualsiasi punto aggiuntivo, infortuni  o espulsioni).  Se questa  regola fallisce,  le aree piu' 
+forti vengono  ridotte  automaticamente  fino  a  diventare  3 volte l'area piu' debole.
+NB: Il Li e' _sempre_ separato dalla difesa!
+
+* Gli sparring partner:
+Solo  se  strettamente  necessario  ogni  societa'  ha  la possibilita' di reclutare  un  numero  
+indefinito  di  Sparring  Partner;  uno  S.P. e' un giocatore  di livello  0 che   puo', se  necessario, 
+riempire  buchi nelle formazioni. Alle volte puo' capitare che squadre con tanti infortunati non 
+riescano a mettere insieme 11 giocatori  per una partita, e in questo caso (e solo in questo caso) 
+interviene  lo S.P.. Gli S.P. non hanno stipendio, non possono essere  allenati, non vengono 
+considerati nel  computo dei PA, eccetera (sono fantasmi).
+
+* Durezza:
+Questi sono gli effetti del gioco duro:
++ Per  ogni  giocatore  della  squadra  c'e'  una  possibilita'  di essere ammonito e ricevere  4 PD 
+(Punti Disciplina) di 1.5  * (3+D)%, e di essere espulso e  ricevere 10 PD  di 0.33 *  (3+D)%, dove 
+D  e' la durezza totale della squadra,  non importa su che  ruolo sia usata. Il  giocatore espulso 
+avra' il suo valore dimezzato nel corso della partita.
++ C'e' un  10% di possibilita'  per ogni punto  D di procurare  un rigore. Ogni 10% e' considerato 
+separatamente.  Se la Durezza totale della squadra e' 0,  c'e' comunque ancora  un 5% di  rischio 
+di procurare  un rigore. La probabilita' che il rigore sia segnato e': 40 + (3*Ab) - (Po)%  fino a un 
+massimo del 95%. Dove Ab e' il  livello totale del giocatore che tira il  rigore e Po e' il livello totale 
+del portiere.
+Nel caso la  partita venga decisa ai rigori  la probabilita' viene ridottadel 20%.
+Il giocatore che  deve tirare il rigore viene  scelto automaticamente come il migliore della squadra 
+(dopo infortuni e cartellini rossi).
++ Il  portiere viene  trattato separatamente  dal resto  della squadra. La probabilita'  di  essere  
+ammonito  o  espulso  non  dipende dalla durezza totale, ma solamente da quella usata sul portiere 
+stesso.
++ Una conseguenza importante  del gioco duro e' che  i giocatori avversari possono  rimanere  
+infortunati.  Per  ogni  giocatore  la  probabilita' di rimanere infortunato e' (5 + D)%,  dove D e' la 
+durezza totale avversaria.
+dimezzata se e'  un portiere. Il rischio di  infortunio e' descritto dalla tabella:
+%Probabilta'    Perdita di Fo   Livello in partita
+   1-15               0                 3/4
+  16-30               0                 1/2
+  31-45               1                 1/2
+  46-60               2                 1/2
+  61-70               3                 1/2
+  71-80               4                 1/2
+  81-90               5                 1/2
+  91-100              6                 1/2
+La   presenza  di   un   massaggiatore   in  squadra   rende  l'infortunio istantaneamente meno duro 
+di una linea in questa tabella.
+
+* Punti Disciplina (PD):
+Alla fine di ogni sessione vengono calcolati i PD per ogni giocatore. Ogni volta  che  un  giocatore  
+raggiunge  10  o  un  multiplo  di  10 PD viene squalificato per i primi (PD/10)  incontri della 
+sessione successiva. I PD sono gli  stessi per coppe e  campionato. (i.e. un giocatore  un giocatore 
+viene espulso  ed ammonito in  due partite della  prima sessione (14  PD).
+Nella  seconda  sessione  deve  saltare  la  prima  partita,  e poi riceve un'altra ammonizione.  
+Nella terza sessione  ha 18 PD  e puo' giocare,  ma viene ancora ammonito e nella 4a sessione ha 
+22 PD e deve saltare le prima DUE partite).
+
+* Giocare fuori ruolo (OOP):
+Un giocatore puo'  giocare fuori dal suo ruolo  usuale, ma ovviamente meno bene.
++ I Po non possono giocare OOP, e nessun altro giocatore puo' giocare come portiere.
++ Altri  giocatori possono  giocare OOP  con 3  punti di  penalita' .
++ Se un giocatore gioca in una stagione 6 partite in una posizione diversa da quella usuale  si 
+acclimata al ruolo e in  futuro (perfino a partire da una partita all'interno della sessione  stessa) 
+potra' giocare in entrambi i ruoli  con uguale  efficacia (sara'  detto un  "giocatore doppio ruolo")
+(i.e. se un  Ce gioca 6 partite come difensore,  diventa un Di/Ce che puo' giocare in entrambe le 
+posizioni).
++ I giovani possono giocare OOP, ma le partite non saranno considerate ne' per la crescita di 
+esperienza ne' per il conteggio dei punti doppio ruolo.
+
+* La regola (S+D):
+Tutti  i giocatori  hanno un  lato preferito  del campo  su cui giocare. I giocatori "S" sono mancini, i 
+giocatori "D" sono destri, i giocatori "S+D" sono ambidestri e possono giocare dove vogliono. 
+Un'area di movimento (Di, Ce o At, mentre Po e Li  non sono considerati) costituita di "n" giocatori 
+deve avere n/2 giocatori "S" e n/2 giocatori  "D" (i.e. se in Di ci sono 3 giocatori l'organizzazione  
+perfetta vedrebbe 2  "S" e 1  "D" o 1  "S" e 2 "D", mentre se ci fossero  4 giocatori l'organizzazione 
+perfetta sarebbe 2 "D" e  2 "S"). Ogni giocatore  che giochi su un  lato del campo a  lui non gradito 
+ha una penalita' di 3 punti. In realta', non e' dato sapersi quale dei giocatori sia quello sacrificato, e  
+i punti di penalita' vengono dati non al singolo giocatore, ma all'intera area (i.e. se abbiamo una Di 
+con 4 giocatori, ma divisi come 3D e  1S, quasto significa che c'e' un giocatore destro costretto  a 
+giocare a  sinistra, e il  totale d'area della  difesa sara'  ridotto  di  3  punti).  Non  c'e'  possibilita' di 
+acclimatarsi su diversi  lati del  campo. Anche  perche' non  e' specificato  quale sia il giocatore nel 
+lato sbagliato.
+NB: Il Li e il Po non sono influenzati da questa regola, ma se il Li gioca OOP allora si'.
+
+* Panchinari:
+Ogni  club ha  un gruppo  di uomini  che non  giocano, ma  lavorano per la squadra.  Possono  
+essere  comperati,  o  ottenuti  pensionando  i  vecchi giocatori.  Le  squadre  neo-nate  partono  
+con  un  panchinaro.  Tutti  i panchinari lasciano la panchina alla fine della seconda stagione 
+(anche se avevano  iniziato a  lavorare a   meta' stagione).  Ciascuna volta  che un panchinaro 
+viene creato o comperato  tutti gli altri presidenti ne vengono informati.
+
++ Allenatore: Permette al presidente di allenare i giocatori sull'abilita' spendendo 1 PA  meno (i.e. 
+allenare sull'abilita' un  giocatore a crescere da 10 a 11 costera' 10 PA invece che 11). Avere due 
+allenatori e' inutile.
++ Massaggiatore: Rende gli infortuni meno gravi di una linea nella tabella degli infortuni,  facendo 
+completamente sparire gli  infortuni della prima riga. Avere due massaggiatori e' inutile.
++ Scout: Puo' esssere  mandato da un presidente per  spiare altre partite. Riportera' i  totali d'area 
+(dopo  infortuni, espulsioni e  pioggia) delle squadre  che  giocano.  Un  presidente  puo'  avere  
+tutti  gli  scout che desidera.
++ Tattico: (VARIAZIONI)  un tattico  puo' aiutare  la squadra  a giocare  bene con  una tattica particolare.  Una 
+"tattica" e' ora  considerata come un'unione di:
+numero di giocatori nelle diverse  aree di movimento, presenza del libero, CAT o TFG  (i.e. "3-2-5 
+Li", "4-4-2 Li CAT"  o "3-4-3 TFG" sono tattiche).
+Se un presidente usa la tattica del  suo tattico in una partita ha 5 punti extra che possono essere 
+distribuiti su Li, Di, Ce ed At. Una societa' non puo' avere piu' di UN tattico.  Ricordarsi che non 
+possono essere aggiunti piu' di 5 punti totali sul Li.
+Il tattico potra' cambiare modulo durante la stagione. E' permesso
+1 solo cambio, e il tattico rimarra' inutilizzato per 1 sessione
+mentre impara il nuovo modulo (tutti i manager ne sono informati).
+
+* Pensionamento:
+Ogni giocatore di eta' V o piu' puo' diventare allenatore, massaggiatore o scout in ogni momento 
+della stagione. Per diventare un tattico, invece, il giocatore deve avere eta'  V o piu', e: avere 
+abilita' 5  o piu', o essere un  giocatore doppio  ruolo, o   essere un  giocatore speciale.  Quando un 
+giocatore viene pensionato  diventa un panchinaro di eta'  I. I panchinari finiscono la loro attivita' 
+dopo l'eta' II.
+
+* Denaro, stipendi, aste, e cosi' via:
++ Ogni societa' puo' raggiungere un debito massimo di -1000 M.
++ Gli  incassi delle  partite sono:  vedi presentazione della stagione. La dimensione 
+dello  stadio puo' influenzare questi valori.
++ Tutti i giocatori vogliono uno  stipendio, calcolato con questa formula:
+(StartAb /  5) + 4  M. Dove StartAb  e' l'abilita' del  giocatore prima di qualsiasi allenamento 
+sull'abilita' e la  divisione e' per difetto. Questo stipendio  e' pagato  automaticamente ad  ogni 
+sessione.  I Primavera  non chiedono stipendio, gli Juniores chiedono 1 M, allenatore, 
+massaggiatore e scout  chiedeono 2  M. Un  tattico chiede  5 M.  Da un  veloce calcolo  si capisce 
+che i giocatori hanno uno  stipendio oscillante fra 4 (scarsi) e 6 (campioni).
++ Ogni  sessione,  tranne  le  ultime  3,  i  presidenti possono comperare giocatori all'asta. Ogni 
+giocatore ha un valore minimo calcolato come:
+(6 - Eta')  * (Ab - 1) *  10 M + (10 M  * PP), dove PP e'  il numero delle partite giocate dopo la 
+crescita di un livello se il giocatore e' giovane; questo e'  il valore pagato  dalla lega esterna.  
+Il battitore d'asta  per ogni lotto  cerca la migliore offerta  e vende il giocatore  al presidente relativo 
+per  un costo di  10 M superiore  alla seconda offerta,  anche se questo  costo potrebbe  risultare  
+piu'  alto dell'offerta  stessa. Questo simula  una  vera  asta,  e  l'offerta  in  realta' rappresenta la 
+offerta massima che  la societa' e' disposta  ad investire. Nel caso  ci dovessero essere piu'  di 
+una migliori  offerte, la prima  arrivata vincera'. Se  al contrario non dovesse essere presente 
+alcuna offerta per un dato lotto, il giocatore verra' venduto  alla lega esterna per il  valore sopra 
+indicato.
+Se  un presidente  non ha  sufficiente denaro  per pagare  la sua offerta, questa verra'  
+automaticamente ridotta. I presidenti  possono fare offerte condizionate solo ai lotti precedenti (i.e. 
+"paga 1000 per il 3o giocatore solo se non compro il primo" e'  accettato, mentre "paga 1000 per il 
+primo giocatore solo  se non compro  il 3o"  non  ha senso perche'  i lotti sono battutti nello stesso 
+ordine in cui sono presentati).
++ Tutti  i  presidenti  possono  chiedere  di  mettere giocatori all'asta. Durante la sessione nella 
+quale il  giocatore e' all'asta il presidente lo puo'  usare,  ma  deve  specificare  agli  altri presidenti 
+quante partite giochera'.  Altrimenti,  il  giocatore   si  riposera'  e,  se  possibile, guadagnera' un 
+punto di forma.
++ Se  per qualche  ragione un  presidente non  vuole vendere  un giocatore all'asta,  puo'  venderlo  
+alla  lega  esterna  per il valore specificato sopra.
++ Quando una societa'  ha un debito, deve pagare il  10% di interessi ogni sessione (i.e. quando 
+una societa' ha -300 M paga 30 M di interessi).
++ Alla  fine   della  stagione  tutti   i  tornei  (coppe   e  campionato) consegneranno i  premi ai 
+vincitori.  Questi premi rappresentano  sponsor, diritti televisivi, vendita di gadget, ecc.:
+vedi presentazione di stagione
+
+* Negoziazioni:
+I presidenti possono scambiare qualsiasi combinazione di giocatori, denaro e panchinari,  ma  lo  
+devono  dire   al  master,  che  deve  ricevere  la comunicazione  dell'accordo  da  entrambi  i  
+presidenti.  Il  master puo' decidere di vietare scambi manifestamente iniqui. Non sono permessi 
+scambi nelle ultime 3  sessioni della stagione. Tutti gli  scambi sono fatti alla fine della sessione (a 
+meno che il master non sia esplicitamente informato da entrambi i presidenti).
+
+* COSTRUIRE UNO STADIO PIU' GRANDE (VARIAZIONE RISPETTO ALLA SCORSA STAGIONE):
+Una  societa'  puo'  costruire  uno  stadio  piu'  grande  e  migliore,  e guadagnare  cosi' piu'  incassi 
+e  piu' punti  FC. Ciascun "livello" dello stadio costa un certo ammontare di  denaro e, alla fine 
+della stagione, lo stadio perde un livello  per vecchiaia e usura (a meno che  non sia gia' a livello 0).
+A fine stagione (sessione 12) c'e' la possibilita' di effettuare manutenzione
+allo stadio, in modo da conservare lo stato attuale con un costo inferiore.
+
+Ogni sessione il presidente puo' avanzare solo di un livello.
+
+Livello  Pubblico  Guadagno(M)  FC  COSTO(M) MANUTENZIONE(M) (VARIATO)
+   0      10000         -        7      -     -
+   1      25000       10/5       8     400   200
+   2      40000       20/10      9     800   400
+   3      55000       30/15     10    1200   600
+   4      70000       40/20     11    1600   800
+   5      85000       50/25     12    2000   1000
+
+(i.e. se una  societa' ha uno stadio di livello  minimo (0) e vuole averne uno di  livello 2, deve  
+pagare 400 M  per la prima  sessione, 800 per la seconda, per un  totale di 1200 M. Quando  ha 
+lo stadio di livello  2 ha 9 punti FC  e guadagna 20  M in piu'  per ogni partita  in casa. La  squadra 
+ospite guadagna  10 M in piu'  del normale). Per guadagnare  un livello il presidente  deve 
+semplicemente  dirlo al  master. Dalla  prossima sessione avra' costruito  lo stadio e  potra' 
+usare i  punti FC. Anche  una piccola societa' puo' avere un pubblico di  85000 persone avendo un 
+grosso stadio.
+
+* Posso scommettere?
+Il Totocalcio a Beppiland esiste.  Ogni sessione ogni squadra puo' puntare su 4 partite scelte a 
+caso dal master; ogni colonna (di 4 partite) costa 5 M.  Ogni  volta  che  una  squadra  vince  
+riceve  30  M + l'ammontare del montepremi, se non vince nessuno il montepremi viene 
+mantenuto la sessione successiva.  Il masimo  numero di  colonne per  ogni sessione  e per  ogni 
+squadra  e' 12.  Se la  propria  squadra  compare nel  totocalcio si  puo' ovviamente  barare, ma  
+se il  master si  accorge che  alcune partite sono state falsificate per vincere al totocalcio puo' 
+prendere  seri provvedimenti.
+
+* Autogoal:
+Ogni  tiro avversario  puo' essere  deviato da  un Di,  un Ce  o il  Li se presente e causare un 
+autogoal.
++ La  probabilita'  che  il  tiro  sia  toccato  e'  uguale  al numero dei difensori, +1 se e' presente il  
+libero, piu' il numero dei centrocampisti /2,  il tutto  diviso  per  10 (i.e  un 4-2-4  per ogni   tiro ha  
+5/10 di probabilita' che esso venga toccato, un 4-3-3 ha un 5.5/10).
++ Se il tiro e' stato toccato la  probabilita' che il tiro venga deviato e causi un autogoal (contro cui il 
+portiere non puo' niente) e' data da:
+%Probabilita'  Eta' del gioc.
+    0.9           P, J, I
+    0.6             II
+    0.3             III
+    0.05         IV o piu'
+Cosi'  una formazione  piu' esperta  rischiera' meno  di subire  autogoal.
+
+* Tempo atmosferico:
+Le condizioni  del tempo possono  influenzare il gioco  di una squadra,  o perfino  costringere  
+l'arbitro  a  sospendere  la  partita.  Insieme  col calendario della  sessione successiva c'e' anche  
+sempre il bollettino con le previsioni del  tempo, che hanno una probabilita'  di essere giuste che 
+dipende dalla distanza della partita.
+La giornata puo' essere soleggiata o piovosa.
+Nel primo caso  non vi sono differenze. Nel secondo  caso il tempo su ogni singolo  stadio  puo'  
+essere  coperto,   oppure  puo'  stare  piovendo  o diluviando, o addirittura l'arbitro puo'  essere 
+costretto a sospendere la partita.
+C'e' sempre un 60% che la giornata sia soleggiata.
+Se la  giornata e' piovosa,  c'e' il 57.5%  che il tempo  sia coperto e il campo perfetto, il 25% che 
+piova (gli At delle due squadre vengono ridotti a 4/5 del valore originario dopo tutte  le modifiche), 
+il 12.5% che diluvi (gli At  ridotti a 2/3  e Ce e  Di a 4/5),  e il 5%  che la partita  venga sospesa  
+(nel  qual  caso  infortuni,  punti  disciplinari, fatica e punti esperienza contano esattamente come 
+se  la partita fosse stata giocata, ma non vengono contati i goal).
+
+* Pacche sulle Spalle (PS):
+Le PS sono punti jolly che il  presidente puo' ricevere dal master per una buona sessione,  o per 
+commenti,  consigli, o qualsiasi  altra ragione che possa  far  meritare  un  premio  o  una  
+consolazione.  1  PS puo' essere convertita in 1  PA, o 1 PGP, o  20 M. In certi casi  il master puo' 
+anche togliere PS ai presidenti.
+
+
+* Arbitri 
+A Beppiland, come in tutte le partite di calcio, esistono dei personaggi che arbitrano le partite. 
+Ed ognuno di questi personaggi ha un nome e delle carattestiche ben precise: la maggior parte 
+sono arbitri normali, ma tra alcuni c'e' chi ha il fischietto facile, c'e' chi lascia correre 
+maggiormente, c'e' chi espelle alla prima protesta, ecc...
+Tecnicamente, su un totale di 40 arbitri disponibili, circa 15-20 hanno delle caratteristiche
+speciali, cioe' variano leggermente le percentuali di ammonizioni e/o espulsioni e/o rigori.
+la lista e' stata pubblicata sulla Beppiland Gazette n.21: richiederla al master se interessa.
+
+
+* Corrompere l'arbitro:
+Ciascun  presidente puo'  corrompere l'arbitro  per una  (non piu' di una) partita della sessione 
+successiva, ma gli costera' parecchio.
+Con 1000  M un presidente puo'  chiedere all'arbitro di fare  il possibile per vincere la partita, con 
+500 M il presidente puo' chiedere un rigore, e ci sara'  un 50% di probabilita'  che verra' dato (un  
+presidente non puo' corrompere l'arbitro chiedendogli  sia di vincere sia di  avere un rigore, cosi' 
+come non puo' chiedergli piu'  di un rigore). Se entrambe le squadre coinvolte spendono soldi per 
+corrompere l'arbitro (anche se una spende 500 e l'altra 1000),  l'arbitro non prendera'  nessuna 
+decisione, si  terra' isoldi e la partita sara' giocata normalmente.
+Ogni  volta  che   un  presidente  corrompe  l'arbitro  c'e'   un  25%  di probabilita'  che venga  
+scoperto: in  quel caso  il match  e' perso  e la societa' si  vedra' tutte le PS  ridotte a 0 e  una 
+multa di 500  M (se la squadra non dovesse avere abbastanza  denaro il master puo' vendere 
+alcuni giocatori alla lega esterna per raggiungere la cifra); se la partita e' di campionato la societa' 
+avra' 5 punti di penalita', in una partita di coppa l'altra squadra passera' il turno. Nessun altro 
+arbitro accettera' piu' di essere corrotto da  quella societa' per la stagione  corrente. Gli arbitri di 
+Beppiland inoltre, per la  loro grande integrita' morale, non accettano di essere corrotti nelle ultime 
+3 sessioni della stagione.
+Il meccanismo col  quale il master simula l'arbitro  corrotto e': gioco la partita 5  volte, fermandomi 
+se  la squadra pagante  vince. Se questo  non succede  mai,  gioco  la  partita  altre  5  volte,  
+fermandomi in caso di vittoria o pareggio.  Se ancora nessuno dei tentativi  e' andato in porto, 
+l'undicesima partita sara' definitiva qualunque sia il risultato.
+
+* Struttura del campionato:
+VEDI PRESENTAZIONE DI STAGIONE
+
+* Comunicazione delle squadre:
+Il   master   accetta   qualsiasi   insieme   di  comandi  ragionevolmente comprensibile.  Per 
+giocare  via carta  la cosa  migliore e' utilizzare lo schema che il master spedira' a tutti  i presidenti 
+di volta in volta, per giocare via  modem procurarsi il client  (MsDos) scritto da me.  Lo schema 
+includera' tutti  i giocatori con  l'attuale abilita' e  forma e tutte  le partite da giocare.  Una "X" 
+all'incrocio fra un  giocatore ed una partita indichera' che quel giocatore sara' presente nella propria 
+posizione nalla formazione mandata  in campo per  quella partita. Se  invece della "X"  e' presente 
+l'iniziale  di una posizione  (L, D, C,  A) significhera' che  il giocatore sara' presente fuori-ruolo (o 
+che il giocatore e' doppio ruolo).
+Non  e'  necessario  specificare  anche  i  totali  d'area, e' sufficiente indicare dove aggiungere  i 
+punti extra (FC, PGP,  ecc.). Qualsiasi errore sara' corretto dal master in maniera ragionevole.
+Esempio:
+Nome    Ruolo.Lato Eta' Ab+Fo Ruoli nelle partite
+                                              -1--2--3-
+Babybaby  Po       III   9+1       x  x  x
+Pinozzo   Li.S+D   II    7+0           x  x    <- S&D sul Li solo se OOP!
+Erbullo   Li.S     P     4+2         x
+Giuanin   Di.D     I    10+1       x  C  C    <- gioca OOP!
+Erfigo    Di/Ce.S  II    8-1         D  D  C    <- giocatore doppio ruolo!
+... ecc.
+
+
+
+* Marcatori:
+I marcatori, cosi' come i minuti dei goal, verranno decisi con una formula randomizzata che 
+consideri i migliori  giocatori, la posizione dalla quale e' partito il  tiro e la forma del giocatore.  Un 
+numero viene assegnato a ciascun giocatore ed il giocatore col numero piu' alto sara' il marcatore.
+Il numero vien calcolato cosi':
+Se il giocatore gioca nell'area che ha generato il tiro: un numero casuale fra 0 e (Ab + 3*Fo)
+Se il giocatore fa parte di un'altra area: un numero casuale fra 0 e (Ab + 3*Fo)/1.75
+Se il giocatore e' un portiere: un numero casuale fra 0 e 3.
+
+* Amichevoli (VARIATO):
+Le   amichevoli  sono   permesse, per un massimo di 3 alla stagione e 
+di 1 per sessione. In piu' si possono giocare solo in sessioni dove non si hanno piu' di 
+2 partite da giocare.
+Ciascun   giocatore  puo'   organizzare amichevoli,  ed   il master  le  giochera'   semplicemente 
+ ricevendo  le formazioni. Non  sara' ottenuto alcun guadagno con le  amichevoli (a meno che
+ non sia giocato un torneo chiedendo una iscrizione a tutte le squadre partecipanti),  non ci  
+saranno punti  FC, la  durezza massima  sara' 4. I giovani 
+possono usare le amichevoli come punti esperienza e gli adulti per guadagnare partite fuori ruolo.
+
+* Fine della stagione:
++ Alla fine della stagione tutti i giocatori sono invecchiati di un anno.
++ A  tutti i  giocatori adulti  viene ridotta  l'abilita' della  loro eta' (i.e. un giocatore V 10 diventa VI 
+4). Un giocatore che si vede l'abilita' ridotta ad un  valore inferiore a 2 si  deve ritirare 
+immediatamente. Puo' essere pensionato per  diventare un panchinaro, ma questo  prima di 
+essere invecchiato (cosi' anche  da panchinaro invecchiera' di un  anno e durera' quindi una sola 
+stagione).
++ I Primavera diventano Juniores mantenendo i loro punti esperienza.
++ Gli  Juniores  diventano  giocatori  di  eta'  I,  ma  si  ritirano  per depressione se la loro abilita' e' 
+minore di 5.
++ I  panchinari di  eta' I  diventano di  eta' II,  quelli di  eta' II  si ritirano.
++ Lo stadio perde un livello (a meno che non sia gia' a 0).
++ Per ciascun giocatore i PD  vengono arrotondati alla decina piu' vicina, e quindi diminuiti di 20 
+(ovviamente senza andare sottozero).
++ I giocatori che non hanno raggiunto un numero di partite sufficienti per diventare doppio ruolo 
+perderanno i punti OOP.
++ I  PGP vengono  resettati a  30 (non  possono essere  trasferiti da  una stagione ad un'altra).
++ Tutti gli adulti hanno forma 0, tutti gli Juniores forma +2.
++ Possono venire scoperti i 6 Primavera (abilita' 2, forma +2, massimo due mancini).
+
+* NMR (No Move Received) e scadenze:
+La scadenza  sara' approsimativamente mensile. Nel  caso un presidente non riesca a spedirmi in 
+tempo i suoi  comandi giochero' io per lui le partite col miglior 4-3-3 (col Li e  senza CAT) 
+disponibile, durezza 0, nessun PGP ne'  punti del  Tattico, nessaun   offerta all'asta,  punti FC  in 
+difesa allenamento solo sulle  forme e PA eventualmente ridotti  (solo 15 possono essere trasferiti 
+da sessione a sessione).
+Come potete  vedere non sono molto  cattivo coi presidenti indisciplinati, non  mi  sembra  il  caso,  
+siamo  qui  per  divertirci e un problema puo' capitare a tutti, pero' cerchiamo di collaborare, 
+grazie!
+Nessun  presidente  sara'  cacciato  dalla  squadra  a  meno che non venga chiesto esplicitamente 
+da lui.
+
+
+* ...altro:
++ Informazioni rivelate: ciascuna partita  mostrera' (a parte il risultato e i  marcatori)  per  ciascuna  
+squadra  le  formazioni (i.e. "4-2-4"), il numero  di  tiri  e  di  parate,  ammoniti,  espulsi  ed 
+infortunati, e le condizioni del tempo.
++ Il  rigorista  viene  scelto  automaticamente  come  il  migliore  (dopo infortuni ed espulsioni).
++ Questo e' un esempio di un report di uno scout:
+I Pini       (2): 15( 5) - 0    - 43     - 55( 7) - 21
+Le Giuggiole (1): 10( 4) - 0    - 33( 1) - 45( 6) - 32( 1)  CAT TFG
+I primi numeri sono  il risultato, poi vi sono i  valori totali delle aree (Po,  Li, Di,  Ce, At)  dopo tutte  
+le modifiche  (punti extra, infortuni, espulsioni, pioggia),  e di fianco ai  totali fra parentesi i  punti 
+extra usati.
++ Per favore aiutatemi (chi non  e' telematico) e scrivetemi ogni sessione sulla busta o sulla lettera 
+il vostro indirizzo!
++ Ovviamente queste regole  non sono perfette, cosi' come  non lo sono io. Errori possono 
+capitare,  ed ogni annotazione d'errore o  consiglio e' ben accetto!
++ Tutti i calcoli nelle partite sono arrotondati per eccesso.
++ Il master puo' vendere giocatori di  una squadra alla lega esterna se la economia della societa' 
+sta andando sotto il massimo debito di -1000 M.
++ Tutti i dati che i giocatori mandano  al master sono tenuti dal master e non restituiti (per avere un 
+archivio in caso di errore).
+
+                          ** Il master (GM) **
+La decisione del  master e' sempre definitiva; il  master ha ragione anche quando ha torto!
+
+
+Per  finire,  un  ringraziamento  a  chiunque  abbia  aiutato a fare e scrivere queste regole. 
+Naturalmente  un ringraziamento particolare a ALAN PARR, MARTIN BURROUGHS e MASSIMO 
+MONCIARDINI.

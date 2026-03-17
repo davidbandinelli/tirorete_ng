@@ -1,0 +1,528 @@
+
+Salve a tutti i presidenti di CalcioMania!
+
+Ricominciano gli errori del master :(
+Non avevo segnalato la tattica di PANCIATICHI, acquistato dai BRI: Š 226.
+---
+Due  squadre mi sono state portate con  un abbondante ritardo e mi hanno
+costretto ad un super-lavoro di notte... PP e sanzioni varie applicate.
+---
+Comunicato dal computer dell'ASTERIX:
+
+  program Presentazione;
+  uses To_play_Tirorete;
+  const THE_AUTHOR = 'Beppi Menozzi';
+  begin
+     Buongiorno;
+     Mi_presento ('Sono DEEP_PITCH, programma in grado di giocare a TR!');
+     In_Realta (Non_so, Fare_proprio, Tutto_tutto, THE_AUTHOR, Deve_aiutarmi);
+     Qualche_volta;
+     Ma_So_Gestire (Lista_di_Cose);
+     Per_cui := 'State attenti!';
+     Arrivederci (e, grazie);
+  end.
+
+  Commenti:
+  Lista_Di_Cose e' definito esternamente come array contenente:
+  . Fuori ruolo
+  . Doppio ruolo
+  . Tattica ottimale dato il livello presunto dell'avversario (sconosciuto)
+  . Uso del tattico
+  . Allenamento ottimizzato
+  . Crescita dei giovani
+  . Creazione dei primavera
+  . Uso dei PGP, D, FC
+  . Culo
+  Ancora  moltissime  cose mancano, il  programma e' in evoluzione e
+  puo'  cambiare nel tempo, ciononostante  l'ultima e' senz'altro la
+  piu' importante.
+
+---
+Cambiamenti nelle rose:
+AST trasforma FALBALA' in ALL
+
+---
+III giornata di campionato:
+---
+ASTERIX            - GRANDE SLAM           Partita a reti inviolate ma scon-
+          0                   0            tro  comunque divertente ed aper-
+                                           to.
+
+16 Tiri, 3-5-2      10 Tiri, 3-2-5
+                    Amm.HLASEK
+Inf.FANTIX     (-0) Inf.ROSSET     (-0)
+---
+BIRDS&AFFINI       - MIDDLE LAND           Il  PALO al 27' di BERTA MIN. il-
+          0                   2            lude  il pubblico, ma l'uscita di
+                                           TARABUSO  sul  finire  del  primo
+                    PEREGRINO   (R) 11'    tempo spegne ogni speranza.
+                    PEREGRINO       57'
+
+10 Tiri, 2-4-4      13 Tiri, 2-4-4
+                    Esp.ELLADAN
+Amm.KIVI
+Inf.TARABUSO   (-4)
+---
+                                                 Sess. 2     Pag 1
+
+U.C. LA RIBOTTA    - MEXCAL FC             La RIB riesce a tenere gli attac-
+          0                   1            canti  lontano dalla propria por-
+                                           ta,  ma un rigore ineccepibile l'
+                    PORTO       (R) 23'    incontro.
+
+0 Tiri, 3-5-2       19 Tiri, 2-4-4
+                    Amm.HEINEKEN
+---
+COMIX R.R.         - BRINDELLONI           Partita a senso unico. I campioni
+          4                   0            in carica impongono senza fatica-
+                                           re troppo il proprio gioco.
+Ivanos          36'
+HULK            50'
+MARTA           54'
+MARTA           77'
+
+                    R.sb. CERRETANI 52'
+35 Tiri, 3-2-5      4 Tiri, 4-4-2
+Amm.CIUCCIOLO
+Inf.PISCIOLO   (-3)
+---
+LA CRISI           - RIDLEY SCOTT UTD      La CRI aspetta un tempo per pren-
+          3                   0            dere bene la mira, ed affonda gli
+                                           ospiti nella ripresa.
+ANTELLA         58'
+IL_DENTE        69'
+ANGOLINO        71'
+
+23 Tiri, 4-2-4      0 Tiri, 4-3-3
+---
+OLTRE LA CRISI     - DINAMO SPERMA         Partita  dura il giusto, ma l'ar-
+          2                   1            bitro ha dimenticato i cartellini
+                                           a casa, e si rifa' assegnando ri-
+IL_RE_LECCONE   57' SKIZZO      (R)  7'    gori  dubbi: uno di  essi a tempo
+BUON_TROMBO (R) 91'                        scaduto decide la partita.
+
+11 Tiri, 4-2-4      0 Tiri, 4-4-2
+Inf.UOMO_DI_FIC(-5) Inf.KAZZAKISTAN(-0)
+---
+IV  giornata di campionato:
+---
+BRINDELLONI        - U.C. LA RIBOTTA       Ancora un rigore dubbio decide il
+          1                   1            risultato: i padroni di casa gio-
+                                           cano meglio, ma il PALO al 60' di
+GUICCIARDINI    26' GARAGOLO    (R) 37'    STROZZI  Š l'ultima vera occasio-
+                                           ne.
+29 Tiri, 2-2-6      0 Tiri, 5-2-3
+                    Amm.PENNELLONE
+Inf.STROZZI    (-2)
+Inf.RIMBOTTI   (-0)
+---
+DINAMO SPERMA      - BIRDS&AFFINI          Partita senza storia: incredibile
+          0                   2            il  fischio  dell'arbitro  al 75'
+                                           che  annulla il gol di BERTA MIN.
+                    BERTA_MINORE    22'    per "liberazione vietata"!
+                    Joko_Poko       43'
+
+1 Tiri, 3-2-5       44 Tiri, 2-4-4
+                    Esp.EXPAX
+Amm.METRO           Amm.BARBAGIANNI
+Inf.SKIZZO     (-2) Inf.KIVI       (-1)
+---
+
+
+                                                 Sess. 2     Pag 2
+
+GRANDE SLAM        - LA CRISI              La  SLA chiude la  pratica in po-
+          7                   0            chissimi minuti, poi si dedica al
+                                           tiro  a bersaglio:  KAFELNIKOV ne
+ROSSET           2'                        approfitta e cerca la gloria per-
+P.MCENROE        6'                        sonale.  Bellissima  l'azione che
+DOZEDEL         25'                        porta al PALO di DOZEDEL al 50'.
+KAFELNIKOV      29'
+KAFELNIKOV      54'
+KAFELNIKOV      70'
+KAFELNIKOV      76'
+
+43 Tiri, 3-2-5      0 Tiri, 5-3-2
+Amm.KRAJICEK
+Amm.ENQUIST_Jr
+Inf.ENQUIST_Jr (-0) Inf.SONOVENUTO (-0)
+Inf.MUSTER     (-4)
+---
+MEXCAL FC          - ASTERIX               L'AST  perde la vetta in una par-
+          1                   0            tita  incredibile:  fantastica la
+                                           prestazione di BITTER.
+MARTINI     (R) 62'
+
+0 Tiri, 4-3-3       17 Tiri, 3-5-2
+Esp.MARTINI
+                    Inf.QUATTROCCHI(-0)
+---
+MIDDLE LAND        - COMIX R.R.            Nello  scontro al  vertice la COM
+          0                   1            trova  una vittoria cercata ripe-
+                                           tutamente durante tutti i 90'. La
+                    MARTA           38'    MDL  perde  in  pratica  tutte le
+                                           speranze  con  il PALO  al 13' di
+26 Tiri, 3-2-5      23 Tiri, 2-6-2         ARWEN.
+Amm.PEREGRINO
+---
+RIDLEY SCOTT UTD   - OLTRE LA CRISI        In  una  partita  in  cui  le due
+          0                   1            squadre si schierano prudentissi-
+                                           me e cercano un pareggino, il gol
+                    METTIM.QUO      17'    Š  davvero  un  caso:  infatti il
+                                           giovane   METTIM.QUO   segna  per
+1 Tiri, 4-3-3       2 Tiri, 3-3-4          sbaglio, con un ripallo...
+---
+Coppa Italia
+Girone A
+---
+ASTERIX            - DINAMO SPERMA         La  DSP sorprende  l'AST, ma deve
+          0                   0            ringraziare METRO al 70'.
+
+
+R.sb. FANTIX    70'
+6 Tiri, 5-3-2       11 Tiri, 3-2-5
+Amm.FANTIX
+---
+OLTRE LA CRISI     - GRANDE SLAM           Partita  speculativa  della  SLA,
+          0                   3            che in contropiede si inventa una
+                                           vittoria forse immeritata.
+                    BECKER           8'
+                    ROSSET          25'
+                    ROSSET          26'
+
+37 Tiri, 4-2-4      13 Tiri, 3-2-5
+                    Esp.KAFELNIKOV
+Amm.SIRIO
+Inf.TROMBEGGERR(-0)
+Inf.BUON_TROMBO(-0)
+                                                 Sess. 2     Pag 3
+
+GRANDE SLAM        - DINAMO SPERMA         Partita   scoppiettante!  La  SLA
+          6                   3            chiude  sul 4-1 il  primo tempo e
+                                           si  limita nel  secondo a rispon-
+EDBERG          26' TURGIDO         18'    dere ad ogni gol degli ospiti con
+EDBERG          34' RITTO           61'    KAFELNIKOV.
+EDBERG          35' SKIZZO          73'
+STICH           44'
+KAFELNIKOV      62'
+KAFELNIKOV      72'
+
+39 Tiri, 3-2-5      37 Tiri, 3-2-5
+---
+ASTERIX            - OLTRE LA CRISI        ASTERIX salva nei minuti di recu-
+          2                   1            pero il primo posto del girone.
+
+PISPOLA         38' HIGHGLANDER     14'
+ASTERIX         91'
+
+17 Tiri, 3-5-2      6 Tiri, 5-3-2
+                    Inf.PEN_DUR    (-0)
+---
+Girone B
+---
+COMIX R.R.         - MIDDLE LAND           Ancora uno scontro tra i campioni
+          2                   0            e  la fortissima  compagine dell'
+                                           MDL:  Ivanos  e  BOROMIR si fanno
+BUDELLO         28'                        espellere  quasi subito, e la di-
+HULK            43'                        fesa  ospite senza  un uomo capi-
+                                           tola due volte.
+16 Tiri, 2-4-4      15 Tiri, 2-4-4
+Esp.Ivanos          Esp.BOROMIR
+Amm.KRUG            Amm.DENETHOR
+Amm.CIUCCIOLO       Amm.D.PIEDIFERRO
+Inf.CIUCCIOLO  (-0)
+---
+BIRDS&AFFINI       - BRINDELLONI           Gli  ospiti sono molto pi— preci-
+          0                   4            si: gi… al 22' la partita Š deci-
+                                           sa,  e  tutti gli  sforzi dei BRD
+                    STROZZI          9'    non servono a nulla.
+                    MONTAUTO        18'
+                    ALLOCCO     (A) 22'
+                    GUICCIARDINI    63'
+
+28 Tiri, 2-4-4      21 Tiri, 4-2-4
+                    Amm.MARTELLI
+Inf.PISQUANO   (-1) Inf.STROZZI    (-0)
+Inf.EXPAX      (-1)
+---
+BRINDELLONI        - MIDDLE LAND           I  BRI  incamerano  una  vittoria
+          3                   1            preziosissima:  REINMEN fa il suo
+                                           lavoro  e gli ospiti si ritrovano
+GUICCIARDINI    18' D.PIEDIFERRO    11'    con   un   attacco  assolutamente
+STROZZI         21'                        senza rifornimento e senza idee.
+MONTAUTO        68'                        Ottimo comunque l'inizio del nuo-
+                                           vo acquisto dell'MDL, DAIN.
+32 Tiri, 4-2-4      21 Tiri, 3-2-5
+Inf.SALVIATI   (-0)
+Inf.STROZZI    (-0)
+---
+
+
+
+
+
+                                                 Sess. 2     Pag 4
+
+COMIX R.R.         - BIRDS&AFFINI          Lezione  di calcio dei padroni di
+          4                   1            casa  ad  una  giovane formazione
+                                           avversaria.
+THOR            17' BERTA_MINORE(R) 64'
+PISCIOLO        29'
+HULK            41'
+PISCIOLO        85'
+
+58 Tiri, 3-2-5      0 Tiri, 4-2-4
+                    Inf.ALLOCCO    (-0)
+---
+Girone C
+---
+U.C. LA RIBOTTA    - RIDLEY SCOTT UTD      Il  risveglio dell'RSC avviene in
+          0                   4            coppa:  4-0  secco  e  la  RIB  Š
+                                           regolata agevolemente.
+                    BISHOP          24'
+                    STONE           28'
+                    SPUNKMEYER      32'
+                    SPUNKMEYER      88'
+
+0 Tiri, 4-4-2       30 Tiri, 3-2-5
+---
+MEXCAL FC          - LA CRISI              La  MEX  risponde  all'RSC con un
+          4                   0            altro imperioso 4-0.
+
+HOSE`_CUERVO    25'
+SANGRIA         76'
+MARTINI         84'
+TEQUILA_BB      87'
+
+49 Tiri, 2-4-4      0 Tiri, 5-3-2
+Amm.PORTO
+                    Inf.IL_GUERINO (-0)
+---
+LA CRISI           - RIDLEY SCOTT UTD      La  RSC  continua  l'inseguimento
+          1                   3            alla capolista MEX. Incandescente
+                                           il finale.
+LA_CAPSULA      84' HUDSON          52'
+                    FLORINA         69'
+                    DERVORIN        84'
+
+                    R.sb. SPUNKMEYER25'
+10 Tiri, 4-2-4      38 Tiri, 3-2-5
+Amm.ROBYSPAGNA
+                    Inf.FERRO      (-4)
+---
+U.C. LA RIBOTTA    - MEXCAL FC             La  giornata  del  quattro per il
+          0                   4            girone C si conlude qui. Ancora 4
+                                           gol,  e la MEX continua nella sua
+                    CURACAO          3'    fuga solitaria.
+                    BALLANTINES      4'
+                    DAIQUIRI         8'
+                    SANGRIA         73'
+
+0 Tiri, 4-4-2       32 Tiri, 2-4-4
+Inf.MANGIACATEN(-1)
+---
+
+
+
+
+
+
+                                                 Sess. 2     Pag 5
+
+Situazione Campionato:
+
+CALCIOMANIA ³PT³V.³N.³P.³GF³GS³ DR³PA³  PS  ³PGP³  M   ³
+ÚÄÄÄÄÄÄÄÄÄÄÄÅÄÄÅÄÄÅÄÄÅÄÄÅÄÄÅÄÄÅÄÄÄÅÄÄÅÄÄÄÄÄÄÅÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+³COMIX R.R. ³12³ 4³ 0³ 0³ 9³ 0³ +9³62³11(32)³ 30³ 33419³M.Servi
+³MIDDLE LAND³ 9³ 3³ 0³ 1³ 8³ 1³ +7³28³16(48)³ 30³ 33080³A.Bini
+³GRANDE SLAM³ 8³ 2³ 2³ 0³11³ 1³+10³54³ 4(21)³ 34³ 13720³M.Monciardini
+³ASTERIX    ³ 7³ 2³ 1³ 1³ 5³ 3³ +2³40³ 4(8) ³  -³ 45811³Deep Pitch
+³OLC        ³ 7³ 2³ 1³ 1³ 4³ 6³ -2³40³ 1(42)³ 30³ 36660³S.Gruttad'Auria
+³MEXCAL FC  ³ 6³ 2³ 0³ 2³ 2³ 4³ -2³59³ 3(15)³ 30³  7564³F.Volpi
+³LA RIBOTTA ³ 4³ 1³ 1³ 2³ 4³ 6³ -2³14³ 1(1) ³ 30³ 17400³G.Mataresi
+³BIRDS&AFF. ³ 4³ 1³ 1³ 2³ 3³ 6³ -3³30³ 0(33)³ 30³ 56570³G.Giuntini
+³BRINDELLONI³ 4³ 1³ 1³ 2³ 3³ 7³ -4³53³ 4(42)³ 30³ 31869³G.Cuminetti
+³LA CRISI   ³ 4³ 1³ 1³ 2³ 3³ 9³ -6³29³ 5(10)³ 30³ 37906³A.Panebianco
+³DINAMO SP. ³ 3³ 1³ 0³ 3³ 3³ 6³ -3³24³ 3(22)³ 30³ 43897³I.Casale
+³RIDLEYSCOTT³ 0³ 0³ 0³ 4³ 2³ 8³ -6³39³ 1(28)³ 30³  3143³D.Bandinelli
+ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÁÄÄÁÄÄÁÄÄÁÄÄÁÄÄÁÄÄÄÁÄÄÁÄÄÄÄÄÄÁÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+I campioni della COM si lasciano dietro MDL e AST, sorpassata
+quest'ultima anche da una SLA molto regolare.
+
+Coppa Italia
+Girone A           Girone B          Girone C
+AST   8  (3-1)     MDL   6  (8-9)    MEX  12 (16-1)
+DSP   4  (5-7)     BRI   9 (15-6)    RSC   9 (13-6)
+OLC   3  (2-6)     COM   9  (9-7)    CRI   3  (3-10)
+SLA   7  (9-5)     BRD   0  (3-13)   RIB   0  (0-13)
+
+La SLA risale la china nel girone A, e guarda con speranza lo scontro
+diretto con l'AST; nel girone B i favoritissimi MDL pagano una sessione
+tremenda con il doppio sorpasso di BRI e COM; nel C MEX a valanga su
+tutti, RSC in attesa dello scontro diretto.
+
+PS a MEX, COM e OLC per le doppie vittorie in campionato, a SLA, COM,
+BRI e MEX per il perfect in coppa.
+
+---
+
+Schedina:
+Colonne giocate: 7    Montepremi: 1700M
+Colonna vincente X 2 2  1 1 1  2 1 2  2 X 1 2
+Colonne vincenti: COM MDL CRI                 con 6 risultati indovinati
+
+---
+
+    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+ASTA³Ruolo Eta` Ab Fo       ³Nome         ³Squadra    M  ³
+ÚÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+³ 1)³MAS    J               ³1X           ³AST       3389³
+³ 2)³TAT    II        424L  ³TATTIX       ³AST       3200³
+³ 3)³A-S     I              ³N. CAMPBELL'S³BRI       2990³
+³ 4)³D       I   8  1       ³CINOCEFALO   ³BRD      10100³
+³ 5)³D     III   9  0       ³VENTATA      ³RIB       2800³
+³ 6)³D       I   6  1       ³CACCOLA      ³DSP       3101³dalla COM
+³ 7)³P      II  12  1       ³CRI 1000 BRI 1000 BRD 700   ³
+³ 8)³D      J    7 +2  3PG  ³LAVER        ³SLA      31000³
+ÀÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+La SLA paga una grossa cifra a Joq Al Rialz, ma si assicura LAVER!
+
+
+
+
+Fabio
+<\/></\>                                         Sess. 2     Pag 7
+
+SESSIONE III
+
+Scadenza della sessione 07/07/96
+
+---
+
+Campionato: quinta            Campionato: sesta
+
+ASTERIX     - DINAMO SP.      BIRDS&AFF.  - LA CRISI
+LA RIBOTTA  - RIDLEYSCOTT     BRINDELLONI - GRANDE SLAM
+COMIX R.R.  - GRANDE SLAM     DINAMO SP.  - COMIX R.R.
+LA CRISI    - MIDDLE LAND     MIDDLE LAND - LA RIBOTTA
+MEXCAL FC   - BIRDS&AFF.      OLC         - ASTERIX
+OLC         - BRINDELLONI     RIDLEYSCOTT - MEXCAL FC
+
+---
+
+Coppa Italia
+
+Girone A                  Girone B                  Girone C
+
+OLC        -DINAMO SP.    BIRDS&AFF. -MIDDLE LAND   MEXCAL FC  -RIDLEYSCOTT
+ASTERIX    -GRANDE SLAM   COMIX R.R. -BRINDELLONI   LA RIBOTTA -LA CRISI
+
+DINAMO SP. -ASTERIX       MIDDLE LAND-COMIX R.R.    RIDLEYSCOTT-LA RIBOTTA
+GRANDE SLAM-OLC           BRINDELLONI-BIRDS&AFF.    LA CRISI   -MEXCAL FC
+
+---                                                                                                                                                          ---
+
+Schedina:
+
+AST-DSP
+RIB-RSC
+COM-SLA
+MEX-BRD
+OLC-BRI
+BRD-CRI
+BRI-SLA
+MDL-RIB
+OLC-AST
+RSC-MEX
+AST-SLA (CI)
+COM-BRI (CI)
+MEX-RSC (CI)
+
+---
+
+Squalificati :
+
+per una giornata
+                 EXPAX         BRD             ELLADAN       MDL
+                 Ivanos        COM             BOROMIR       MDL
+                 CIUCCIOLO     AST             MARTINI       MEX
+                 KAFELNIKOV    SLA
+
+---
+
+
+
+
+
+
+
+
+                                                 Sess. 3     Pag 1
+
+    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+ASTA³Ruolo Eta` Ab Fo       ³Nome         ³Base d'asta   ³
+ÚÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+³ 1)³ALL    J               ³             ³   1500       ³
+³ 2)³D      P    4  1       ³             ³   2400       ³
+³ 3)³C      P    4  0       ³             ³   2400       ³
+³ 4)³A      P    4 -1       ³             ³   2400       ³
+³ 5)³P      II  12  1       ³             ³              ³Solo CRI BRI BRD
+ÀÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+RICORDATEVI  di  inserire il nome insieme  alle offerte, per i giocatori
+per cui l'acquisto Š immediato; offerte senza nome sono ignorate.
+
+---
+Bombarolo:             ³ Brutto e Cattivo:      ³ Ortopedica:
+KAFELNIKOV     SLA  6  ³ ELLADAN        MDL 18  ³ ALAN_FORD      COM  -5
+MONTAUTO       BRI  5  ³ CIUCCIOLO      COM 12  ³ ORGANETTO      BRD  -5
+STROZZI        BRI  5  ³ FLUIDO         DSP 10  ³ UOMO_DI_FICO   OLC  -5
+GUICCIARDINI   BRI  4  ³ KAFELNIKOV     SLA 10  ³ D'ALTAFRONTE   BRI  -5
+MARTA          COM  4  ³ EXPAX          BRD 10  ³ TARABUSO       BRD  -4
+PARNASIX       AST  4  ³ MARTINI        MEX 10  ³ MUSTER         SLA  -4
+SPUNKMEYER     RSC  4  ³ Joko_Poko      BRD 10  ³ COLATIX        AST  -4
+                       ³ BOROMIR        MDL 10  ³ FERRO          RSC  -4
+11 giocatori a 3       ³ Ivanos         COM 10  ³ LEGOLAS        MDL  -4
+                       ³ RUI_SOSTA      OLC 10  ³ Sfaticato      MDL  -4
+                       ³                        ³ VOLKOV         SLA  -4
+                       ³ 3 giocatori a 8        ³ CHIORBA        CRI  -4
+
+---
+
+Aggiornate alla scorsa sessione dal presidente della SLA:
+
+Ortopedica           Disciplina
+Squ  Ort  Inf Media  Squ  Dis A/E Media
+MDL  10.5  4  2.625  DSP   22  4  5.500
+AST   8.5  6  1.417  COM   16  4  4.000
+CRI   8    3  2.667  OLC   14  2  7.000
+BRI   8    6  1.333  CRI   12  4  4.000
+RIB   6.5  5  1.300  MEX   12  4  4.000
+BIR   5.5  2  2.750  BRI    8  2  4.000
+COM   5.5  2  2.750  MDL    8  2  4.000
+SLA   5.5  3  1.833  RSC    8  2  4.000
+DSP   5.5  5  1.100  RIB    8  2  4.000
+RSC   4    4  1.000  SLA    8  2  4.000
+OLC   2.5  3  0.833  AST    4  1  4.000
+MEX   1    2  0.500  BRD    4  1  4.000
+
+---
+
+OCCHIO AL CAPO!
+Martedi
+
+Giocatore        Impiegato           Entrata Punt.
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ
+A.Bini          ³ Falco Guz         ³ 9:05  ³ 64 Capuf. di Merc.
+G.Cuminetti     ³ Ku Ji Mo Sukoshi  ³ 9:23  ³ 82
+M.Monciardini   ³ Lello             ³ 9:27 C³ 51
+S.Gruttad'Auria ³ Anticipius        ³ 9:28  ³ 31
+D.Bandinelli    ³ Sergio Delay      ³ 9:32  ³ 27
+
+---
+
+
+Fabio
+<\/></\>                                         Sess. 3     Pag 2
