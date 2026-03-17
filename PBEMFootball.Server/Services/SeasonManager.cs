@@ -23,14 +23,28 @@ public class SeasonManager
             team.GreatPerformancePoints = 30;
         }
 
-        // Crea i campionati
-        season.Competitions.Add(CreateChampionship("Serie A", Division.SerieA, serieATeams));
-        season.Competitions.Add(CreateChampionship("Serie B", Division.SerieB, serieBTeams));
-        season.Competitions.Add(CreateChampionship("Serie C", Division.SerieC, serieCTeams));
+        // Crea i campionati solo per le divisioni con almeno 2 squadre (numero pari)
+        if (serieATeams.Count >= 2 && serieATeams.Count % 2 == 0)
+        {
+            season.Competitions.Add(CreateChampionship("Serie A", Division.SerieA, serieATeams));
+        }
 
-        // Crea le coppe (tutte le squadre già in allTeams)
-        // Coppa Beppiland - eliminazione diretta
-        season.Competitions.Add(CreateBeppilandCup(allTeams));
+        if (serieBTeams.Count >= 2 && serieBTeams.Count % 2 == 0)
+        {
+            season.Competitions.Add(CreateChampionship("Serie B", Division.SerieB, serieBTeams));
+        }
+
+        if (serieCTeams.Count >= 2 && serieCTeams.Count % 2 == 0)
+        {
+            season.Competitions.Add(CreateChampionship("Serie C", Division.SerieC, serieCTeams));
+        }
+
+        // Crea le coppe solo se ci sono squadre sufficienti
+        // Coppa Beppiland - eliminazione diretta (serve numero pari di squadre)
+        if (allTeams.Count >= 2 && allTeams.Count % 2 == 0)
+        {
+            season.Competitions.Add(CreateBeppilandCup(allTeams));
+        }
 
         // TODO: Coppa di Lega e Coppa Juniores (implementazione futura)
 

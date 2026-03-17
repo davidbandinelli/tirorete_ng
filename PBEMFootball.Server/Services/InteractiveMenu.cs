@@ -58,6 +58,7 @@ public class InteractiveMenu
             Console.WriteLine("║ 9. Salva squadre in JSON                                               ║");
             Console.WriteLine("║ 10. Carica squadre da JSON                                             ║");
             Console.WriteLine("║ 11. Visualizza dettagli squadra                                        ║");
+            Console.WriteLine("║ 12. Visualizza calendario competizioni                                 ║");
             Console.WriteLine("║ 0. Esci                                                                ║");
             Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
             Console.Write("\nScegli un'opzione: ");
@@ -99,6 +100,9 @@ public class InteractiveMenu
                 case "11":
                     DisplayTeamDetails();
                     break;
+                case "12":
+                    DisplayCalendar();
+                    break;
                 case "0":
                     exit = true;
                     break;
@@ -107,7 +111,7 @@ public class InteractiveMenu
                     break;
             }
 
-            if (!exit && choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5" && choice != "6" && choice != "7" && choice != "8" && choice != "9" && choice != "10" && choice != "11")
+            if (!exit && choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5" && choice != "6" && choice != "7" && choice != "8" && choice != "9" && choice != "10" && choice != "11" && choice != "12")
             {
                 Console.WriteLine("\nPremi un tasto per continuare...");
                 Console.ReadKey();
@@ -206,10 +210,20 @@ public class InteractiveMenu
         Console.Clear();
         Console.WriteLine("=== CREAZIONE NUOVA STAGIONE ===\n");
 
-        if (_allTeams.Count < 3)
+        if (_allTeams.Count < 2)
         {
-            Console.WriteLine("Errore: servono almeno 3 squadre per creare una stagione!");
-            Console.WriteLine("Usa l'opzione 1 per inserire le squadre.");
+            Console.WriteLine("Errore: servono almeno 2 squadre per creare una stagione!");
+            Console.WriteLine("Usa l'opzione 1 per inserire le squadre o l'opzione 8 per generarle.");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        if (_allTeams.Count % 2 != 0)
+        {
+            Console.WriteLine($"Errore: il numero di squadre deve essere pari per il calendario Round-Robin!");
+            Console.WriteLine($"Squadre attuali: {_allTeams.Count}");
+            Console.WriteLine("Aggiungi o rimuovi una squadra per avere un numero pari.");
             Console.WriteLine("\nPremi un tasto per continuare...");
             Console.ReadKey();
             return;
@@ -224,13 +238,20 @@ public class InteractiveMenu
         var serieBTeams = new List<Team>();
         var serieCTeams = new List<Team>();
 
-        _currentSeason = _seasonManager.CreateSeason(year, serieATeams, serieBTeams, serieCTeams);
+        try
+        {
+            _currentSeason = _seasonManager.CreateSeason(year, serieATeams, serieBTeams, serieCTeams);
 
-        Console.WriteLine($"\n✓ Stagione {year} creata con successo!");
-        Console.WriteLine($"  - Squadre in Serie A: {serieATeams.Count}");
-        Console.WriteLine($"  - Competizioni create: {_currentSeason.Competitions.Count}");
-        Console.WriteLine($"  - Sessioni di gioco: {_currentSeason.Sessions.Count}");
-        Console.WriteLine($"  - Partite totali: {_currentSeason.Sessions.Sum(s => s.Matches.Count)}");
+            Console.WriteLine($"\n✓ Stagione {year} creata con successo!");
+            Console.WriteLine($"  - Squadre in Serie A: {serieATeams.Count}");
+            Console.WriteLine($"  - Competizioni create: {_currentSeason.Competitions.Count}");
+            Console.WriteLine($"  - Sessioni di gioco: {_currentSeason.Sessions.Count}");
+            Console.WriteLine($"  - Partite totali: {_currentSeason.Sessions.Sum(s => s.Matches.Count)}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n[ERRORE] Impossibile creare la stagione: {ex.Message}");
+        }
 
         Console.WriteLine("\nPremi un tasto per continuare...");
         Console.ReadKey();
@@ -851,6 +872,122 @@ public class InteractiveMenu
         Console.WriteLine("  Status: [INF]=Infortunato (Fo <= -3), [!PD]=Rischio ammonizione (PD >= 8)");
         Console.WriteLine($"\nTotale giocatori: {selectedTeam.Players.Count}");
         Console.WriteLine($"Totale staff: {selectedTeam.Staff.Count}");
+
+        Console.WriteLine("\nPremi un tasto per continuare...");
+        Console.ReadKey();
+    }
+
+    private void DisplayCalendar()
+    {
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine(CreateTableRow(" CALENDARIO COMPETIZIONI "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        if (_currentSeason == null)
+        {
+            Console.WriteLine(CreateTableRow(" Nessuna stagione attiva. Usa l'opzione 3 per creare una stagione. "));
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        if (_currentSeason.Competitions.Count == 0)
+        {
+            Console.WriteLine(CreateTableRow(" Nessuna competizione trovata. "));
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        // Mostra elenco competizioni disponibili
+        Console.WriteLine(CreateTableRow(" COMPETIZIONI DISPONIBILI "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        for (int i = 0; i < _currentSeason.Competitions.Count; i++)
+        {
+            var comp = _currentSeason.Competitions[i];
+            string status = comp.IsCompleted ? "[COMPLETATA]" : $"[Giornata {comp.CurrentRound}]";
+            string content = $" {(i + 1),2}. {comp.Name,-35} {status,-20} ";
+            Console.WriteLine(CreateTableRow(content));
+        }
+
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+        Console.WriteLine(CreateTableRow(" 0. Torna al menu principale "));
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+        Console.Write("\nSeleziona competizione (numero): ");
+        string? input = Console.ReadLine();
+
+        if (!int.TryParse(input, out int compIndex) || compIndex == 0 || compIndex > _currentSeason.Competitions.Count)
+        {
+            return;
+        }
+
+        var selectedComp = _currentSeason.Competitions[compIndex - 1];
+        DisplayCompetitionCalendar(selectedComp);
+    }
+
+    private void DisplayCompetitionCalendar(Competition competition)
+    {
+        Console.Clear();
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine(CreateTableRow($" CALENDARIO: {competition.Name.ToUpper()} "));
+        Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+        if (competition.Matches.Count == 0)
+        {
+            Console.WriteLine(CreateTableRow(" Nessuna partita programmata. "));
+            Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("\nPremi un tasto per continuare...");
+            Console.ReadKey();
+            return;
+        }
+
+        // Raggruppa le partite per giornata/turno
+        var matchesByRound = competition.Matches
+            .GroupBy(m => m.Round)
+            .OrderBy(g => g.Key)
+            .ToList();
+
+        foreach (var roundGroup in matchesByRound)
+        {
+            int round = roundGroup.Key;
+            string roundTitle = competition.Type == CompetitionType.Championship 
+                ? $"GIORNATA {round}" 
+                : $"TURNO {round}";
+
+            Console.WriteLine(CreateTableRow($" {roundTitle} "));
+            Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+
+            foreach (var match in roundGroup.OrderBy(m => m.HomeTeam.Name))
+            {
+                string result;
+                if (match.IsPlayed)
+                {
+                    result = $"{match.HomeTeam.Name,-25} {match.HomeGoals}-{match.AwayGoals} {match.AwayTeam.Name,-25}";
+                }
+                else
+                {
+                    result = $"{match.HomeTeam.Name,-25} vs {match.AwayTeam.Name,-25}";
+                }
+
+                string status = match.IsPlayed ? "[GIOCATA]" : "[DA GIOCARE]";
+                string content = $" {result} {status,-12} ";
+                Console.WriteLine(CreateTableRow(content));
+            }
+
+            Console.WriteLine("╠════════════════════════════════════════════════════════════════════════╣");
+        }
+
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝");
+
+        Console.WriteLine($"\nTotale giornate/turni: {matchesByRound.Count}");
+        Console.WriteLine($"Partite totali: {competition.Matches.Count}");
+        Console.WriteLine($"Partite giocate: {competition.Matches.Count(m => m.IsPlayed)}");
+        Console.WriteLine($"Partite da giocare: {competition.Matches.Count(m => !m.IsPlayed)}");
 
         Console.WriteLine("\nPremi un tasto per continuare...");
         Console.ReadKey();
