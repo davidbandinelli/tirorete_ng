@@ -13,6 +13,7 @@ public enum MatchEventType
     YellowCard,
     RedCard,
     Injury,
+    AreaReduction,
     Save,
     MissedShot,
     HitPost

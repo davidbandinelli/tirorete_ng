@@ -439,6 +439,13 @@ public class InteractiveMenu
             var trackedHomeTeam = ResolveTrackedTeam(match.HomeTeam);
             var trackedAwayTeam = ResolveTrackedTeam(match.AwayTeam);
 
+            var homeSuspendedBeforeMatch = trackedHomeTeam.Players
+                .Where(p => p.DisciplinePoints >= 10)
+                .ToList();
+            var awaySuspendedBeforeMatch = trackedAwayTeam.Players
+                .Where(p => p.DisciplinePoints >= 10)
+                .ToList();
+
             var (homeFormation, homeTactics, homeModule) = CreateRandomFormationAndTactics(match.HomeTeam, null);
             var (awayFormation, awayTactics, _) = CreateRandomFormationAndTactics(match.AwayTeam, homeModule);
 
@@ -457,6 +464,16 @@ public class InteractiveMenu
 
             SynchronizeTeamPlayerSeasonStats(match.HomeTeam, match.HomeFormation);
             SynchronizeTeamPlayerSeasonStats(match.AwayTeam, match.AwayFormation);
+
+            foreach (var suspendedPlayer in homeSuspendedBeforeMatch)
+            {
+                suspendedPlayer.DisciplinePoints = Math.Max(0, suspendedPlayer.DisciplinePoints - 10);
+            }
+
+            foreach (var suspendedPlayer in awaySuspendedBeforeMatch)
+            {
+                suspendedPlayer.DisciplinePoints = Math.Max(0, suspendedPlayer.DisciplinePoints - 10);
+            }
 
             Console.WriteLine($"{match.HomeTeam.Name,-20} {match.HomeGoals}-{match.AwayGoals} {match.AwayTeam.Name,-20}");
             DisplayMatchEvents(match);
@@ -611,12 +628,31 @@ public class InteractiveMenu
 
     private Formation CreateDefaultFormation(Team team)
     {
+        var availablePlayers = team.Players
+            .Where(p => p.Form > -3 && p.DisciplinePoints < 10)
+            .ToList();
+
+        var goalkeeper = availablePlayers.FirstOrDefault(p => p.Position == PlayerPosition.Po)
+            ?? CreateSparringPartner(PlayerPosition.Po);
+        var defenders = FillWithSparring(
+            availablePlayers.Where(p => p.Position == PlayerPosition.Di).ToList(),
+            4,
+            PlayerPosition.Di);
+        var midfielders = FillWithSparring(
+            availablePlayers.Where(p => p.Position == PlayerPosition.Ce).ToList(),
+            3,
+            PlayerPosition.Ce);
+        var attackers = FillWithSparring(
+            availablePlayers.Where(p => p.Position == PlayerPosition.At).ToList(),
+            3,
+            PlayerPosition.At);
+
         return new Formation
         {
-            Goalkeeper = team.Players.First(p => p.Position == PlayerPosition.Po),
-            Defenders = team.Players.Where(p => p.Position == PlayerPosition.Di).Take(4).ToList(),
-            Midfielders = team.Players.Where(p => p.Position == PlayerPosition.Ce).Take(3).ToList(),
-            Attackers = team.Players.Where(p => p.Position == PlayerPosition.At).Take(3).ToList()
+            Goalkeeper = goalkeeper,
+            Defenders = defenders,
+            Midfielders = midfielders,
+            Attackers = attackers
         };
     }
 
@@ -690,27 +726,27 @@ public class InteractiveMenu
 
     private Formation? TryBuildFormation(Team team, (int def, int mid, int att) module)
     {
-        var goalkeeper = team.Players.FirstOrDefault(p => p.Position == PlayerPosition.Po);
-        if (goalkeeper == null)
-            return null;
+        var availablePlayers = team.Players
+            .Where(p => p.Form > -3 && p.DisciplinePoints < 10)
+            .ToList();
 
-        var defendersPool = team.Players
+        var goalkeeper = availablePlayers.FirstOrDefault(p => p.Position == PlayerPosition.Po)
+            ?? CreateSparringPartner(PlayerPosition.Po);
+
+        var defendersPool = availablePlayers
             .Where(p => p.Position == PlayerPosition.Di)
             .OrderByDescending(p => p.Ability + p.Form)
             .ToList();
-        var midfielders = team.Players
+        defendersPool = FillWithSparring(defendersPool, module.def, PlayerPosition.Di);
+
+        var midfielders = FillWithSparring(availablePlayers
             .Where(p => p.Position == PlayerPosition.Ce)
             .OrderByDescending(p => p.Ability + p.Form)
-            .Take(module.mid)
-            .ToList();
-        var attackers = team.Players
+            .ToList(), module.mid, PlayerPosition.Ce);
+        var attackers = FillWithSparring(availablePlayers
             .Where(p => p.Position == PlayerPosition.At)
             .OrderByDescending(p => p.Ability + p.Form)
-            .Take(module.att)
-            .ToList();
-
-        if (midfielders.Count < module.mid || attackers.Count < module.att || defendersPool.Count < module.def)
-            return null;
+            .ToList(), module.att, PlayerPosition.At);
 
         bool canUseLibero = module.def >= 3 && defendersPool.Count >= module.def;
         bool useLibero = canUseLibero && _random.Next(100) < 35;
@@ -728,9 +764,6 @@ public class InteractiveMenu
             defenders = defendersPool.Take(module.def).ToList();
         }
 
-        if (defenders.Count < 2)
-            return null;
-
         return new Formation
         {
             Goalkeeper = goalkeeper,
@@ -738,6 +771,27 @@ public class InteractiveMenu
             Defenders = defenders,
             Midfielders = midfielders,
             Attackers = attackers
+        };
+    }
+
+    private List<Player> FillWithSparring(List<Player> players, int required, PlayerPosition position)
+    {
+        var result = players.Take(required).ToList();
+        while (result.Count < required)
+        {
+            result.Add(CreateSparringPartner(position));
+        }
+
+        return result;
+    }
+
+    private Player CreateSparringPartner(PlayerPosition position)
+    {
+        return new Player("Sparring Partner", position, 0, PlayerAge.Primavera)
+        {
+            Form = 0,
+            Side = PlayerSide.SD,
+            DisciplinePoints = 0
         };
     }
 

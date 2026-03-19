@@ -39,8 +39,30 @@ public class MatchEngine
         ApplySideBalancePenalty(match.HomeFormation, ref homeDi, ref homeCe, ref homeAt);
         ApplySideBalancePenalty(match.AwayFormation, ref awayDi, ref awayCe, ref awayAt);
 
-        ApplyTripleRule(ref homeDi, ref homeCe, ref homeAt);
-        ApplyTripleRule(ref awayDi, ref awayCe, ref awayAt);
+        var homeAreaReductions = ApplyTripleRule(ref homeDi, ref homeCe, ref homeAt);
+        var awayAreaReductions = ApplyTripleRule(ref awayDi, ref awayCe, ref awayAt);
+
+        if (homeAreaReductions.Count > 0)
+        {
+            match.Events.Add(new MatchEvent
+            {
+                Type = MatchEventType.AreaReduction,
+                Minute = 0,
+                IsHomeTeam = true,
+                Description = $"Riduzione automatica regola 3x aree: {string.Join(", ", homeAreaReductions)}"
+            });
+        }
+
+        if (awayAreaReductions.Count > 0)
+        {
+            match.Events.Add(new MatchEvent
+            {
+                Type = MatchEventType.AreaReduction,
+                Minute = 0,
+                IsHomeTeam = false,
+                Description = $"Riduzione automatica regola 3x aree: {string.Join(", ", awayAreaReductions)}"
+            });
+        }
 
         ProcessHardnessEffects(match, homeTactics.HardnessTotal, awayTactics.HardnessTotal,
             match.HomeFormation, match.AwayFormation);
@@ -243,17 +265,30 @@ public class MatchEngine
         return Math.Max(0, imbalance) * 3;
     }
 
-    private void ApplyTripleRule(ref int di, ref int ce, ref int at)
+    private List<string> ApplyTripleRule(ref int di, ref int ce, ref int at)
     {
+        var reductions = new List<string>();
+
         int minArea = Math.Min(Math.Min(di, ce), at);
         int maxAllowed = minArea * 3;
 
         if (di > maxAllowed)
+        {
+            reductions.Add($"Di {di}->{maxAllowed}");
             di = maxAllowed;
+        }
         if (ce > maxAllowed)
+        {
+            reductions.Add($"Ce {ce}->{maxAllowed}");
             ce = maxAllowed;
+        }
         if (at > maxAllowed)
+        {
+            reductions.Add($"At {at}->{maxAllowed}");
             at = maxAllowed;
+        }
+
+        return reductions;
     }
 
     private (int total, int fromAt, int fromCe) CalculateShots(int at, int ce, int di, int defDi, int defCe, int defAt,
