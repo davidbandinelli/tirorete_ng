@@ -219,7 +219,7 @@ public class TeamFactory
 
         if (random.Next(100) < 40) // 40% possibilità di avere un tattico
         {
-            team.Staff.Add(new BenchStaff("Tattico", BenchStaffType.Tactician));
+            team.Staff.Add(new BenchStaff("Tattico", BenchStaffType.Tactician, CreateRandomSpecializedTactic(random)));
         }
 
         // Risorse casuali
@@ -313,5 +313,28 @@ public class TeamFactory
         usedNames.Add(name);
         globalUsedNames?.Add(name);
         return name;
+    }
+
+    private string CreateRandomSpecializedTactic(Random random)
+    {
+        var modules = new[]
+        {
+            "4-4-2", "4-3-3", "4-2-4", "3-2-5", "3-5-2",
+            "6-2-2", "2-6-2", "2-2-6", "3-4-3", "3-3-4", "2-4-4"
+        };
+
+        string module = modules[random.Next(modules.Length)];
+        int defenders = int.Parse(module.Split('-')[0]);
+
+        bool useLibero = defenders >= 3 && random.Next(100) < 35;
+        bool useOffsideTrap = !useLibero && random.Next(100) < 35;
+
+        string tactic = module;
+        if (useLibero)
+            tactic += " Li";
+        if (useOffsideTrap)
+            tactic += " TFG";
+
+        return tactic;
     }
 }

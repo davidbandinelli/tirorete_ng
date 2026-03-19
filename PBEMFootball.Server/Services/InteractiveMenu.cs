@@ -1,6 +1,7 @@
 namespace PBEMFootball.Server.Services;
 
 using PBEMFootball.Common.Models;
+using PBEMFootball.Common.Services;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -444,6 +445,8 @@ public class InteractiveMenu
             ApplyHomeFieldAdvantage(homeTactics);
             ApplyGreatPerformancePoints(trackedHomeTeam, homeFormation, homeTactics);
             ApplyGreatPerformancePoints(trackedAwayTeam, awayFormation, awayTactics);
+            ApplyTacticianBonus(trackedHomeTeam, homeFormation, homeTactics);
+            ApplyTacticianBonus(trackedAwayTeam, awayFormation, awayTactics);
 
             match.HomeFormation = homeFormation;
             match.AwayFormation = awayFormation;
@@ -528,6 +531,10 @@ public class InteractiveMenu
         Console.WriteLine($"  FC {teamName}: Di={summary.HomeFieldDistribution.GetValueOrDefault("Di", 0)} Ce={summary.HomeFieldDistribution.GetValueOrDefault("Ce", 0)} At={summary.HomeFieldDistribution.GetValueOrDefault("At", 0)}");
         Console.WriteLine($"  D  {teamName}: Po={summary.HardnessDistribution.GetValueOrDefault("Po", 0)} Li={summary.HardnessDistribution.GetValueOrDefault("Li", 0)} Di={summary.HardnessDistribution.GetValueOrDefault("Di", 0)} Ce={summary.HardnessDistribution.GetValueOrDefault("Ce", 0)} At={summary.HardnessDistribution.GetValueOrDefault("At", 0)}");
         Console.WriteLine($"  PGP {teamName}: Po={summary.GreatPerformanceDistribution.GetValueOrDefault("Po", 0)} Li={summary.GreatPerformanceDistribution.GetValueOrDefault("Li", 0)} Di={summary.GreatPerformanceDistribution.GetValueOrDefault("Di", 0)} Ce={summary.GreatPerformanceDistribution.GetValueOrDefault("Ce", 0)} At={summary.GreatPerformanceDistribution.GetValueOrDefault("At", 0)}");
+        if (summary.TacticianBonusPoints > 0)
+        {
+            Console.WriteLine($"  TAC {teamName}: Li={summary.TacticianDistribution.GetValueOrDefault("Li", 0)} Di={summary.TacticianDistribution.GetValueOrDefault("Di", 0)} Ce={summary.TacticianDistribution.GetValueOrDefault("Ce", 0)} At={summary.TacticianDistribution.GetValueOrDefault("At", 0)} (Totale: {summary.TacticianBonusPoints})");
+        }
         Console.WriteLine($"  Totali aree {teamName}: Po={summary.Po} Li={summary.Li} Di={summary.Di} Ce={summary.Ce} At={summary.At}");
     }
 
@@ -616,6 +623,8 @@ public class InteractiveMenu
     private (Formation formation, FormationTactics tactics, (int def, int mid, int att) module)
         CreateRandomFormationAndTactics(Team team, (int def, int mid, int att)? excludedModule)
     {
+        var preferredModule = GetPreferredModuleFromTactician(team);
+
         var moduleCandidates = AllowedModules
             .Where(m => excludedModule == null || m != excludedModule.Value)
             .ToList();
@@ -623,8 +632,19 @@ public class InteractiveMenu
         if (moduleCandidates.Count == 0)
             moduleCandidates = [.. AllowedModules];
 
-        var shuffledModules = moduleCandidates
+        var weightedModules = new List<(int def, int mid, int att)>();
+        foreach (var module in moduleCandidates)
+        {
+            int weight = preferredModule.HasValue && module == preferredModule.Value ? 5 : 1;
+            for (int i = 0; i < weight; i++)
+            {
+                weightedModules.Add(module);
+            }
+        }
+
+        var shuffledModules = weightedModules
             .OrderBy(_ => _random.Next())
+            .Distinct()
             .ToList();
 
         foreach (var module in shuffledModules)
@@ -639,6 +659,33 @@ public class InteractiveMenu
 
         var fallbackFormation = CreateDefaultFormation(team);
         return (fallbackFormation, new FormationTactics(), (4, 3, 3));
+    }
+
+    private (int def, int mid, int att)? GetPreferredModuleFromTactician(Team team)
+    {
+        var tactician = team.Staff.FirstOrDefault(s =>
+            s.Type == BenchStaffType.Tactician &&
+            !string.IsNullOrWhiteSpace(s.SpecializedTactic));
+
+        if (tactician == null)
+            return null;
+
+        var tokens = tactician.SpecializedTactic!.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (tokens.Length == 0)
+            return null;
+
+        var moduleToken = tokens[0];
+        var parts = moduleToken.Split('-', StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length != 3)
+            return null;
+
+        if (!int.TryParse(parts[0], out int def) ||
+            !int.TryParse(parts[1], out int mid) ||
+            !int.TryParse(parts[2], out int att))
+            return null;
+
+        var preferred = (def, mid, att);
+        return AllowedModules.Contains(preferred) ? preferred : null;
     }
 
     private Formation? TryBuildFormation(Team team, (int def, int mid, int att) module)
@@ -765,6 +812,38 @@ public class InteractiveMenu
 
         if (pointsToUse > 0)
             team.GreatPerformancePoints -= pointsToUse;
+    }
+
+    private void ApplyTacticianBonus(Team team, Formation formation, FormationTactics tactics)
+    {
+        var tactician = team.Staff.FirstOrDefault(s =>
+            s.Type == BenchStaffType.Tactician &&
+            !string.IsNullOrWhiteSpace(s.SpecializedTactic));
+
+        if (tactician == null)
+            return;
+
+        if (!TacticHelper.TacticMatches(tactician.SpecializedTactic!, formation, tactics))
+            return;
+
+        tactics.TacticianBonusPoints = 5;
+        tactics.TacticianDistribution = new Dictionary<string, int>
+        {
+            ["Li"] = 0,
+            ["Di"] = 0,
+            ["Ce"] = 0,
+            ["At"] = 0
+        };
+
+        var allowedAreas = formation.Libero != null
+            ? new[] { "Li", "Di", "Ce", "At" }
+            : new[] { "Di", "Ce", "At" };
+
+        for (int i = 0; i < 5; i++)
+        {
+            var area = allowedAreas[_random.Next(allowedAreas.Length)];
+            tactics.TacticianDistribution[area]++;
+        }
     }
 
     private Dictionary<string, int> CreateRandomHardnessDistribution(bool hasLibero)
@@ -1227,7 +1306,11 @@ public class InteractiveMenu
                     _ => "Sconosciuto"
                 };
 
-                string content = $" {role,-20} {staff.Name,-49} ";
+                string staffDisplayName = staff.Type == BenchStaffType.Tactician && !string.IsNullOrWhiteSpace(staff.SpecializedTactic)
+                    ? $"{staff.Name} ({staff.SpecializedTactic})"
+                    : staff.Name;
+
+                string content = $" {role,-20} {staffDisplayName,-49} ";
                 Console.WriteLine(CreateTableRow(content));
             }
         }

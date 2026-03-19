@@ -189,6 +189,14 @@ public class MatchEngine
                 ["Ce"] = tactics.GreatPerformanceDistribution.GetValueOrDefault("Ce", 0),
                 ["At"] = tactics.GreatPerformanceDistribution.GetValueOrDefault("At", 0)
             },
+            TacticianDistribution = new Dictionary<string, int>
+            {
+                ["Li"] = tactics.TacticianDistribution.GetValueOrDefault("Li", 0),
+                ["Di"] = tactics.TacticianDistribution.GetValueOrDefault("Di", 0),
+                ["Ce"] = tactics.TacticianDistribution.GetValueOrDefault("Ce", 0),
+                ["At"] = tactics.TacticianDistribution.GetValueOrDefault("At", 0)
+            },
+            TacticianBonusPoints = tactics.TacticianBonusPoints,
             Po = po,
             Li = li,
             Di = di,
