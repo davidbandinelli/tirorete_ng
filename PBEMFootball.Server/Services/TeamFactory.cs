@@ -71,12 +71,25 @@ public class TeamFactory
 
     public Team CreateRandomTeam(int teamNumber, Random random)
     {
-        // Nomi casuali italiani per squadre
-        string[] cityNames = { "Milano", "Roma", "Napoli", "Torino", "Firenze", "Bologna", "Genova", "Verona", 
-                               "Palermo", "Venezia", "Brescia", "Parma", "Cagliari", "Lecce", "Bari", "Perugia" };
-        string[] suffixes = { "FC", "Calcio", "United", "AC", "SC", "US", "AS" };
+        string[] predefinedTeamNames =
+        {
+            "Atalanta",
+            "Bologna",
+            "Como",
+            "Fiorentina",
+            "Inter",
+            "Juventus",
+            "Lazio",
+            "Milan",
+            "Napoli",
+            "Roma",
+            "Sassuolo",
+            "Torino"
+        };
 
-        string teamName = $"{cityNames[random.Next(cityNames.Length)]} {suffixes[random.Next(suffixes.Length)]} {teamNumber}";
+        string teamName = teamNumber <= predefinedTeamNames.Length
+            ? predefinedTeamNames[teamNumber - 1]
+            : $"{predefinedTeamNames[(teamNumber - 1) % predefinedTeamNames.Length]} {teamNumber}";
 
         // Nomi casuali per manager
         string[] firstNames = { "Mario", "Luigi", "Giovanni", "Antonio", "Francesco", "Giuseppe", "Marco", "Alessandro",

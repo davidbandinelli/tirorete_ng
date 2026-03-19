@@ -434,10 +434,15 @@ public class InteractiveMenu
 
         foreach (var match in roundMatches)
         {
+            var trackedHomeTeam = ResolveTrackedTeam(match.HomeTeam);
+            var trackedAwayTeam = ResolveTrackedTeam(match.AwayTeam);
+
             var (homeFormation, homeTactics, homeModule) = CreateRandomFormationAndTactics(match.HomeTeam, null);
             var (awayFormation, awayTactics, _) = CreateRandomFormationAndTactics(match.AwayTeam, homeModule);
 
             ApplyHomeFieldAdvantage(homeTactics);
+            ApplyGreatPerformancePoints(trackedHomeTeam, homeFormation, homeTactics);
+            ApplyGreatPerformancePoints(trackedAwayTeam, awayFormation, awayTactics);
 
             match.HomeFormation = homeFormation;
             match.AwayFormation = awayFormation;
@@ -461,6 +466,13 @@ public class InteractiveMenu
         Console.WriteLine($"\n✓ Giornata {nextRound} completata!");
         Console.WriteLine("\nPremi un tasto per continuare...");
         Console.ReadKey();
+    }
+
+    private Team ResolveTrackedTeam(Team team)
+    {
+        return _allTeams.FirstOrDefault(t => ReferenceEquals(t, team))
+            ?? _allTeams.FirstOrDefault(t => t.Name == team.Name && t.ManagerName == team.ManagerName)
+            ?? team;
     }
 
     private void DisplayMatchEvents(Match match)
@@ -497,13 +509,13 @@ public class InteractiveMenu
             .ToList();
 
         Console.WriteLine("  Eventi partita:");
-        PrintEventList(matchEvents);
+        PrintEventList(matchEvents, match.HomeTeam.Name, match.AwayTeam.Name);
 
         Console.WriteLine("  Eventi disciplinari:");
-        PrintEventList(disciplinaryEvents);
+        PrintEventList(disciplinaryEvents, match.HomeTeam.Name, match.AwayTeam.Name);
 
         Console.WriteLine("  Infortuni:");
-        PrintEventList(injuryEvents);
+        PrintEventList(injuryEvents, match.HomeTeam.Name, match.AwayTeam.Name);
         Console.WriteLine();
     }
 
@@ -514,10 +526,11 @@ public class InteractiveMenu
 
         Console.WriteLine($"  FC {teamName}: Di={summary.HomeFieldDistribution.GetValueOrDefault("Di", 0)} Ce={summary.HomeFieldDistribution.GetValueOrDefault("Ce", 0)} At={summary.HomeFieldDistribution.GetValueOrDefault("At", 0)}");
         Console.WriteLine($"  D  {teamName}: Po={summary.HardnessDistribution.GetValueOrDefault("Po", 0)} Li={summary.HardnessDistribution.GetValueOrDefault("Li", 0)} Di={summary.HardnessDistribution.GetValueOrDefault("Di", 0)} Ce={summary.HardnessDistribution.GetValueOrDefault("Ce", 0)} At={summary.HardnessDistribution.GetValueOrDefault("At", 0)}");
+        Console.WriteLine($"  PGP {teamName}: Po={summary.GreatPerformanceDistribution.GetValueOrDefault("Po", 0)} Li={summary.GreatPerformanceDistribution.GetValueOrDefault("Li", 0)} Di={summary.GreatPerformanceDistribution.GetValueOrDefault("Di", 0)} Ce={summary.GreatPerformanceDistribution.GetValueOrDefault("Ce", 0)} At={summary.GreatPerformanceDistribution.GetValueOrDefault("At", 0)}");
         Console.WriteLine($"  Totali aree {teamName}: Po={summary.Po} Li={summary.Li} Di={summary.Di} Ce={summary.Ce} At={summary.At}");
     }
 
-    private void PrintEventList(List<MatchEvent> events)
+    private void PrintEventList(List<MatchEvent> events, string homeTeamName, string awayTeamName)
     {
         if (events.Count == 0)
         {
@@ -527,7 +540,7 @@ public class InteractiveMenu
 
         foreach (var matchEvent in events)
         {
-            string team = matchEvent.IsHomeTeam ? "Casa" : "Trasferta";
+            string team = matchEvent.IsHomeTeam ? homeTeamName : awayTeamName;
             string playerName = matchEvent.Player?.Name ?? "N/A";
             Console.WriteLine($"    - {matchEvent.Minute,2}' [{team}] {matchEvent.Type} - {playerName}: {matchEvent.Description}");
         }
@@ -705,6 +718,52 @@ public class InteractiveMenu
                 }
                 : new Dictionary<string, int>()
         };
+    }
+
+    private void ApplyGreatPerformancePoints(Team team, Formation formation, FormationTactics tactics)
+    {
+        int maxUsable = Math.Min(3, Math.Max(0, team.GreatPerformancePoints));
+        if (maxUsable == 0)
+        {
+            tactics.GreatPerformancePointsTotal = 0;
+            tactics.GreatPerformanceDistribution = new Dictionary<string, int>
+            {
+                ["Po"] = 0,
+                ["Li"] = 0,
+                ["Di"] = 0,
+                ["Ce"] = 0,
+                ["At"] = 0
+            };
+            return;
+        }
+
+        int pointsToUse = _random.Next(0, maxUsable + 1);
+
+        var distribution = new Dictionary<string, int>
+        {
+            ["Po"] = 0,
+            ["Li"] = 0,
+            ["Di"] = 0,
+            ["Ce"] = 0,
+            ["At"] = 0
+        };
+
+        bool hasLibero = formation.Libero != null;
+        var allowedAreas = hasLibero
+            ? new[] { "Po", "Li", "Di", "Ce", "At" }
+            : new[] { "Po", "Di", "Ce", "At" };
+
+        for (int i = 0; i < pointsToUse; i++)
+        {
+            var area = allowedAreas[_random.Next(allowedAreas.Length)];
+            distribution[area]++;
+        }
+
+        tactics.GreatPerformancePointsTotal = pointsToUse;
+        tactics.GreatPerformanceDistribution = distribution;
+
+        if (pointsToUse > 0)
+            team.GreatPerformancePoints -= pointsToUse;
     }
 
     private Dictionary<string, int> CreateRandomHardnessDistribution(bool hasLibero)

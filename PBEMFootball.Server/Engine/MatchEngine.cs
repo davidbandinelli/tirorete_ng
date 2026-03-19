@@ -181,6 +181,14 @@ public class MatchEngine
                 ["Ce"] = tactics.HardnessDistribution.GetValueOrDefault("Ce", 0),
                 ["At"] = tactics.HardnessDistribution.GetValueOrDefault("At", 0)
             },
+            GreatPerformanceDistribution = new Dictionary<string, int>
+            {
+                ["Po"] = tactics.GreatPerformanceDistribution.GetValueOrDefault("Po", 0),
+                ["Li"] = tactics.GreatPerformanceDistribution.GetValueOrDefault("Li", 0),
+                ["Di"] = tactics.GreatPerformanceDistribution.GetValueOrDefault("Di", 0),
+                ["Ce"] = tactics.GreatPerformanceDistribution.GetValueOrDefault("Ce", 0),
+                ["At"] = tactics.GreatPerformanceDistribution.GetValueOrDefault("At", 0)
+            },
             Po = po,
             Li = li,
             Di = di,
