@@ -24,6 +24,8 @@ public class Match
     public bool IsPlayed { get; set; }
     public WeatherCondition Weather { get; set; }
     public List<MatchEvent> Events { get; set; } = new();
+    public TeamMatchAreaSummary? HomeAreaSummary { get; set; }
+    public TeamMatchAreaSummary? AwayAreaSummary { get; set; }
     public bool IsHomeMatch => true;
 
     public CompetitionType? CompetitionType { get; set; }
@@ -35,4 +37,5 @@ public class Match
         HomeTeam = home;
         AwayTeam = away;
     }
+
 }

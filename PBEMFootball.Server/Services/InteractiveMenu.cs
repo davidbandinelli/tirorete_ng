@@ -437,6 +437,8 @@ public class InteractiveMenu
             var (homeFormation, homeTactics, homeModule) = CreateRandomFormationAndTactics(match.HomeTeam, null);
             var (awayFormation, awayTactics, _) = CreateRandomFormationAndTactics(match.AwayTeam, homeModule);
 
+            ApplyHomeFieldAdvantage(homeTactics);
+
             match.HomeFormation = homeFormation;
             match.AwayFormation = awayFormation;
             match.HomeTactics = homeTactics;
@@ -466,6 +468,8 @@ public class InteractiveMenu
         Console.WriteLine($"  Tiri: {match.HomeTeam.Name} {match.HomeShots} - {match.AwayShots} {match.AwayTeam.Name}");
         Console.WriteLine($"  Tattica {match.HomeTeam.Name}: {GetTacticDescription(match.HomeFormation, match.HomeTactics)}");
         Console.WriteLine($"  Tattica {match.AwayTeam.Name}: {GetTacticDescription(match.AwayFormation, match.AwayTactics)}");
+        PrintTeamAreaSummary(match.HomeTeam.Name, match.HomeAreaSummary);
+        PrintTeamAreaSummary(match.AwayTeam.Name, match.AwayAreaSummary);
 
         var orderedEvents = match.Events
             .OrderBy(e => e.Minute)
@@ -501,6 +505,16 @@ public class InteractiveMenu
         Console.WriteLine("  Infortuni:");
         PrintEventList(injuryEvents);
         Console.WriteLine();
+    }
+
+    private void PrintTeamAreaSummary(string teamName, TeamMatchAreaSummary? summary)
+    {
+        if (summary == null)
+            return;
+
+        Console.WriteLine($"  FC {teamName}: Di={summary.HomeFieldDistribution.GetValueOrDefault("Di", 0)} Ce={summary.HomeFieldDistribution.GetValueOrDefault("Ce", 0)} At={summary.HomeFieldDistribution.GetValueOrDefault("At", 0)}");
+        Console.WriteLine($"  D  {teamName}: Po={summary.HardnessDistribution.GetValueOrDefault("Po", 0)} Li={summary.HardnessDistribution.GetValueOrDefault("Li", 0)} Di={summary.HardnessDistribution.GetValueOrDefault("Di", 0)} Ce={summary.HardnessDistribution.GetValueOrDefault("Ce", 0)} At={summary.HardnessDistribution.GetValueOrDefault("At", 0)}");
+        Console.WriteLine($"  Totali aree {teamName}: Po={summary.Po} Li={summary.Li} Di={summary.Di} Ce={summary.Ce} At={summary.At}");
     }
 
     private void PrintEventList(List<MatchEvent> events)
@@ -672,8 +686,13 @@ public class InteractiveMenu
         bool useOffsideTrap = !useLibero && _random.Next(100) < 35;
         bool useCatenaccio = _random.Next(100) < 15;
 
+        var hardnessDistribution = CreateRandomHardnessDistribution(useLibero);
+        int hardnessTotal = hardnessDistribution.Values.Sum();
+
         return new FormationTactics
         {
+            HardnessTotal = hardnessTotal,
+            HardnessDistribution = hardnessDistribution,
             UseOffsideTrap = useOffsideTrap,
             UseCatenaccio = useCatenaccio,
             CatenaccioPoints = useCatenaccio ? 7 : 0,
@@ -686,6 +705,58 @@ public class InteractiveMenu
                 }
                 : new Dictionary<string, int>()
         };
+    }
+
+    private Dictionary<string, int> CreateRandomHardnessDistribution(bool hasLibero)
+    {
+        int totalHardness = _random.Next(0, 11);
+
+        var distribution = new Dictionary<string, int>
+        {
+            ["Po"] = 0,
+            ["Li"] = 0,
+            ["Di"] = 0,
+            ["Ce"] = 0,
+            ["At"] = 0
+        };
+
+        var allowedAreas = hasLibero
+            ? new[] { "Po", "Li", "Di", "Ce", "At" }
+            : new[] { "Po", "Di", "Ce", "At" };
+
+        for (int i = 0; i < totalHardness; i++)
+        {
+            var area = allowedAreas[_random.Next(allowedAreas.Length)];
+            distribution[area]++;
+        }
+
+        return distribution;
+    }
+
+    private void ApplyHomeFieldAdvantage(FormationTactics tactics)
+    {
+        const int totalHomeFieldPoints = 7;
+
+        tactics.HomeFieldAdvantagePoints = totalHomeFieldPoints;
+        tactics.HomeFieldAdvantageDistribution = new Dictionary<string, int>
+        {
+            ["Di"] = 0,
+            ["Ce"] = 0,
+            ["At"] = 0
+        };
+
+        for (int i = 0; i < totalHomeFieldPoints; i++)
+        {
+            int areaRoll = _random.Next(3);
+            string area = areaRoll switch
+            {
+                0 => "Di",
+                1 => "Ce",
+                _ => "At"
+            };
+
+            tactics.HomeFieldAdvantageDistribution[area]++;
+        }
     }
 
     private void ManageSpecialPoints()

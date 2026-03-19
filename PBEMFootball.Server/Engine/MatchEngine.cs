@@ -18,6 +18,8 @@ public class MatchEngine
             return;
 
         match.Events.Clear();
+        match.HomeAreaSummary = null;
+        match.AwayAreaSummary = null;
         match.Weather = GenerateWeather();
 
         if (match.Weather == WeatherCondition.Suspended)
@@ -47,6 +49,9 @@ public class MatchEngine
         ApplyRedCardPenalties(match, match.AwayFormation, ref awayPo, ref awayLi, ref awayDi, ref awayCe, ref awayAt);
 
         ApplyWeatherEffects(match.Weather, ref homeDi, ref homeCe, ref homeAt, ref awayDi, ref awayCe, ref awayAt);
+
+        match.HomeAreaSummary = CreateAreaSummary(homeTactics, homePo, homeLi, homeDi, homeCe, homeAt);
+        match.AwayAreaSummary = CreateAreaSummary(awayTactics, awayPo, awayLi, awayDi, awayCe, awayAt);
 
         var homeShotData = CalculateShots(homeAt, homeCe, homeDi, awayDi, awayCe, awayAt,
             match.HomeFormation.Libero != null, homeTactics.UseCatenaccio, awayTactics.UseOffsideTrap,
@@ -156,6 +161,32 @@ public class MatchEngine
         li = baseLi + Math.Min(liExtraTotal, 5);
 
         return (po, li, di, ce, at);
+    }
+
+    private TeamMatchAreaSummary CreateAreaSummary(FormationTactics tactics, int po, int li, int di, int ce, int at)
+    {
+        return new TeamMatchAreaSummary
+        {
+            HomeFieldDistribution = new Dictionary<string, int>
+            {
+                ["Di"] = tactics.HomeFieldAdvantageDistribution.GetValueOrDefault("Di", 0),
+                ["Ce"] = tactics.HomeFieldAdvantageDistribution.GetValueOrDefault("Ce", 0),
+                ["At"] = tactics.HomeFieldAdvantageDistribution.GetValueOrDefault("At", 0)
+            },
+            HardnessDistribution = new Dictionary<string, int>
+            {
+                ["Po"] = tactics.HardnessDistribution.GetValueOrDefault("Po", 0),
+                ["Li"] = tactics.HardnessDistribution.GetValueOrDefault("Li", 0),
+                ["Di"] = tactics.HardnessDistribution.GetValueOrDefault("Di", 0),
+                ["Ce"] = tactics.HardnessDistribution.GetValueOrDefault("Ce", 0),
+                ["At"] = tactics.HardnessDistribution.GetValueOrDefault("At", 0)
+            },
+            Po = po,
+            Li = li,
+            Di = di,
+            Ce = ce,
+            At = at
+        };
     }
 
     private int GetMaxExtraPoints(int baseValue, int extra, int max)
