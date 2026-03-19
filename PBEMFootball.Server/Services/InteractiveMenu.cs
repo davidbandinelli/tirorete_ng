@@ -9,6 +9,7 @@ public class InteractiveMenu
     private readonly SeasonManager _seasonManager;
     private readonly TeamFactory _teamFactory;
     private readonly Random _random = new();
+    private readonly HashSet<string> _generatedPlayerNames = new(StringComparer.OrdinalIgnoreCase);
     private Season? _currentSeason;
     private List<Team> _allTeams = new();
 
@@ -959,6 +960,7 @@ public class InteractiveMenu
         }
 
         _allTeams.Clear();
+        _generatedPlayerNames.Clear();
         _currentSeason = null; // Reset stagione
 
         var random = new Random();
@@ -966,7 +968,7 @@ public class InteractiveMenu
 
         for (int i = 1; i <= teamCount; i++)
         {
-            var team = _teamFactory.CreateRandomTeam(i, random);
+            var team = _teamFactory.CreateRandomTeam(i, random, _generatedPlayerNames);
             _allTeams.Add(team);
             Console.WriteLine($"[OK] {i,2}/{teamCount} - {team.Name} (Manager: {team.ManagerName})");
         }

@@ -69,7 +69,7 @@ public class TeamFactory
         return team;
     }
 
-    public Team CreateRandomTeam(int teamNumber, Random random)
+    public Team CreateRandomTeam(int teamNumber, Random random, HashSet<string>? globalUsedNames = null)
     {
         string[] predefinedTeamNames =
         {
@@ -100,14 +100,23 @@ public class TeamFactory
         string managerName = $"{firstNames[random.Next(firstNames.Length)]} {lastNames[random.Next(lastNames.Length)]}";
 
         var team = new Team(teamName, managerName);
+        var usedNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-        // Lista di nomi casuali per giocatori
-        string[] playerFirstNames = { "Marco", "Luca", "Andrea", "Paolo", "Giovanni", "Francesco", "Stefano", 
-                                      "Roberto", "Alessandro", "Davide", "Matteo", "Simone", "Federico", "Lorenzo",
-                                      "Gabriele", "Riccardo", "Tommaso", "Nicola", "Antonio", "Giuseppe" };
-        string[] playerLastNames = { "Rossi", "Bianchi", "Verdi", "Neri", "Russo", "Ferrari", "Esposito", 
-                                     "Romano", "Colombo", "Ricci", "Marino", "Greco", "Bruno", "Gallo",
-                                     "Conti", "De Luca", "Costa", "Fontana", "Serra", "Villa" };
+        string[] serieAPlayerNames =
+        {
+            "Lautaro Martinez", "Marcus Thuram", "Nicolò Barella", "Hakan Çalhanoğlu", "Federico Dimarco",
+            "Alessandro Bastoni", "Yann Sommer", "Dusan Vlahovic", "Kenan Yildiz", "Federico Chiesa",
+            "Manuel Locatelli", "Bremer", "Gleison Bremer", "Theo Hernandez", "Rafael Leão",
+            "Christian Pulisic", "Mike Maignan", "Youssouf Fofana", "Alessandro Buongiorno", "Khvicha Kvaratskhelia",
+            "Matteo Politano", "Stanislav Lobotka", "Amir Rrahmani", "Michele Di Gregorio", "Paulo Dybala",
+            "Lorenzo Pellegrini", "Gianluca Mancini", "Mile Svilar", "Valentín Castellanos", "Mattia Zaccagni",
+            "Matteo Guendouzi", "Ivan Provedel", "Nicolò Rovella", "Moise Kean", "Nicolás González",
+            "Rolando Mandragora", "Lucas Beltrán", "David de Gea", "Riccardo Orsolini", "Joshua Zirkzee",
+            "Lewis Ferguson", "Sam Beukema", "Lukasz Skorupski", "Ademola Lookman", "Teun Koopmeiners",
+            "Giorgio Scalvini", "Éderson", "Berat Djimsiti", "Antonio Sanabria", "Duván Zapata",
+            "Samuele Ricci", "Alessandro Buongiorno Torino", "Andrea Pinamonti", "Domenico Berardi", "Armand Laurienté",
+            "Nedim Bajrami", "Andrea Consigli", "Patrick Cutrone", "Gabriel Strefezza", "Alberto Dossena"
+        };
 
         // 70 livelli totali: 34 per età I, 12 per età II, 12 per età III, 12 per età IV
         // Distribuzione casuale rispettando i vincoli
@@ -125,7 +134,7 @@ public class TeamFactory
 
         for (int i = 0; i < ageIAbilities.Count; i++)
         {
-            string name = $"{playerFirstNames[random.Next(playerFirstNames.Length)]} {playerLastNames[random.Next(playerLastNames.Length)]}";
+            string name = GetUniqueSerieAPlayerName(random, serieAPlayerNames, usedNames, globalUsedNames);
             var side = i < 2 && random.Next(100) < 20 ? PlayerSide.SD : sides[i % sides.Length]; // 20% chance di S+D nei primi 2
             team.Players.Add(new Player(name, positions[i % positions.Length], ageIAbilities[i], PlayerAge.I) { Side = side });
         }
@@ -134,7 +143,7 @@ public class TeamFactory
         var ageIIAbilities = DistributePointsRandomly(12, random.Next(2, 4), 2, 12, random);
         foreach (var ability in ageIIAbilities)
         {
-            string name = $"{playerFirstNames[random.Next(playerFirstNames.Length)]} {playerLastNames[random.Next(playerLastNames.Length)]}";
+            string name = GetUniqueSerieAPlayerName(random, serieAPlayerNames, usedNames, globalUsedNames);
             var position = positions[random.Next(1, positions.Length)]; // Esclude portiere
             var side = sides[random.Next(sides.Length)];
             team.Players.Add(new Player(name, position, ability, PlayerAge.II) { Side = side });
@@ -144,7 +153,7 @@ public class TeamFactory
         var ageIIIAbilities = DistributePointsRandomly(12, random.Next(2, 4), 2, 12, random);
         foreach (var ability in ageIIIAbilities)
         {
-            string name = $"{playerFirstNames[random.Next(playerFirstNames.Length)]} {playerLastNames[random.Next(playerLastNames.Length)]}";
+            string name = GetUniqueSerieAPlayerName(random, serieAPlayerNames, usedNames, globalUsedNames);
             var position = positions[random.Next(1, positions.Length)];
             var side = sides[random.Next(sides.Length)];
             team.Players.Add(new Player(name, position, ability, PlayerAge.III) { Side = side });
@@ -154,7 +163,7 @@ public class TeamFactory
         var ageIVAbilities = DistributePointsRandomly(12, random.Next(2, 4), 2, 12, random);
         foreach (var ability in ageIVAbilities)
         {
-            string name = $"{playerFirstNames[random.Next(playerFirstNames.Length)]} {playerLastNames[random.Next(playerLastNames.Length)]}";
+            string name = GetUniqueSerieAPlayerName(random, serieAPlayerNames, usedNames, globalUsedNames);
             var position = positions[random.Next(1, positions.Length)];
             var side = sides[random.Next(sides.Length)];
             team.Players.Add(new Player(name, position, ability, PlayerAge.IV) { Side = side });
@@ -163,7 +172,7 @@ public class TeamFactory
         // 3 Juniores con abilità 5 e forma +2
         for (int i = 0; i < 3; i++)
         {
-            string name = $"{playerFirstNames[random.Next(playerFirstNames.Length)]} {playerLastNames[random.Next(playerLastNames.Length)]}";
+            string name = GetUniqueSerieAPlayerName(random, serieAPlayerNames, usedNames, globalUsedNames);
             team.Players.Add(new Player(name, positions[random.Next(1, positions.Length)], 5, PlayerAge.Juniores)
             {
                 Form = 2,
@@ -174,7 +183,7 @@ public class TeamFactory
         // 3 Juniores con abilità 3 e forma +2
         for (int i = 0; i < 3; i++)
         {
-            string name = $"{playerFirstNames[random.Next(playerFirstNames.Length)]} {playerLastNames[random.Next(playerLastNames.Length)]}";
+            string name = GetUniqueSerieAPlayerName(random, serieAPlayerNames, usedNames, globalUsedNames);
             team.Players.Add(new Player(name, positions[random.Next(1, positions.Length)], 3, PlayerAge.Juniores)
             {
                 Form = 2,
@@ -185,7 +194,7 @@ public class TeamFactory
         // 6 Primavera con abilità 2 e forma +2
         for (int i = 0; i < 6; i++)
         {
-            string name = $"{playerFirstNames[random.Next(playerFirstNames.Length)]} {playerLastNames[random.Next(playerLastNames.Length)]}";
+            string name = GetUniqueSerieAPlayerName(random, serieAPlayerNames, usedNames, globalUsedNames);
             team.Players.Add(new Player(name, positions[random.Next(1, positions.Length)], 2, PlayerAge.Primavera)
             {
                 Form = 2,
@@ -246,5 +255,63 @@ public class TeamFactory
         }
 
         return abilities;
+    }
+
+    private string GetRandomSerieAPlayerName(Random random, string[] names)
+    {
+        return names[random.Next(names.Length)];
+    }
+
+    private string GetUniqueSerieAPlayerName(Random random, string[] names, HashSet<string> usedNames, HashSet<string>? globalUsedNames)
+    {
+        var availableNames = names
+            .Where(n => !usedNames.Contains(n) && (globalUsedNames == null || !globalUsedNames.Contains(n)))
+            .ToList();
+        string name;
+
+        if (availableNames.Count > 0)
+        {
+            name = availableNames[random.Next(availableNames.Count)];
+        }
+        else
+        {
+            var firstNames = names
+                .Select(n => n.Split(' ', StringSplitOptions.RemoveEmptyEntries).First())
+                .Distinct()
+                .ToList();
+
+            var lastNames = names
+                .Select(n =>
+                {
+                    var parts = n.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    return parts.Length > 1 ? parts[^1] : parts[0];
+                })
+                .Distinct()
+                .ToList();
+
+            var comboCandidates = new List<string>();
+            foreach (var firstName in firstNames)
+            {
+                foreach (var lastName in lastNames)
+                {
+                    var candidate = $"{firstName} {lastName}";
+                    if (!usedNames.Contains(candidate) && (globalUsedNames == null || !globalUsedNames.Contains(candidate)))
+                    {
+                        comboCandidates.Add(candidate);
+                    }
+                }
+            }
+
+            if (comboCandidates.Count == 0)
+            {
+                throw new InvalidOperationException("Pool nomi Serie A esaurito: aumenta l'elenco base dei nomi disponibili.");
+            }
+
+            name = comboCandidates[random.Next(comboCandidates.Count)];
+        }
+
+        usedNames.Add(name);
+        globalUsedNames?.Add(name);
+        return name;
     }
 }
