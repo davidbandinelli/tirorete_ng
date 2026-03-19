@@ -8,8 +8,24 @@ public class InteractiveMenu
 {
     private readonly SeasonManager _seasonManager;
     private readonly TeamFactory _teamFactory;
+    private readonly Random _random = new();
     private Season? _currentSeason;
     private List<Team> _allTeams = new();
+
+    private static readonly List<(int def, int mid, int att)> AllowedModules =
+    [
+        (4, 4, 2),
+        (4, 3, 3),
+        (4, 2, 4),
+        (3, 2, 5),
+        (3, 5, 2),
+        (6, 2, 2),
+        (2, 6, 2),
+        (2, 2, 6),
+        (3, 4, 3),
+        (3, 3, 4),
+        (2, 4, 4)
+    ];
 
     public InteractiveMenu()
     {
@@ -418,12 +434,13 @@ public class InteractiveMenu
 
         foreach (var match in roundMatches)
         {
-            // Crea formazioni di default (semplificato per demo)
-            var homeFormation = CreateDefaultFormation(match.HomeTeam);
-            var awayFormation = CreateDefaultFormation(match.AwayTeam);
+            var (homeFormation, homeTactics, homeModule) = CreateRandomFormationAndTactics(match.HomeTeam, null);
+            var (awayFormation, awayTactics, _) = CreateRandomFormationAndTactics(match.AwayTeam, homeModule);
 
             match.HomeFormation = homeFormation;
             match.AwayFormation = awayFormation;
+            match.HomeTactics = homeTactics;
+            match.AwayTactics = awayTactics;
 
             matchEngine.SimulateMatch(match);
 
@@ -447,6 +464,8 @@ public class InteractiveMenu
     private void DisplayMatchEvents(Match match)
     {
         Console.WriteLine($"  Tiri: {match.HomeTeam.Name} {match.HomeShots} - {match.AwayShots} {match.AwayTeam.Name}");
+        Console.WriteLine($"  Tattica {match.HomeTeam.Name}: {GetTacticDescription(match.HomeFormation, match.HomeTactics)}");
+        Console.WriteLine($"  Tattica {match.AwayTeam.Name}: {GetTacticDescription(match.AwayFormation, match.AwayTactics)}");
 
         var orderedEvents = match.Events
             .OrderBy(e => e.Minute)
@@ -500,6 +519,28 @@ public class InteractiveMenu
         }
     }
 
+    private string GetTacticDescription(Formation? formation, FormationTactics? tactics)
+    {
+        if (formation == null)
+            return "N/D";
+
+        string module = $"{formation.Defenders.Count}-{formation.Midfielders.Count}-{formation.Attackers.Count}";
+        var details = new List<string>();
+
+        if (formation.Libero != null)
+            details.Add("con Libero");
+
+        if (tactics?.UseOffsideTrap == true)
+            details.Add("con TFG (trappola fuori gioco)");
+
+        if (tactics?.UseCatenaccio == true)
+            details.Add("CAT (con catenaccio)");
+
+        return details.Count == 0
+            ? module
+            : $"{module} {string.Join(", ", details)}";
+    }
+
     private void SynchronizeTeamPlayerSeasonStats(Team team, Formation? formation)
     {
         if (formation == null)
@@ -541,6 +582,109 @@ public class InteractiveMenu
             Defenders = team.Players.Where(p => p.Position == PlayerPosition.Di).Take(4).ToList(),
             Midfielders = team.Players.Where(p => p.Position == PlayerPosition.Ce).Take(3).ToList(),
             Attackers = team.Players.Where(p => p.Position == PlayerPosition.At).Take(3).ToList()
+        };
+    }
+
+    private (Formation formation, FormationTactics tactics, (int def, int mid, int att) module)
+        CreateRandomFormationAndTactics(Team team, (int def, int mid, int att)? excludedModule)
+    {
+        var moduleCandidates = AllowedModules
+            .Where(m => excludedModule == null || m != excludedModule.Value)
+            .ToList();
+
+        if (moduleCandidates.Count == 0)
+            moduleCandidates = [.. AllowedModules];
+
+        var shuffledModules = moduleCandidates
+            .OrderBy(_ => _random.Next())
+            .ToList();
+
+        foreach (var module in shuffledModules)
+        {
+            var formation = TryBuildFormation(team, module);
+            if (formation == null)
+                continue;
+
+            var tactics = CreateRandomTacticsForFormation(formation);
+            return (formation, tactics, module);
+        }
+
+        var fallbackFormation = CreateDefaultFormation(team);
+        return (fallbackFormation, new FormationTactics(), (4, 3, 3));
+    }
+
+    private Formation? TryBuildFormation(Team team, (int def, int mid, int att) module)
+    {
+        var goalkeeper = team.Players.FirstOrDefault(p => p.Position == PlayerPosition.Po);
+        if (goalkeeper == null)
+            return null;
+
+        var defendersPool = team.Players
+            .Where(p => p.Position == PlayerPosition.Di)
+            .OrderByDescending(p => p.Ability + p.Form)
+            .ToList();
+        var midfielders = team.Players
+            .Where(p => p.Position == PlayerPosition.Ce)
+            .OrderByDescending(p => p.Ability + p.Form)
+            .Take(module.mid)
+            .ToList();
+        var attackers = team.Players
+            .Where(p => p.Position == PlayerPosition.At)
+            .OrderByDescending(p => p.Ability + p.Form)
+            .Take(module.att)
+            .ToList();
+
+        if (midfielders.Count < module.mid || attackers.Count < module.att || defendersPool.Count < module.def)
+            return null;
+
+        bool canUseLibero = module.def >= 3 && defendersPool.Count >= module.def;
+        bool useLibero = canUseLibero && _random.Next(100) < 35;
+
+        Player? libero = null;
+        List<Player> defenders;
+
+        if (useLibero)
+        {
+            libero = defendersPool.First();
+            defenders = defendersPool.Skip(1).Take(module.def - 1).ToList();
+        }
+        else
+        {
+            defenders = defendersPool.Take(module.def).ToList();
+        }
+
+        if (defenders.Count < 2)
+            return null;
+
+        return new Formation
+        {
+            Goalkeeper = goalkeeper,
+            Libero = libero,
+            Defenders = defenders,
+            Midfielders = midfielders,
+            Attackers = attackers
+        };
+    }
+
+    private FormationTactics CreateRandomTacticsForFormation(Formation formation)
+    {
+        bool useLibero = formation.Libero != null;
+        bool useOffsideTrap = !useLibero && _random.Next(100) < 35;
+        bool useCatenaccio = _random.Next(100) < 15;
+
+        return new FormationTactics
+        {
+            UseOffsideTrap = useOffsideTrap,
+            UseCatenaccio = useCatenaccio,
+            CatenaccioPoints = useCatenaccio ? 7 : 0,
+            CatenaccioDistribution = useCatenaccio
+                ? new Dictionary<string, int>
+                {
+                    ["Li"] = useLibero ? 1 : 0,
+                    ["Di"] = 3,
+                    ["Ce"] = useLibero ? 3 : 4
+                }
+                : new Dictionary<string, int>()
         };
     }
 
