@@ -86,13 +86,12 @@ Allenare  sulla  forma un giocatore giovane (J o P)  costa 1 PA, mentre un adult
 (per esempio un giocatore di eta' III verrebbe allenato sulla forma spendendo 3 PA). 
 Un giocatore non puo' mai raggiungere piu' di +2 di forma.
 + Solo i giocatori adulti possono essere allenati sull'abilita' (i giovani crescono facendo esperienza). 
-Il costo e' uguale all'abilita' che si vuole raggiungere (per esempio  10 per allenare un giocatore  
-con abilita' 9 per arrivare  a 10).  
+Il costo e' uguale all'abilita' che si vuole raggiungere (per esempio  10 per allenare un giocatore con abilita' 9 per arrivare  a 10).  
 Un giocatore  di  eta'  I puo'  essere allenato  5 volte sull'abilita' in una stagione, mentre gli altri adulti solo 3 volte.
 
-E' possibile allenare un giocatore solo una volta per sessione, ma si puo' allenare contemporaneamente  su  forma  e  abilita'.  
-Ogni allenamento fa crescere abilita' o forma di un punto. 
-L'allenamento  sulla forma si puo' sommare al miglioramento di forma dovuto al riposo.
+E' possibile allenare un giocatore solo una volta per sessione, ma si puo' allenare contemporaneamente su forma e abilita'.  
+Ogni allenamento fa crescere abilita' o forma di un punto.
+L'allenamento sulla forma si puo' sommare al miglioramento di forma dovuto al riposo.
 
 * Punti extra e tattiche:
 Quando sono  state fatte le  formazioni, si devono  (o possono) aggiungere punti aggiuntivi alla squadra, e deciderne la tattica 
