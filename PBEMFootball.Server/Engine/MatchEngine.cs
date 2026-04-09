@@ -519,9 +519,9 @@ public class MatchEngine
                     if (_random.NextDouble() < ownGoalChance)
                     {
                         if (isHomeDefending)
-                            match.HomeGoals++;
-                        else
                             match.AwayGoals++;
+                        else
+                            match.HomeGoals++;
 
                         match.Events.Add(new MatchEvent
                         {
@@ -679,10 +679,11 @@ public class MatchEngine
 
                 if (bestOpponent != null)
                 {
-                    int opponentPo = opponentFormation.Goalkeeper != null ? 
-                        opponentFormation.Goalkeeper.Ability : 0;
-                    int tiratorAb = bestOpponent.Ability;
-                    int scoreProbability = Math.Min(95, 40 + (3 * tiratorAb) - opponentPo);
+                    int goalkeeperPo = formation.Goalkeeper != null
+                        ? formation.Goalkeeper.Ability + formation.Goalkeeper.Form
+                        : 0;
+                    int takerAb = bestOpponent.Ability + bestOpponent.Form;
+                    int scoreProbability = Math.Min(95, 40 + (3 * takerAb) - goalkeeperPo);
 
                     bool scored = _random.Next(100) < scoreProbability;
 
@@ -704,7 +705,7 @@ public class MatchEngine
                     }
                     else
                     {
-                        var goalkeeperName = opponentFormation.Goalkeeper?.Name ?? "Portiere";
+                        var goalkeeperName = formation.Goalkeeper?.Name ?? "Portiere";
                         match.Events.Add(new MatchEvent
                         {
                             Type = MatchEventType.PenaltyMissed,

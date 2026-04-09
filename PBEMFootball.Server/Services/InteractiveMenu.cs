@@ -567,7 +567,17 @@ public class InteractiveMenu
         {
             string team = matchEvent.IsHomeTeam ? homeTeamName : awayTeamName;
             string playerName = matchEvent.Player?.Name ?? "N/A";
-            Console.WriteLine($"    - {matchEvent.Minute,2}' [{team}] {matchEvent.Type} - {playerName}: {matchEvent.Description}");
+            bool isPenaltyEvent = matchEvent.Type == MatchEventType.Penalty ||
+                                  matchEvent.Type == MatchEventType.PenaltyMissed;
+
+            if (isPenaltyEvent)
+            {
+                Console.WriteLine($"    - {matchEvent.Minute,2}' [{team}] {matchEvent.Type} - Tiratore: {playerName} | {matchEvent.Description}");
+            }
+            else
+            {
+                Console.WriteLine($"    - {matchEvent.Minute,2}' [{team}] {matchEvent.Type} - {playerName}: {matchEvent.Description}");
+            }
         }
     }
 
